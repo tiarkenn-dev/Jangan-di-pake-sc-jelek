@@ -1,228 +1,284 @@
 --========================================================--
--- ONE W v2
+-- W2
 -- Based on ALFzxzzz HUB v0.3.7
 -- One Window GUI + Custom Features
+-- Free Script - Jangan Dijual!
 --========================================================--
 
-getgenv().OW = getgenv().OW or {}
+getgenv().W2 = getgenv().W2 or {}
 local W = getgenv()
 
 --====================================================--
 -- VARIABLE DEFAULTS
 --====================================================--
-OW.SelfHeal_Enabled     = OW.SelfHeal_Enabled or false
-OW.SelfHeal_AutoAll     = OW.SelfHeal_AutoAll or false
+W2.SelfHeal_Enabled     = W2.SelfHeal_Enabled or false
+W2.SelfHeal_AutoAll     = W2.SelfHeal_AutoAll or false
 
-OW.SwiftVault_Enabled   = OW.SwiftVault_Enabled or false
-OW.SwiftVault_V2        = OW.SwiftVault_V2 or false
-OW.SwiftVault_Speed     = OW.SwiftVault_Speed or 13
+W2.SwiftVault_Enabled   = W2.SwiftVault_Enabled or false
+W2.SwiftVault_V2        = W2.SwiftVault_V2 or false
+W2.SwiftVault_Speed     = W2.SwiftVault_Speed or 13
 
-OW.PalletReflex_Enabled = OW.PalletReflex_Enabled or false
-OW.PalletReflex_Dist    = OW.PalletReflex_Dist or 20
+W2.PalletReflex_Enabled = W2.PalletReflex_Enabled or false
+W2.PalletReflex_Dist    = W2.PalletReflex_Dist or 20
 
-OW.FakePerks_Flowstate  = OW.FakePerks_Flowstate or false
-OW.FakePerks_QuickRec   = OW.FakePerks_QuickRec or false
-OW.FakePerks_PerfLand   = OW.FakePerks_PerfLand or false
-OW.FakePerks_Adrenaline = OW.FakePerks_Adrenaline or false
-OW.FakePerks_Cooldown   = OW.FakePerks_Cooldown or 5
+W2.FakePerks_Flowstate  = W2.FakePerks_Flowstate or false
+W2.FakePerks_QuickRec   = W2.FakePerks_QuickRec or false
+W2.FakePerks_PerfLand   = W2.FakePerks_PerfLand or false
+W2.FakePerks_Adrenaline = W2.FakePerks_Adrenaline or false
+W2.FakePerks_Cooldown   = W2.FakePerks_Cooldown or 5
 
-OW.SkillCheck_Enabled   = OW.SkillCheck_Enabled or false
-OW.SkillCheck_Mode      = OW.SkillCheck_Mode or "Legit"
+W2.SkillCheck_Enabled   = W2.SkillCheck_Enabled or false
+W2.SkillCheck_Mode      = W2.SkillCheck_Mode or "Legit"
 
-OW.GenBypass_Enabled    = OW.GenBypass_Enabled or false
-OW.GenBypass_Range      = OW.GenBypass_Range or 8
+W2.GenBypass_Enabled    = W2.GenBypass_Enabled or false
+W2.GenBypass_Range      = W2.GenBypass_Range or 8
 
-OW.UnlimitedVault       = OW.UnlimitedVault or false
-OW.AntiSlowVault        = OW.AntiSlowVault or false
+W2.UnlimitedVault       = W2.UnlimitedVault or false
+W2.AntiSlowVault        = W2.AntiSlowVault or false
 
-OW.AutoRun_PC           = OW.AutoRun_PC or false
-OW.AutoRun_Mobile       = OW.AutoRun_Mobile or false
+W2.AutoRun_PC           = W2.AutoRun_PC or false
+W2.AutoRun_Mobile       = W2.AutoRun_Mobile or false
 
-OW.ParryV1_Enabled      = OW.ParryV1_Enabled or false
-OW.ParryV1_Aggressive   = OW.ParryV1_Aggressive or false
-OW.ParryV1_Distance     = OW.ParryV1_Distance or 10
-OW.ParryV1_ShowRange    = OW.ParryV1_ShowRange or false
-OW.ParryV1_Silent       = OW.ParryV1_Silent or false
+W2.AutoCrouchDodge      = W2.AutoCrouchDodge or false
+W2.AutoFlee             = W2.AutoFlee or false
+W2.AutoFleeDist         = W2.AutoFleeDist or 40
+W2.AutoFleeCooldown     = W2.AutoFleeCooldown or 1.5
+W2.NoFallDamage         = W2.NoFallDamage or false
+W2.TrollTeleport        = W2.TrollTeleport or false
+W2.GodMode              = W2.GodMode or false
+W2.ManualGen            = W2.ManualGen or false
+W2.KillerEscapeDist     = W2.KillerEscapeDist or 30
 
-OW.ParryV2_Enabled      = OW.ParryV2_Enabled or false
-OW.ParryV2_Aggressive   = OW.ParryV2_Aggressive or false
-OW.ParryV2_Safety       = OW.ParryV2_Safety or false
-OW.ParryV2_Distance     = OW.ParryV2_Distance or 6
-OW.ParryV2_Face         = OW.ParryV2_Face or 0.7
-OW.ParryV2_ShowCircle   = OW.ParryV2_ShowCircle or true
-OW.ParryV2_Ignored      = OW.ParryV2_Ignored or {}
+W2.ParryV1_Enabled      = W2.ParryV1_Enabled or false
+W2.ParryV1_Aggressive   = W2.ParryV1_Aggressive or false
+W2.ParryV1_Distance     = W2.ParryV1_Distance or 10
+W2.ParryV1_ShowRange    = W2.ParryV1_ShowRange or false
+W2.ParryV1_Silent       = W2.ParryV1_Silent or false
 
-OW.MapPredict_Enabled   = OW.MapPredict_Enabled or false
+W2.ParryV2_Enabled      = W2.ParryV2_Enabled or false
+W2.ParryV2_Aggressive   = W2.ParryV2_Aggressive or false
+W2.ParryV2_Safety       = W2.ParryV2_Safety or false
+W2.ParryV2_Distance     = W2.ParryV2_Distance or 6
+W2.ParryV2_Face         = W2.ParryV2_Face or 0.7
+W2.ParryV2_ShowCircle   = W2.ParryV2_ShowCircle or true
+W2.ParryV2_Ignored      = W2.ParryV2_Ignored or {}
 
-OW.SelfUnhook_Enabled   = OW.SelfUnhook_Enabled or false
-OW.SelfUnhook_Duration  = OW.SelfUnhook_Duration or 30
-OW.SelfUnhook_Distance  = OW.SelfUnhook_Distance or 20
+W2.MapPredict_Enabled   = W2.MapPredict_Enabled or false
 
-OW.TOF_Enabled          = OW.TOF_Enabled or false
-OW.TOF_Key              = OW.TOF_Key or "Q"
-OW.TOF_TargetMode       = OW.TOF_TargetMode or "Killer"
-OW.TOF_Laser            = OW.TOF_Laser ~= false
-OW.TOF_WallCheck        = OW.TOF_WallCheck ~= false
-OW.TOF_BlockKnocked     = OW.TOF_BlockKnocked ~= false
+W2.SelfUnhook_Enabled   = W2.SelfUnhook_Enabled or false
+W2.SelfUnhook_Duration  = W2.SelfUnhook_Duration or 30
+W2.SelfUnhook_Distance  = W2.SelfUnhook_Distance or 20
 
-OW.Flash_Enabled        = OW.Flash_Enabled or false
-OW.Flash_TargetPart     = OW.Flash_TargetPart or "Head"
-OW.Flash_Range          = OW.Flash_Range or 120
-OW.Flash_Smooth         = OW.Flash_Smooth or 0.35
+W2.TOF_Enabled          = W2.TOF_Enabled or false
+W2.TOF_Key              = W2.TOF_Key or "Q"
+W2.TOF_TargetMode       = W2.TOF_TargetMode or "Killer"
+W2.TOF_Laser            = W2.TOF_Laser ~= false
+W2.TOF_WallCheck        = W2.TOF_WallCheck ~= false
+W2.TOF_BlockKnocked     = W2.TOF_BlockKnocked ~= false
+W2.TOF_ButtonEnabled    = W2.TOF_ButtonEnabled or false
 
-OW.GunAim_Enabled       = OW.GunAim_Enabled or false
-OW.GunAim_TargetMode    = OW.GunAim_TargetMode or "Killer"
-OW.GunAim_FOV           = OW.GunAim_FOV or 250
-OW.GunAim_Smooth        = OW.GunAim_Smooth or 0.5
-OW.GunAim_Predict       = OW.GunAim_Predict or 0.12
+W2.Flash_Enabled        = W2.Flash_Enabled or false
+W2.Flash_TargetPart     = W2.Flash_TargetPart or "Head"
+W2.Flash_Range          = W2.Flash_Range or 120
+W2.Flash_Smooth         = W2.Flash_Smooth or 0.35
 
-OW.Moonwalk_Enabled     = OW.Moonwalk_Enabled or false
-OW.Moonwalk_SideSpeed   = OW.Moonwalk_SideSpeed or 0.9
-OW.Moonwalk_BackSpeed   = OW.Moonwalk_BackSpeed or 1.2
-OW.Moonwalk_Interval    = OW.Moonwalk_Interval or 0.07
+W2.GunAim_Enabled       = W2.GunAim_Enabled or false
+W2.GunAim_TargetMode    = W2.GunAim_TargetMode or "Killer"
+W2.GunAim_FOV           = W2.GunAim_FOV or 250
+W2.GunAim_Smooth        = W2.GunAim_Smooth or 0.5
+W2.GunAim_Predict       = W2.GunAim_Predict or 0.12
 
-OW.ESP_Survivor         = OW.ESP_Survivor or false
-OW.ESP_Killer           = OW.ESP_Killer or false
-OW.ESP_Generator        = OW.ESP_Generator or false
-OW.ESP_Pallet           = OW.ESP_Pallet or false
-OW.ESP_Window           = OW.ESP_Window or false
-OW.ESP_SCP              = OW.ESP_SCP or false
-OW.ESP_Distance         = OW.ESP_Distance or 500
+W2.Moonwalk_Enabled     = W2.Moonwalk_Enabled or false
+W2.Moonwalk_SideSpeed   = W2.Moonwalk_SideSpeed or 0.9
+W2.Moonwalk_BackSpeed   = W2.Moonwalk_BackSpeed or 1.2
+W2.Moonwalk_Interval    = W2.Moonwalk_Interval or 0.07
 
-OW.ESPStatus_Enabled    = OW.ESPStatus_Enabled or false
-OW.ESPStatus_Name       = OW.ESPStatus_Name ~= false
-OW.ESPStatus_Distance   = OW.ESPStatus_Distance ~= false
-OW.ESPStatus_Avatar     = OW.ESPStatus_Avatar ~= false
-OW.ESPStatus_Action     = OW.ESPStatus_Action ~= false
-OW.ESPStatus_Health     = OW.ESPStatus_Health or false
-OW.ESPStatus_Radius     = OW.ESPStatus_Radius or 500
+W2.ESP_Survivor         = W2.ESP_Survivor or false
+W2.ESP_Killer           = W2.ESP_Killer or false
+W2.ESP_Generator        = W2.ESP_Generator or false
+W2.ESP_Pallet           = W2.ESP_Pallet or false
+W2.ESP_Window           = W2.ESP_Window or false
+W2.ESP_SCP              = W2.ESP_SCP or false
+W2.ESP_Distance         = W2.ESP_Distance or 500
 
-OW.KillerPerks_Enabled  = OW.KillerPerks_Enabled or false
-OW.InfLunge_Enabled     = OW.InfLunge_Enabled or false
-OW.CounterParry_Enabled = OW.CounterParry_Enabled or false
+W2.ESPStatus_Enabled    = W2.ESPStatus_Enabled or false
+W2.ESPStatus_Name       = W2.ESPStatus_Name ~= false
+W2.ESPStatus_Distance   = W2.ESPStatus_Distance ~= false
+W2.ESPStatus_Avatar     = W2.ESPStatus_Avatar ~= false
+W2.ESPStatus_Action     = W2.ESPStatus_Action ~= false
+W2.ESPStatus_Health     = W2.ESPStatus_Health or false
+W2.ESPStatus_Radius     = W2.ESPStatus_Radius or 500
 
-OW.AimHidden_Enabled    = OW.AimHidden_Enabled or false
-OW.AimHidden_Key        = OW.AimHidden_Key or "E"
+W2.Graphics_Fullbright  = W2.Graphics_Fullbright or false
+W2.Graphics_NoShadow    = W2.Graphics_NoShadow or false
+W2.Graphics_LowGraphics = W2.Graphics_LowGraphics or false
+W2.Graphics_NoScreenFx  = W2.Graphics_NoScreenFx or false
+W2.Graphics_CleanSky    = W2.Graphics_CleanSky or false
+W2.Graphics_PotatoMode  = W2.Graphics_PotatoMode or false
 
-OW.AimAttack_Enabled    = OW.AimAttack_Enabled or false
-OW.AimAttack_FOV        = OW.AimAttack_FOV or 250
-OW.AimAttack_Smooth     = OW.AimAttack_Smooth or 1
-OW.AimAttack_Predict    = OW.AimAttack_Predict or 0.12
-OW.AimAttack_Part       = OW.AimAttack_Part or "HumanoidRootPart"
-OW.AimAttack_VisCheck   = OW.AimAttack_VisCheck ~= false
+W2.Graphics_ClockEnabled = W2.Graphics_ClockEnabled or false
+W2.Graphics_ClockTime   = W2.Graphics_ClockTime or 14
+W2.Graphics_Brightness  = W2.Graphics_Brightness or 2
 
-OW.AntiBlind_Enabled    = OW.AntiBlind_Enabled or false
-OW.DestroyPallet        = OW.DestroyPallet or false
+W2.Graphics_UnlimitedZoom = W2.Graphics_UnlimitedZoom or false
+W2.Graphics_MaxZoom     = W2.Graphics_MaxZoom or 1000
+W2.Graphics_FOVEnabled  = W2.Graphics_FOVEnabled or false
+W2.Graphics_FOV         = W2.Graphics_FOV or 70
 
-OW.Masked_Power         = OW.Masked_Power or "Cobra"
+W2.Graphics_LockPOV     = W2.Graphics_LockPOV or false
+W2.Graphics_LockedFOV   = W2.Graphics_LockedFOV or 80
+W2.Graphics_FOVLock     = W2.Graphics_FOVLock or false
+W2.Graphics_FOVLockValue = W2.Graphics_FOVLockValue or 70
 
-OW.VeilV1_Enabled       = OW.VeilV1_Enabled or false
-OW.VeilV1_ShowFOV       = OW.VeilV1_ShowFOV ~= false
-OW.VeilV1_ShowTracker   = OW.VeilV1_ShowTracker or false
-OW.VeilV1_AutoPredict   = OW.VeilV1_AutoPredict ~= false
-OW.VeilV1_FOV           = OW.VeilV1_FOV or 150
-OW.VeilV1_MaxDist       = OW.VeilV1_MaxDist or 280
-OW.VeilV1_SpearSpeed    = OW.VeilV1_SpearSpeed or 165
-OW.VeilV1_Gravity       = OW.VeilV1_Gravity or 103
-OW.VeilV1_Lead          = OW.VeilV1_Lead or 1.4
+W2.Graphics_HDRingan    = W2.Graphics_HDRingan or false
+W2.Graphics_HDKincolong = W2.Graphics_HDKincolong or false
 
-OW.VeilV2_Enabled       = OW.VeilV2_Enabled or false
-OW.VeilV2_AutoPredict   = OW.VeilV2_AutoPredict or false
-OW.VeilV2_Lead          = OW.VeilV2_Lead or 1.4
-OW.VeilV2_Speed         = OW.VeilV2_Speed or 165
-OW.VeilV2_Gravity       = OW.VeilV2_Gravity or 103
-OW.VeilV2_Tracker       = OW.VeilV2_Tracker or false
-OW.VeilV2_ShowFOV       = OW.VeilV2_ShowFOV or true
-OW.VeilV2_FOV           = OW.VeilV2_FOV or 150
+W2.CamDBD_Enabled       = W2.CamDBD_Enabled or false
+W2.CamDBD_Smooth        = W2.CamDBD_Smooth or 4
+W2.CamDBD_POVLock       = W2.CamDBD_POVLock or false
+W2.CamDBD_POVValue      = W2.CamDBD_POVValue or 85
+W2.CamDBD_POVSmooth     = W2.CamDBD_POVSmooth or 9
+W2.CamDBD_ScreenSmooth  = W2.CamDBD_ScreenSmooth or false
+W2.CamDBD_ScreenLevel   = W2.CamDBD_ScreenLevel or 5
+W2.CamDBD_RotSpeed      = W2.CamDBD_RotSpeed or 1.0
+W2.CamDBD_Deadzone      = W2.CamDBD_Deadzone or 10
 
-OW.Bypass_HiddenLeap    = OW.Bypass_HiddenLeap or false
-OW.Bypass_MyersGrab     = OW.Bypass_MyersGrab or false
-OW.Bypass_LakeMist      = OW.Bypass_LakeMist or false
-OW.Bypass_Pursuit       = OW.Bypass_Pursuit or false
-OW.Bypass_AbyssCD       = OW.Bypass_AbyssCD or false
-OW.Bypass_JeffFrenzy    = OW.Bypass_JeffFrenzy or false
+W2.KillerPerks_Enabled  = W2.KillerPerks_Enabled or false
+W2.InfLunge_Enabled     = W2.InfLunge_Enabled or false
+W2.CounterParry_Enabled = W2.CounterParry_Enabled or false
+W2.AutoAttack_Enabled   = W2.AutoAttack_Enabled or false
+W2.AutoAttack_Range     = W2.AutoAttack_Range or 12
+W2.AutoAttack_Cooldown  = W2.AutoAttack_Cooldown or 0.15
+W2.AimbotZombie_Enabled = W2.AimbotZombie_Enabled or false
+W2.AimbotZombie_FOV     = W2.AimbotZombie_FOV or 250
 
-OW.UnlockCarry_Enabled  = OW.UnlockCarry_Enabled or false
+W2.AimHidden_Enabled    = W2.AimHidden_Enabled or false
+W2.AimHidden_Key        = W2.AimHidden_Key or "E"
 
-OW.SpearAimbot_Enabled  = OW.SpearAimbot_Enabled or false
-OW.SpearAimbot_Gravity  = OW.SpearAimbot_Gravity or 50
-OW.SpearAimbot_Speed    = OW.SpearAimbot_Speed or 100
+W2.AimAttack_Enabled    = W2.AimAttack_Enabled or false
+W2.AimAttack_FOV        = W2.AimAttack_FOV or 250
+W2.AimAttack_Smooth     = W2.AimAttack_Smooth or 1
+W2.AimAttack_Predict    = W2.AimAttack_Predict or 0.12
+W2.AimAttack_Part       = W2.AimAttack_Part or "HumanoidRootPart"
+W2.AimAttack_VisCheck   = W2.AimAttack_VisCheck ~= false
 
-OW.AutoStalk            = OW.AutoStalk or false
-OW.AutoStalk_Range      = OW.AutoStalk_Range or 150
-OW.AutoKillAll          = OW.AutoKillAll or false
-OW.DropAllPallet        = OW.DropAllPallet or false
-OW.BlockAllVault        = OW.BlockAllVault or false
-OW.AutoHook             = OW.AutoHook or false
+W2.AntiBlind_Enabled    = W2.AntiBlind_Enabled or false
+W2.DestroyPallet        = W2.DestroyPallet or false
+W2.Masked_Power         = W2.Masked_Power or "Cobra"
 
-OW.Flask_Enabled        = OW.Flask_Enabled or false
-OW.Flask_ShowBeam       = OW.Flask_ShowBeam ~= false
-OW.Flask_ShowLanding    = OW.Flask_ShowLanding ~= false
-OW.Flask_Predict        = OW.Flask_Predict ~= false
-OW.Flask_Speed          = OW.Flask_Speed or 90
-OW.Flask_Gravity        = OW.Flask_Gravity or 196
-OW.Flask_Lead           = OW.Flask_Lead or 1.0
-OW.Flask_Range          = OW.Flask_Range or 200
+W2.VeilV1_Enabled       = W2.VeilV1_Enabled or false
+W2.VeilV1_ShowFOV       = W2.VeilV1_ShowFOV ~= false
+W2.VeilV1_ShowTracker   = W2.VeilV1_ShowTracker or false
+W2.VeilV1_AutoPredict   = W2.VeilV1_AutoPredict ~= false
+W2.VeilV1_FOV           = W2.VeilV1_FOV or 150
+W2.VeilV1_MaxDist       = W2.VeilV1_MaxDist or 280
+W2.VeilV1_SpearSpeed    = W2.VeilV1_SpearSpeed or 165
+W2.VeilV1_Gravity       = W2.VeilV1_Gravity or 103
+W2.VeilV1_Lead          = W2.VeilV1_Lead or 1.4
 
-OW.DashLock_Enabled     = OW.DashLock_Enabled or false
-OW.DashLock_Duration    = OW.DashLock_Duration or 1.5
-OW.DashLock_Smooth      = OW.DashLock_Smooth or 0.3
-OW.DashLock_Freeze      = OW.DashLock_Freeze or false
+W2.VeilV2_Enabled       = W2.VeilV2_Enabled or false
+W2.VeilV2_AutoPredict   = W2.VeilV2_AutoPredict or false
+W2.VeilV2_Lead          = W2.VeilV2_Lead or 1.4
+W2.VeilV2_Speed         = W2.VeilV2_Speed or 165
+W2.VeilV2_Gravity       = W2.VeilV2_Gravity or 103
+W2.VeilV2_Tracker       = W2.VeilV2_Tracker or false
+W2.VeilV2_ShowFOV       = W2.VeilV2_ShowFOV or true
+W2.VeilV2_FOV           = W2.VeilV2_FOV or 150
 
-OW.Stun_Enabled         = OW.Stun_Enabled or false
-OW.Stun_Sound           = OW.Stun_Sound or "Default"
-OW.Stun_SoundAlert      = OW.Stun_SoundAlert ~= false
-OW.Stun_Range           = OW.Stun_Range or 500
-OW.Stun_Volume          = OW.Stun_Volume or 1.5
+W2.Bypass_HiddenLeap    = W2.Bypass_HiddenLeap or false
+W2.Bypass_MyersGrab     = W2.Bypass_MyersGrab or false
+W2.Bypass_LakeMist      = W2.Bypass_LakeMist or false
+W2.Bypass_Pursuit       = W2.Bypass_Pursuit or false
+W2.Bypass_AbyssCD       = W2.Bypass_AbyssCD or false
+W2.Bypass_JeffFrenzy    = W2.Bypass_JeffFrenzy or false
 
-OW.Invis_Enabled        = OW.Invis_Enabled or false
-OW.Invis_Hotkey         = OW.Invis_Hotkey or "G"
+W2.UnlockCarry_Enabled  = W2.UnlockCarry_Enabled or false
 
-OW.CamDBD_Smooth        = OW.CamDBD_Smooth or false
-OW.CamDBD_SmoothSpeed   = OW.CamDBD_SmoothSpeed or 4
-OW.CamDBD_POVLock       = OW.CamDBD_POVLock or false
-OW.CamDBD_POVValue      = OW.CamDBD_POVValue or 85
-OW.CamDBD_POVSmooth     = OW.CamDBD_POVSmooth or 9
+W2.SpearAimbot_Enabled  = W2.SpearAimbot_Enabled or false
+W2.SpearAimbot_Gravity  = W2.SpearAimbot_Gravity or 50
+W2.SpearAimbot_Speed    = W2.SpearAimbot_Speed or 100
 
-OW.PU_SpeedEnabled      = OW.PU_SpeedEnabled or false
-OW.PU_SpeedValue        = OW.PU_SpeedValue or 16
-OW.PU_SkipEnd           = OW.PU_SkipEnd or false
-OW.PU_ShiftLock         = OW.PU_ShiftLock or false
-OW.PU_HideSurvIcon      = OW.PU_HideSurvIcon or false
-OW.PU_PingFPS           = OW.PU_PingFPS or false
-OW.PU_HideName          = OW.PU_HideName or false
-OW.PU_UnlimitedZoom     = OW.PU_UnlimitedZoom or false
-OW.PU_Noclip            = OW.PU_Noclip or false
+W2.AutoStalk            = W2.AutoStalk or false
+W2.AutoStalk_Range      = W2.AutoStalk_Range or 150
+W2.AutoKillAll          = W2.AutoKillAll or false
+W2.DropAllPallet        = W2.DropAllPallet or false
+W2.BlockAllVault        = W2.BlockAllVault or false
+W2.AutoHook             = W2.AutoHook or false
 
-OW.SpeedBoost_Enabled   = OW.SpeedBoost_Enabled or false
-OW.SpeedBoost_Value     = OW.SpeedBoost_Value or 30
+W2.Flask_Enabled        = W2.Flask_Enabled or false
+W2.Flask_ShowBeam       = W2.Flask_ShowBeam ~= false
+W2.Flask_ShowLanding    = W2.Flask_ShowLanding ~= false
+W2.Flask_Predict        = W2.Flask_Predict ~= false
+W2.Flask_Speed          = W2.Flask_Speed or 90
+W2.Flask_Gravity        = W2.Flask_Gravity or 196
+W2.Flask_Lead           = W2.Flask_Lead or 1.0
+W2.Flask_Range          = W2.Flask_Range or 200
 
-OW.Emote_Enabled        = OW.Emote_Enabled or false
-OW.Emote_Selected       = OW.Emote_Selected or "Friday Night"
+W2.DashLock_Enabled     = W2.DashLock_Enabled or false
+W2.DashLock_Duration    = W2.DashLock_Duration or 1.5
+W2.DashLock_Smooth      = W2.DashLock_Smooth or 0.3
+W2.DashLock_Freeze      = W2.DashLock_Freeze or false
 
-OW.FakeAvatar_Enabled   = OW.FakeAvatar_Enabled or false
-OW.FakeAvatar_ID        = OW.FakeAvatar_ID or 0
+W2.Stun_Enabled         = W2.Stun_Enabled or false
+W2.Stun_Sound           = W2.Stun_Sound or "Default"
+W2.Stun_SoundAlert      = W2.Stun_SoundAlert ~= false
+W2.Stun_Range           = W2.Stun_Range or 500
+W2.Stun_Volume          = W2.Stun_Volume or 1.5
 
-OW.Korless_Enabled      = OW.Korless_Enabled or false
+W2.Invis_Enabled        = W2.Invis_Enabled or false
+W2.Invis_Hotkey         = W2.Invis_Hotkey or "G"
 
-OW.Header_Enabled       = OW.Header_Enabled or false
-OW.Header_Text          = OW.Header_Text or "One W v2"
-OW.Header_Color         = OW.Header_Color or Color3.fromRGB(255,255,255)
+W2.PU_SpeedEnabled      = W2.PU_SpeedEnabled or false
+W2.PU_SpeedValue        = W2.PU_SpeedValue or 16
+W2.PU_SkipEnd           = W2.PU_SkipEnd or false
+W2.PU_ShiftLock         = W2.PU_ShiftLock or false
+W2.PU_HideSurvIcon      = W2.PU_HideSurvIcon or false
+W2.PU_PingFPS           = W2.PU_PingFPS or false
+W2.PU_HideName          = W2.PU_HideName or false
+W2.PU_UnlimitedZoom     = W2.PU_UnlimitedZoom or false
+W2.PU_Noclip            = W2.PU_Noclip or false
 
-OW.Escape_Enabled       = OW.Escape_Enabled or false
+W2.SpeedBoost_Enabled   = W2.SpeedBoost_Enabled or false
+W2.SpeedBoost_Value     = W2.SpeedBoost_Value or 30
 
-OW.NotifyEnabled        = OW.NotifyEnabled ~= false
+W2.Cursor_Enabled       = W2.Cursor_Enabled or false
+W2.Spectator_Enabled    = W2.Spectator_Enabled or false
 
-_G.OW_ACCENT     = Color3.fromRGB(255, 255, 255)
-_G.OW_ACCENT_BG  = Color3.fromRGB(0, 0, 0)
-_G.OW_NEUTRAL    = Color3.fromRGB(90, 90, 90)
-_G.OW_STROKE_OFF = Color3.fromRGB(25, 25, 25)
-_G.OW_BG_OFF     = Color3.fromRGB(0, 0, 0)
+W2.Emote_Enabled        = W2.Emote_Enabled or false
+W2.Emote_Selected       = W2.Emote_Selected or "Friday Night"
+
+W2.FakeAvatar_Enabled   = W2.FakeAvatar_Enabled or false
+W2.FakeAvatar_ID        = W2.FakeAvatar_ID or 0
+
+W2.Korless_Enabled      = W2.Korless_Enabled or false
+
+W2.Header_Enabled       = W2.Header_Enabled or false
+W2.Header_Text          = W2.Header_Text or "W2"
+W2.Header_Color         = W2.Header_Color or Color3.fromRGB(255,255,255)
+
+W2.Bombax_Enabled       = W2.Bombax_Enabled or false
+W2.Bombax_Selected      = W2.Bombax_Selected or "One"
+W2.Bombax_Volume        = W2.Bombax_Volume or 2
+W2.Bombax_Looped        = W2.Bombax_Looped ~= false
+W2.Bombax_ButtonEnabled = W2.Bombax_ButtonEnabled or false
+
+W2.Escape_Enabled       = W2.Escape_Enabled or false
+
+W2.NotifyEnabled        = W2.NotifyEnabled ~= false
+
+W2.Config_AutoSave      = W2.Config_AutoSave or false
+W2.Config_AutoLoad      = W2.Config_AutoLoad or false
+
+_G.W2_ACCENT     = Color3.fromRGB(255, 255, 255)
+_G.W2_ACCENT_BG  = Color3.fromRGB(0, 0, 0)
+_G.W2_NEUTRAL    = Color3.fromRGB(90, 90, 90)
+_G.W2_STROKE_OFF = Color3.fromRGB(25, 25, 25)
+_G.W2_BG_OFF     = Color3.fromRGB(0, 0, 0)
 
 --====================================================--
 -- MAIN FUNCTION
 --====================================================--
-local function __OneW_Init_Main__()
+local function __W2_Init_Main__()
 
     local Players           = game:GetService("Players")
     local RunService        = game:GetService("RunService")
@@ -248,7 +304,7 @@ local function __OneW_Init_Main__()
     local ok, err = pcall(function()
         UILib = loadstring(game:HttpGet("https://glutofree.vercel.app/library"))()
     end)
-    if not ok or not UILib then warn("[OneW] UI gagal load:", err); return end
+    if not ok or not UILib then warn("[W2] UI gagal load:", err); return end
 
     do
         local function FixText(inst)
@@ -286,18 +342,18 @@ local function __OneW_Init_Main__()
         if not UILib or not UILib.MakeNotify then return end
         pcall(function()
             UILib:MakeNotify({
-                Title = title or "One W v2", Description = "Info",
+                Title = title or "W2", Description = "Info",
                 Content = message or "", Color = NotifyColor,
                 Time = 0.4, Delay = duration or 2, Icon = "92826170205694"
             })
         end)
     end
-    local function OW_Notify(title, content, duration) ShowNotify(title, content, duration) end
+    local function W2_Notify(title, content, duration) ShowNotify(title, content, duration) end
     local function ForceNotify(title, message, duration)
         if not UILib or not UILib.MakeNotify then return end
         pcall(function()
             UILib:MakeNotify({
-                Title = title or "One W v2", Description = "Info",
+                Title = title or "W2", Description = "Info",
                 Content = message or "", Color = NotifyColor,
                 Time = 0.4, Delay = duration or 2, Icon = "92826170205694"
             })
@@ -390,7 +446,7 @@ W.SelfHeal_AnimMonitor = W.SelfHeal_AnimMonitor or { Conn = nil, CharHook = nil 
 function W.SelfHeal_StartAnimBlock()
     if W.SelfHeal_AnimMonitor.Conn then return end
     W.SelfHeal_AnimMonitor.Conn = RunService.Heartbeat:Connect(function()
-        if not OW.SelfHeal_Enabled then return end
+        if not W2.SelfHeal_Enabled then return end
         local char = LocalPlayer.Character
         if not char then return end
         local hum = char:FindFirstChildOfClass("Humanoid")
@@ -414,7 +470,7 @@ function W.SelfHeal_StartAnimBlock()
         local anim = hum:FindFirstChildOfClass("Animator") or hum:WaitForChild("Animator", 3)
         if not anim then return end
         anim.AnimationPlayed:Connect(function(track)
-            if not OW.SelfHeal_Enabled then return end
+            if not W2.SelfHeal_Enabled then return end
             local aid = track.Animation and track.Animation.AnimationId or ""
             local numId = aid:match("%d+")
             if numId == W.SelfHeal_BlockedAnimId then
@@ -438,7 +494,7 @@ function W.SelfHeal_StopAnimBlock()
     end
 end
 function W.setSelfHeal(v)
-    OW.SelfHeal_Enabled = v
+    W2.SelfHeal_Enabled = v
     if v then
         W.SelfHeal_StartAnimBlock()
     else
@@ -448,7 +504,7 @@ function W.setSelfHeal(v)
         local ha = false
         if W.SelfHealConnection then W.SelfHealConnection:Disconnect() end
         W.SelfHealConnection = RunService.Heartbeat:Connect(function()
-            if not OW.SelfHeal_Enabled then return end
+            if not W2.SelfHeal_Enabled then return end
             local c = LocalPlayer.Character
             local h = c and c:FindFirstChildOfClass("Humanoid")
             if not h then return end
@@ -468,12 +524,12 @@ function W.setSelfHeal(v)
     end
 end
 function W.setAutoHealAll(v)
-    OW.SelfHeal_AutoAll = v
+    W2.SelfHeal_AutoAll = v
     if v then
         local ah = {}
         if W.AutoHealAllConnection then W.AutoHealAllConnection:Disconnect() end
         W.AutoHealAllConnection = RunService.Heartbeat:Connect(function()
-            if not OW.SelfHeal_AutoAll then return end
+            if not W2.SelfHeal_AutoAll then return end
             for _, p in ipairs(Players:GetPlayers()) do
                 if p ~= LocalPlayer and p.Character then
                     local hrp = p.Character:FindFirstChild("HumanoidRootPart")
@@ -499,8 +555,8 @@ function W.setAutoHealAll(v)
 end
 LocalPlayer.CharacterAdded:Connect(function()
     task.wait(0.5)
-    if OW.SelfHeal_Enabled then W.setSelfHeal(true) end
-    if OW.SelfHeal_AutoAll then W.setAutoHealAll(true) end
+    if W2.SelfHeal_Enabled then W.setSelfHeal(true) end
+    if W2.SelfHeal_AutoAll then W.setAutoHealAll(true) end
 end)
 
 --====================================================--
@@ -550,15 +606,15 @@ do
         return nil
     end
     RunService.Heartbeat:Connect(function()
-        if OW.SwiftVault_V2 then
+        if W2.SwiftVault_V2 then
             pcall(function()
                 local char = LocalPlayer.Character
-                if char then char:SetAttribute("vaultspeed", (OW.SwiftVault_Speed or 13) / 10) end
+                if char then char:SetAttribute("vaultspeed", (W2.SwiftVault_Speed or 13) / 10) end
             end)
         end
     end)
     RunService.Heartbeat:Connect(function()
-        if not OW.SwiftVault_Enabled then return end
+        if not W2.SwiftVault_Enabled then return end
         if GetRole() ~= "Survivor" then return end
         if tick() - _lastVaultScan < 0.15 then return end
         _lastVaultScan = tick()
@@ -662,7 +718,7 @@ do
     end
     local _lastPalletScan = 0
     RunService.Heartbeat:Connect(function()
-        if not OW.PalletReflex_Enabled then return end
+        if not W2.PalletReflex_Enabled then return end
         if GetRole() ~= "Survivor" then return end
         local now = tick()
         if now - _lastPalletScan < 0.2 then return end
@@ -675,7 +731,7 @@ do
             if not myRoot or not hum or hum.Health <= 0 then return end
             local killerRoot = Pallet_GetKillerRoot()
             if not killerRoot then return end
-            if (myRoot.Position - killerRoot.Position).Magnitude > (OW.PalletReflex_Dist or 20) then return end
+            if (myRoot.Position - killerRoot.Position).Magnitude > (W2.PalletReflex_Dist or 20) then return end
             local remotes    = ReplicatedStorage:FindFirstChild("Remotes")
             local palletFold = remotes and remotes:FindFirstChild("Pallet")
             local dropEvent  = palletFold and palletFold:FindFirstChild("PalletDropEvent")
@@ -749,7 +805,7 @@ local function FP_TryBuff(name, amt, dur)
     if tick()-FP.LastBuffEnd < FP.CooldownTime and next(FP.ActiveBuffs)==nil then return end
     FP.ActiveBuffs[name] = {amt=amt, endTime=tick()+dur, duration=dur, startTime=tick()}
     FP_Apply(); FP_EnsureHB()
-    OW_Notify("Fake Perks", "["..name.."] Aktif! +"..amt.." Speed ("..dur.."s)", 3)
+    W2_Notify("Fake Perks", "["..name.."] Aktif! +"..amt.." Speed ("..dur.."s)", 3)
 end
 local function FP_Clean(name)
     if FP.Conns[name] then for _,c in ipairs(FP.Conns[name]) do pcall(function() c:Disconnect() end) end FP.Conns[name] = nil end
@@ -938,6 +994,7 @@ function W.SkillCheck_Stop()
 end
 function W.SkillCheck_SetEnabled(v)
     SC.Enabled = v and true or false
+    W2.SkillCheck_Enabled = SC.Enabled
     if SC.Enabled then W.SkillCheck_Start() else W.SkillCheck_Stop() end
 end
 
@@ -1029,153 +1086,6 @@ function W.GB_IsPromptVisible()
     local ok2, fr = pcall(function() return LocalPlayer.PlayerGui.pcprompts.Frame.GeneratorRepair end)
     return ok2 and fr and fr.Visible
 end
-function W.GB_CreateButton()
-    local pg = LocalPlayer:FindFirstChild("PlayerGui")
-    if not pg then return end
-    local old = pg:FindFirstChild("BypassGenUI"); if old then old:Destroy() end
-    if GenBypass._StopAnim then pcall(GenBypass._StopAnim); GenBypass._StopAnim = nil end
-    GenBypass.UI = Instance.new("ScreenGui")
-    GenBypass.UI.Name = "BypassGenUI"
-    GenBypass.UI.ResetOnSpawn = false
-    GenBypass.UI.IgnoreGuiInset = true
-    GenBypass.UI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-    GenBypass.UI.DisplayOrder = 100
-    GenBypass.UI.Parent = pg
-    local wrap = Instance.new("Frame")
-    wrap.Name = "Wrap"; wrap.AnchorPoint = Vector2.new(1, 0)
-    wrap.Position = UDim2.new(1, -20, 0.48, 0)
-    wrap.Size = UDim2.fromOffset(110, 110)
-    wrap.BackgroundTransparency = 1; wrap.Active = true
-    wrap.ZIndex = 2; wrap.Parent = GenBypass.UI
-    local glow = Instance.new("Frame")
-    glow.Name = "Glow"; glow.AnchorPoint = Vector2.new(0.5, 0.5)
-    glow.Position = UDim2.new(0.5, 0, 0.5, 0)
-    glow.Size = UDim2.fromOffset(88, 88)
-    glow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    glow.BackgroundTransparency = 0.85; glow.BorderSizePixel = 0
-    glow.ZIndex = 1; glow.Parent = wrap
-    Instance.new("UICorner", glow).CornerRadius = UDim.new(1, 0)
-    local mainCircle = Instance.new("Frame")
-    mainCircle.Name = "MainCircle"; mainCircle.AnchorPoint = Vector2.new(0.5, 0.5)
-    mainCircle.Position = UDim2.new(0.5, 0, 0.5, 0)
-    mainCircle.Size = UDim2.fromOffset(64, 64)
-    mainCircle.BackgroundColor3 = Color3.fromRGB(12, 12, 15)
-    mainCircle.BackgroundTransparency = 0.05; mainCircle.BorderSizePixel = 0
-    mainCircle.ZIndex = 4; mainCircle.Parent = wrap
-    Instance.new("UICorner", mainCircle).CornerRadius = UDim.new(1, 0)
-    local mainGrad = Instance.new("UIGradient")
-    mainGrad.Rotation = 135
-    mainGrad.Color = ColorSequence.new({
-        ColorSequenceKeypoint.new(0, Color3.fromRGB(30, 30, 36)),
-        ColorSequenceKeypoint.new(1, Color3.fromRGB(8, 8, 10)),
-    })
-    mainGrad.Parent = mainCircle
-    local mainStroke = Instance.new("UIStroke", mainCircle)
-    mainStroke.Name = "MainStroke"; mainStroke.Color = Color3.fromRGB(255, 255, 255)
-    mainStroke.Thickness = 1.6; mainStroke.Transparency = 0.15
-    mainStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-    local genText = Instance.new("TextLabel")
-    genText.Name = "GenText"; genText.AnchorPoint = Vector2.new(0.5, 0.5)
-    genText.Position = UDim2.new(0.5, 0, 0.5, 0)
-    genText.Size = UDim2.fromOffset(60, 30)
-    genText.BackgroundTransparency = 1; genText.Font = Enum.Font.GothamBlack
-    genText.Text = "GEN"; genText.TextColor3 = Color3.fromRGB(255, 255, 255)
-    genText.TextSize = 20; genText.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
-    genText.TextStrokeTransparency = 0.5
-    genText.ZIndex = 7; genText.Parent = wrap
-    local actionBtn = Instance.new("TextButton")
-    actionBtn.Name = "ActionBtn"; actionBtn.Size = UDim2.fromScale(1, 1)
-    actionBtn.BackgroundTransparency = 1; actionBtn.Text = ""
-    actionBtn.AutoButtonColor = false; actionBtn.ZIndex = 10; actionBtn.Parent = wrap
-    mainCircle.Size = UDim2.fromOffset(0, 0)
-    glow.Size = UDim2.fromOffset(0, 0)
-    genText.TextTransparency = 1; genText.TextStrokeTransparency = 1
-    GenBypass._Wrap = wrap; GenBypass._Glow = glow
-    GenBypass._MainCircle = mainCircle; GenBypass._MainStroke = mainStroke
-    GenBypass._GenText = genText; GenBypass._ActionBtn = actionBtn
-    local function ShowCard()
-        wrap.Visible = true
-        TweenService:Create(glow, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
-            Size = UDim2.fromOffset(88, 88), BackgroundTransparency = 0.85,
-        }):Play()
-        TweenService:Create(mainCircle, TweenInfo.new(0.55, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
-            Size = UDim2.fromOffset(64, 64), BackgroundTransparency = 0.05,
-        }):Play()
-        TweenService:Create(genText, TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-            TextTransparency = 0, TextStrokeTransparency = 0.5,
-        }):Play()
-    end
-    local function HideCard()
-        TweenService:Create(glow, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
-            Size = UDim2.fromOffset(0, 0), BackgroundTransparency = 1,
-        }):Play()
-        TweenService:Create(mainCircle, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
-            Size = UDim2.fromOffset(0, 0), BackgroundTransparency = 1,
-        }):Play()
-        TweenService:Create(genText, TweenInfo.new(0.2), {
-            TextTransparency = 1, TextStrokeTransparency = 1,
-        }):Play()
-        task.delay(0.3, function()
-            if GenBypass._StopAnim then pcall(GenBypass._StopAnim); GenBypass._StopAnim = nil end
-            if GenBypass.UI then pcall(function() GenBypass.UI:Destroy() end); GenBypass.UI = nil end
-        end)
-    end
-    GenBypass._ShowCard = ShowCard; GenBypass._HideCard = HideCard
-    local animActive = true
-    GenBypass._StopAnim = function() animActive = false end
-    task.spawn(function()
-        local t = 0
-        while animActive and wrap.Parent do
-            t = t + 0.035
-            if GenBypass.Enabled then
-                local pulse = (math.sin(t * 3) + 1) * 0.5
-                mainStroke.Transparency = 0.35 - pulse * 0.2
-                mainStroke.Thickness = 1.6 + pulse * 0.4
-                glow.BackgroundTransparency = 0.85 - pulse * 0.12
-                glow.Size = UDim2.fromOffset(88 + pulse * 5, 88 + pulse * 5)
-                genText.Rotation = math.sin(t * 1.2) * 1.5
-            end
-            task.wait(0.03)
-        end
-    end)
-    local drag = false
-    local dStart, sPos
-    local dragDist = 0
-    wrap.InputBegan:Connect(function(inp)
-        if inp.UserInputType == Enum.UserInputType.MouseButton1 or inp.UserInputType == Enum.UserInputType.Touch then
-            drag = true; dStart = inp.Position; sPos = wrap.Position; dragDist = 0
-        end
-    end)
-    UserInputService.InputChanged:Connect(function(inp)
-        if not drag then return end
-        if inp.UserInputType == Enum.UserInputType.MouseMovement or inp.UserInputType == Enum.UserInputType.Touch then
-            local d = inp.Position - dStart
-            dragDist = math.abs(d.X) + math.abs(d.Y)
-            wrap.Position = UDim2.new(sPos.X.Scale, sPos.X.Offset + d.X, sPos.Y.Scale, sPos.Y.Offset + d.Y)
-        end
-    end)
-    UserInputService.InputEnded:Connect(function(inp)
-        if inp.UserInputType == Enum.UserInputType.MouseButton1 or inp.UserInputType == Enum.UserInputType.Touch then
-            drag = false
-        end
-    end)
-    actionBtn.MouseButton1Up:Connect(function()
-        if not GenBypass.Enabled then return end
-        if dragDist > 6 then return end
-        local bp, bd = W.GB_GetNearestPoint()
-        if bp and bd <= GenBypass.TriggerRange then
-            task.spawn(function() W.GB_DoRepair(bp) end)
-        end
-    end)
-    task.spawn(function()
-        task.wait(0.1)
-        if GenBypass.Enabled then ShowCard() end
-    end)
-end
-W.GB_CreateButton()
-LocalPlayer.CharacterAdded:Connect(function()
-    task.wait(0.5); W.GB_CreateButton()
-end)
 UserInputService.InputBegan:Connect(function(input, gp)
     if gp or isMobile then return end
     if input.KeyCode == GenBypass.HotkeyCode and GenBypass.Enabled then
@@ -1186,23 +1096,6 @@ UserInputService.InputBegan:Connect(function(input, gp)
         W.GB_DoRepair(bp)
     end
 end)
-task.spawn(function()
-    while true do
-        task.wait(2)
-        local c = LocalPlayer.Character
-        local hrp = c and c:FindFirstChild("HumanoidRootPart")
-        if hrp then
-            for gm in pairs(GenBypass.Processed) do
-                if not gm or not gm.Parent then GenBypass.Processed[gm] = nil; continue end
-                local near = false
-                for _, p in pairs(W.GB_GetPoints(gm)) do
-                    if p.Parent and (hrp.Position - p.Position).Magnitude <= 10 then near = true; break end
-                end
-                if not near then GenBypass.Processed[gm] = nil end
-            end
-        end
-    end
-end)
 
 --====================================================--
 -- UNLIMITED VAULT
@@ -1210,7 +1103,7 @@ end)
 local UV_Enabled = false
 local UV_Conn = nil
 function W.UnlimitedVault_SetEnabled(v)
-    OW.UnlimitedVault = v
+    W2.UnlimitedVault = v
     if v then
         if UV_Enabled then return end
         UV_Enabled = true
@@ -1233,7 +1126,7 @@ end
 local ASV_Enabled = false
 local ASV_Conn = nil
 function W.AntiSlowVault_SetEnabled(v)
-    OW.AntiSlowVault = v
+    W2.AntiSlowVault = v
     if v then
         if ASV_Enabled then return end
         ASV_Enabled = true
@@ -1259,7 +1152,7 @@ do
     local function StartAutoRunPC()
         if AutoRunPCThread then task.cancel(AutoRunPCThread) end
         AutoRunPCThread = task.spawn(function()
-            while OW.AutoRun_PC do
+            while W2.AutoRun_PC do
                 pcall(function()
                     if VirtualInputManager then
                         VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.LeftShift, false, LocalPlayer:GetMouse())
@@ -1274,7 +1167,7 @@ do
         end)
     end
     local function StopAutoRunPC()
-        OW.AutoRun_PC = false
+        W2.AutoRun_PC = false
         if AutoRunPCThread then task.cancel(AutoRunPCThread); AutoRunPCThread = nil end
         pcall(function()
             if VirtualInputManager then VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.LeftShift, false, LocalPlayer:GetMouse()) end
@@ -1336,7 +1229,7 @@ do
     local function StartAutoRunMobile()
         if AutoRunMobileThread then return end
         AutoRunMobileThread = task.spawn(function()
-            while OW.AutoRun_Mobile do
+            while W2.AutoRun_Mobile do
                 local moving = IsMoving()
                 local crouching = IsCrouching()
                 local sprinting = IsActuallySprinting()
@@ -1352,20 +1245,474 @@ do
         end)
     end
     function W.AutoRunPC_SetEnabled(v)
-        OW.AutoRun_PC = v
+        W2.AutoRun_PC = v
         if v then StartAutoRunPC() else StopAutoRunPC() end
     end
     function W.AutoRunMobile_SetEnabled(v)
-        OW.AutoRun_Mobile = v
-        if v then StartAutoRunMobile() else OW.AutoRun_Mobile = false end
+        W2.AutoRun_Mobile = v
+        if v then StartAutoRunMobile() else W2.AutoRun_Mobile = false end
     end
     LocalPlayer.CharacterAdded:Connect(function()
         task.wait(1)
-        if OW.AutoRun_PC then StartAutoRunPC() end
-        if OW.AutoRun_Mobile then AutoRunMobileThread = nil; StartAutoRunMobile() end
+        if W2.AutoRun_PC then StartAutoRunPC() end
+        if W2.AutoRun_Mobile then AutoRunMobileThread = nil; StartAutoRunMobile() end
     end)
 end--====================================================--
--- AUTO PARRY V1 (Original ALFzxzzz)
+-- AUTO CROUCH DODGE
+--====================================================--
+function W.IsDowned(char)
+    local hrp = char and char:FindFirstChild("HumanoidRootPart")
+    if not hrp then return true end
+    local state = char:GetAttribute("State")
+    return state == "Downed" or state == "Dead"
+end
+
+function W.TriggerCrouch()
+    local startT = tick()
+    task.spawn(function()
+        local char = LocalPlayer.Character
+        if not char then return end
+        local humanoid = char:FindFirstChildOfClass("Humanoid")
+        pcall(function() char:SetAttribute("Crouching", true) end)
+        pcall(function() ReplicatedStorage.Remotes.Mechanics.ChangeAttribute:FireServer("Crouchingserver", true) end)
+        pcall(function() ReplicatedStorage.Remotes.Chase.Runevent:FireServer(char, false) end)
+        if humanoid then pcall(function() humanoid:ChangeState(Enum.HumanoidStateType.Landed) end) end
+        pcall(function()
+            local survMob = LocalPlayer:FindFirstChildOfClass("PlayerGui"):FindFirstChild("Survivor-mob")
+            if survMob then
+                local controls = survMob:FindFirstChild("Controls")
+                if controls then
+                    local crouchBtn = controls:FindFirstChild("crouch")
+                    if crouchBtn then firesignal(crouchBtn.MouseButton1Click) end
+                end
+            end
+        end)
+        while tick() - startT < 1.2 do
+            pcall(function() ReplicatedStorage.Remotes.Mechanics.ChangeAttribute:FireServer("Crouchingserver", true) end)
+            task.wait(0.1)
+        end
+        pcall(function() char:SetAttribute("Crouching", false) end)
+        pcall(function() ReplicatedStorage.Remotes.Mechanics.ChangeAttribute:FireServer("Crouchingserver", false) end)
+        if humanoid then pcall(function() humanoid:ChangeState(Enum.HumanoidStateType.Landed) end) end
+        pcall(function()
+            local survMob = LocalPlayer:FindFirstChildOfClass("PlayerGui"):FindFirstChild("Survivor-mob")
+            if survMob then
+                local controls = survMob:FindFirstChild("Controls")
+                if controls then
+                    local crouchBtn = controls:FindFirstChild("crouch")
+                    if crouchBtn then firesignal(crouchBtn.MouseButton1Click) end
+                end
+            end
+        end)
+    end)
+end
+
+local DodgeAttached = {}
+function W.IsKiller(p) return p.Team and p.Team.Name == "Killer" end
+
+function W.AttachCrouchSensor(kChar)
+    if not kChar or DodgeAttached[kChar] then return end
+    DodgeAttached[kChar] = true
+    local humanoid = kChar:FindFirstChild("Humanoid")
+    if not humanoid then humanoid = kChar:WaitForChild("Humanoid", 5); if not humanoid then return end end
+    local animator = humanoid:FindFirstChildOfClass("Animator")
+    if not animator then animator = humanoid:WaitForChild("Animator", 5); if not animator then return end end
+    humanoid.ChildAdded:Connect(function(child)
+        if child:IsA("Animator") then DodgeAttached[kChar] = nil; W.AttachCrouchSensor(kChar) end
+    end)
+    kChar.AncestryChanged:Connect(function(_, parent)
+        if not parent then DodgeAttached[kChar] = nil end
+    end)
+    animator.AnimationPlayed:Connect(function(track)
+        local animId = track.Animation and track.Animation.AnimationId or ""
+        local id = animId:match("%d+")
+        if id == "80411309607666" and W2.AutoCrouchDodge then
+            local myChar = LocalPlayer.Character
+            if W.IsDowned(myChar) then return end
+            local myHRP = myChar and myChar:FindFirstChild("HumanoidRootPart")
+            local kHRP = kChar:FindFirstChild("HumanoidRootPart")
+            if myHRP and kHRP then
+                local dist = (myHRP.Position - kHRP.Position).Magnitude
+                if dist <= 40 then W.TriggerCrouch() end
+            end
+            return
+        end
+    end)
+end
+
+function W.TryAttachCrouch(p)
+    if p ~= LocalPlayer and W.IsKiller(p) and p.Character then W.AttachCrouchSensor(p.Character) end
+end
+
+function W.SetupCrouchPlayer(p)
+    if p == LocalPlayer then return end
+    p.CharacterAdded:Connect(function() W.TryAttachCrouch(p) end)
+    p:GetPropertyChangedSignal("Team"):Connect(function() W.TryAttachCrouch(p) end)
+    if p.Character then W.TryAttachCrouch(p) end
+end
+
+for _, p in pairs(Players:GetPlayers()) do W.SetupCrouchPlayer(p) end
+Players.PlayerAdded:Connect(W.SetupCrouchPlayer)
+task.spawn(function()
+    while true do
+        task.wait(5)
+        for _, p in pairs(Players:GetPlayers()) do W.TryAttachCrouch(p) end
+    end
+end)
+
+--====================================================--
+-- AUTO FLEE KILLER
+--====================================================--
+local lastAutoFlee = 0
+function W.SURV_AutoFlee()
+    if not W2.AutoFlee then return end
+    if GetRole() ~= "Survivor" then return end
+    local now = tick()
+    if now - lastAutoFlee < (W2.AutoFleeCooldown or 1.5) then return end
+    local myChar = LocalPlayer.Character
+    local myRoot = myChar and myChar:FindFirstChild("HumanoidRootPart")
+    local hum = myChar and myChar:FindFirstChildOfClass("Humanoid")
+    if not myRoot or not hum or hum.Health <= 0 then return end
+    local killerRoot = nil
+    local nearest = math.huge
+    for _, plr in ipairs(Players:GetPlayers()) do
+        if plr ~= LocalPlayer and TeamIs(plr, "Killer") and plr.Character then
+            local hrp = plr.Character:FindFirstChild("HumanoidRootPart")
+            if hrp then
+                local d = (hrp.Position - myRoot.Position).Magnitude
+                if d < nearest then nearest = d; killerRoot = hrp end
+            end
+        end
+    end
+    if not killerRoot then return end
+    if nearest > (W2.AutoFleeDist or 40) then return end
+    lastAutoFlee = now
+    local bestPt, bestDist = nil, 0
+    local mf = Workspace:FindFirstChild("Map")
+    if mf then
+        for _, obj in ipairs(mf:GetDescendants()) do
+            if obj:IsA("BasePart") and string.find(obj.Name, "^GeneratorPoint%d+$") then
+                local d = (obj.Position - killerRoot.Position).Magnitude
+                if d > bestDist then bestDist = d; bestPt = obj end
+            end
+        end
+    end
+    if bestPt then
+        pcall(function() myRoot.CFrame = bestPt.CFrame + Vector3.new(0, 5, 0) end)
+        W2_Notify("Auto Flee", "Teleported away from killer!", 2)
+    end
+end
+
+task.spawn(function()
+    while true do
+        task.wait(0.1)
+        pcall(W.SURV_AutoFlee)
+    end
+end)
+
+--====================================================--
+-- NO FALL DAMAGE
+--====================================================--
+do
+    local FallHookInstalled = false
+    local function W2_InstallNoFallHook()
+        if FallHookInstalled then return end
+        FallHookInstalled = true
+        task.spawn(function()
+            pcall(function()
+                local mt = getrawmetatable and getrawmetatable(game)
+                if not mt then return end
+                local oldNamecall = mt.__namecall
+                if setreadonly then setreadonly(mt, false) end
+                mt.__namecall = newcclosure(function(self, ...)
+                    if not checkcaller() and W2.NoFallDamage then
+                        local method = getnamecallmethod()
+                        if method == "FireServer" then
+                            local ok, name = pcall(function() return self.Name end)
+                            if ok and name == "Fall" then
+                                local par = self.Parent
+                                if par and par.Name == "Mechanics" then
+                                    return nil
+                                end
+                            end
+                        end
+                    end
+                    return oldNamecall(self, ...)
+                end)
+                if setreadonly then setreadonly(mt, true) end
+            end)
+        end)
+    end
+    W2_InstallNoFallHook()
+end
+
+--====================================================--
+-- TROLL TELEPORT
+--====================================================--
+W.TrollTeleport = W.TrollTeleport or {
+    Enabled = false, IsProcessing = false, TriggerCount = 0,
+    AnimatorHook = nil, CharHook = nil,
+    BlockedAnimList = { ["123812278891591"] = 1, ["74099023522626"] = 2 },
+}
+local TT = W.TrollTeleport
+local function TT_HookCharacter(char)
+    if not char then return end
+    local hum = char:FindFirstChildOfClass("Humanoid")
+    if not hum then return end
+    local anim = hum:FindFirstChildOfClass("Animator") or hum:WaitForChild("Animator", 3)
+    if not anim then return end
+    local root = char:FindFirstChild("HumanoidRootPart")
+    if not root then return end
+    anim.AnimationPlayed:Connect(function(track)
+        if not TT.Enabled then return end
+        if TT.IsProcessing then return end
+        local aid = track.Animation and track.Animation.AnimationId or ""
+        local numId = aid:match("%d+")
+        local delay = numId and TT.BlockedAnimList[numId]
+        if not delay then return end
+        TT.IsProcessing = true
+        TT.TriggerCount = TT.TriggerCount + 1
+        local startCF = root.CFrame
+        W2_Notify("Troll Teleport", "Trigger #" .. TT.TriggerCount .. " | Delay " .. delay .. "s", 2)
+        task.spawn(function()
+            if track.IsPlaying then pcall(function() track.Stopped:Wait() end) end
+            task.wait(delay)
+            local c = LocalPlayer.Character
+            local rp = c and c:FindFirstChild("HumanoidRootPart")
+            if rp and rp.Parent then pcall(function() rp.CFrame = startCF end) end
+            TT.IsProcessing = false
+        end)
+    end)
+end
+function W.TrollTeleport_Start()
+    if TT.AnimatorHook then return end
+    TT.IsProcessing = false
+    TT_HookCharacter(LocalPlayer.Character)
+    TT.CharHook = LocalPlayer.CharacterAdded:Connect(function(c) task.wait(0.4); TT_HookCharacter(c) end)
+end
+function W.TrollTeleport_Stop()
+    if TT.CharHook then pcall(function() TT.CharHook:Disconnect() end); TT.CharHook = nil end
+    TT.AnimatorHook = nil
+    TT.IsProcessing = false
+end
+function W.TrollTeleport_SetEnabled(v)
+    TT.Enabled = v and true or false
+    W2.TrollTeleport = TT.Enabled
+    if TT.Enabled then W.TrollTeleport_Start() else W.TrollTeleport_Stop() end
+end
+
+--====================================================--
+-- GOD MODE
+--====================================================--
+local GodModeThread = nil
+function W.GodMode_Start()
+    if GodModeThread then task.cancel(GodModeThread) end
+    GodModeThread = task.spawn(function()
+        while W2.GodMode do
+            local char = LocalPlayer.Character
+            local hum = char and char:FindFirstChildOfClass("Humanoid")
+            if hum then
+                pcall(function()
+                    if hum.Health < hum.MaxHealth and hum.Health > 0 then hum.Health = hum.MaxHealth end
+                end)
+            end
+            task.wait(0.1)
+        end
+        GodModeThread = nil
+    end)
+end
+function W.GodMode_Stop()
+    W2.GodMode = false
+    if GodModeThread then task.cancel(GodModeThread); GodModeThread = nil end
+end
+function W.GodMode_SetEnabled(v)
+    W2.GodMode = v and true or false
+    if W2.GodMode then W.GodMode_Start() else W.GodMode_Stop() end
+end
+
+--====================================================--
+-- MANUAL GENERATOR
+--====================================================--
+do
+    local RepairEvent = nil
+    pcall(function()
+        RepairEvent = ReplicatedStorage.Remotes.Generator.RepairEvent
+    end)
+
+    local REPAIR_ANIM_ID = "rbxassetid://92960319113695"
+    local ManualThread = nil
+    local ManualPoint = nil
+    local LastFire = 0
+    local RepairAnimTrack = nil
+
+    local function IsKillerNearPos(pos, radius)
+        for _, pl in ipairs(Players:GetPlayers()) do
+            if pl ~= LocalPlayer and TeamIs(pl, "Killer") and pl.Character then
+                local hrp = pl.Character:FindFirstChild("HumanoidRootPart")
+                if hrp and (hrp.Position - pos).Magnitude <= radius then
+                    return true
+                end
+            end
+        end
+        return false
+    end
+
+    local function GetNearestKillerDist()
+        local myChar = LocalPlayer.Character
+        local myRoot = myChar and myChar:FindFirstChild("HumanoidRootPart")
+        if not myRoot then return nil, math.huge end
+        local best, dist = nil, math.huge
+        for _, pl in ipairs(Players:GetPlayers()) do
+            if pl ~= LocalPlayer and TeamIs(pl, "Killer") and pl.Character then
+                local hrp = pl.Character:FindFirstChild("HumanoidRootPart")
+                if hrp then
+                    local d = (hrp.Position - myRoot.Position).Magnitude
+                    if d < dist then dist = d; best = hrp end
+                end
+            end
+        end
+        return best, dist
+    end
+
+    local function PlayRepairAnim()
+        local char = LocalPlayer.Character
+        if not char then return end
+        local hum = char:FindFirstChildOfClass("Humanoid")
+        local animator = hum and hum:FindFirstChildOfClass("Animator")
+        if not animator then return end
+        if RepairAnimTrack and RepairAnimTrack.IsPlaying then return end
+        pcall(function()
+            local anim = Instance.new("Animation")
+            anim.AnimationId = REPAIR_ANIM_ID
+            RepairAnimTrack = animator:LoadAnimation(anim)
+            RepairAnimTrack.Priority = Enum.AnimationPriority.Action
+            RepairAnimTrack:Play()
+        end)
+    end
+
+    local function StopRepairAnim()
+        if RepairAnimTrack and RepairAnimTrack.IsPlaying then
+            pcall(function() RepairAnimTrack:Stop() end)
+        end
+        RepairAnimTrack = nil
+    end
+
+    local function StopRepair(point)
+        StopRepairAnim()
+        if point and RepairEvent then
+            pcall(function() RepairEvent:FireServer(point, false) end)
+        end
+    end
+
+    local function IsGenDone(gen)
+        local p = gen:GetAttribute("RepairProgress") or gen:GetAttribute("ProgressRepair") or 0
+        return p >= 100
+    end
+
+    local function GetNearestGenPointInReach()
+        local myChar = LocalPlayer.Character
+        local myRoot = myChar and myChar:FindFirstChild("HumanoidRootPart")
+        if not myRoot then return nil end
+        local bestPt, bestDist = nil, 5.5
+        for _, gen in ipairs(W.GB_GetAllGenerators()) do
+            for _, pt in ipairs(W.GB_GetPoints(gen)) do
+                if pt and pt.Parent then
+                    local d = (myRoot.Position - pt.Position).Magnitude
+                    if d < bestDist then
+                        bestDist = d
+                        bestPt = pt
+                    end
+                end
+            end
+        end
+        return bestPt
+    end
+
+    local function GetSafeNearestGenPoint()
+        local myChar = LocalPlayer.Character
+        local myRoot = myChar and myChar:FindFirstChild("HumanoidRootPart")
+        if not myRoot then return nil end
+        local bestPt, bestDist = nil, math.huge
+        for _, gen in ipairs(W.GB_GetAllGenerators()) do
+            if IsGenDone(gen) then continue end
+            local genPivot
+            pcall(function() genPivot = gen:GetPivot().Position end)
+            if genPivot and IsKillerNearPos(genPivot, W2.KillerEscapeDist) then
+                continue
+            end
+            for _, pt in ipairs(W.GB_GetPoints(gen)) do
+                if pt and pt.Parent then
+                    local d = (pt.Position - myRoot.Position).Magnitude
+                    if d < bestDist then
+                        bestDist = d
+                        bestPt = pt
+                    end
+                end
+            end
+        end
+        return bestPt
+    end
+
+    local function StartManualThread()
+        if ManualThread then pcall(function() task.cancel(ManualThread) end); ManualThread = nil end
+        ManualThread = task.spawn(function()
+            while W2.ManualGen do
+                local myChar = LocalPlayer.Character
+                local myRoot = myChar and myChar:FindFirstChild("HumanoidRootPart")
+                local hum = myChar and myChar:FindFirstChildOfClass("Humanoid")
+                if not myRoot or not hum or hum.Health <= 0 then task.wait(0.2); continue end
+
+                local _, kd = GetNearestKillerDist()
+                if kd <= W2.KillerEscapeDist then
+                    if ManualPoint then
+                        StopRepair(ManualPoint)
+                        ManualPoint = nil
+                        W2_Notify("Manual Gen", "Killer near — release repair", 2)
+                    end
+                    task.wait(0.3)
+                    continue
+                end
+
+                local pt = GetNearestGenPointInReach()
+                if pt then
+                    ManualPoint = pt
+                    local now = tick()
+                    if now - LastFire >= 0.5 then
+                        pcall(function() if RepairEvent then RepairEvent:FireServer(pt, true) end end)
+                        PlayRepairAnim()
+                        LastFire = now
+                    end
+                else
+                    if ManualPoint then StopRepair(ManualPoint); ManualPoint = nil end
+                end
+                task.wait(0.1)
+            end
+            if ManualPoint then StopRepair(ManualPoint) end
+            ManualPoint = nil
+        end)
+    end
+
+    local function StopManualThread()
+        if ManualThread then pcall(function() task.cancel(ManualThread) end); ManualThread = nil end
+        if ManualPoint then StopRepair(ManualPoint) end
+        ManualPoint = nil
+    end
+
+    function W.ManualGen_SetEnabled(v)
+        W2.ManualGen = v and true or false
+        if W2.ManualGen then StartManualThread() else StopManualThread() end
+    end
+
+    function W.GenAuto_SetDistance(v)
+        W2.KillerEscapeDist = tonumber(v) or 30
+    end
+
+    LocalPlayer.CharacterAdded:Connect(function()
+        task.wait(1)
+        if W2.ManualGen then StartManualThread() end
+    end)
+            end--====================================================--
+-- AUTO PARRY V1
 --====================================================--
 local ParryState = {
     LastParry = 0, ActiveAttackers = {},
@@ -1570,7 +1917,7 @@ local function ParryExecute()
     ParryCooldown.WaitingStart = os.clock()
     ParryCooldown.JustFired = true
     ParryCooldown.ManualDetect = false
-    if OW.ParryV1_Silent then ParryExecuteSilent(); return end
+    if W2.ParryV1_Silent then ParryExecuteSilent(); return end
     if isMobile then ParryExecuteMobile() else ParryExecutePC() end
 end
 local function ParryMarkManual()
@@ -1626,21 +1973,21 @@ local function ParryCheckAndParry(killerChar)
     local killerPart = ParryGetHitboxPart(killerChar)
     if not myRoot or not killerPart then return end
     local dist = (myRoot.Position - killerPart.Position).Magnitude
-    if OW.ParryV1_Aggressive then
+    if W2.ParryV1_Aggressive then
         local ping = math.clamp(LocalPlayer:GetNetworkPing(), 0, 0.3)
         local killerRoot = killerChar:FindFirstChild("HumanoidRootPart") or killerPart
         local killerVel = killerRoot.AssemblyLinearVelocity
         local flatVel = Vector3.new(killerVel.X, 0, killerVel.Z)
         local predictedPos = killerPart.Position + flatVel * ping
         local predDist = (myRoot.Position - predictedPos).Magnitude
-        if predDist <= ((OW.ParryV1_Distance or 10) + 2.5) then
+        if predDist <= ((W2.ParryV1_Distance or 10) + 2.5) then
             if flatVel.Magnitude > 6 then
                 local dir = myRoot.Position - killerPart.Position
                 if dir.Magnitude > 0 and flatVel.Unit:Dot(dir.Unit) > 0.4 then ParryExecute(); return end
             end
         end
     end
-    if dist <= (OW.ParryV1_Distance or 10) then ParryExecute() end
+    if dist <= (W2.ParryV1_Distance or 10) then ParryExecute() end
 end
 local function ParryDestroyCircle()
     if ParryState.CircleFolder then
@@ -1657,11 +2004,11 @@ local function ParryDestroyCircle()
     ParryState.CircleLastZ = math.huge
     ParryState.CircleSpawnTime = 0
 end
-getgenv()._OneW_DestroyParryCircle = ParryDestroyCircle
+getgenv()._W2_DestroyParryCircle = ParryDestroyCircle
 local function ParryBuildCircle(radius)
     ParryDestroyCircle()
     local folder = Instance.new("Folder")
-    folder.Name = "OneWParryCircleDashes"
+    folder.Name = "W2ParryCircleDashes"
     local dashCount = math.clamp(math.floor(radius * 6), 24, 120)
     local slotLength = (2 * math.pi * radius) / dashCount
     local dashLength = slotLength * 0.55
@@ -1765,7 +2112,7 @@ local function ParryHookAnimatorOnChar(plr, char)
     local anim = hum:FindFirstChildOfClass("Animator") or hum:WaitForChild("Animator", 3)
     if not anim then return end
     anim.AnimationPlayed:Connect(function(track)
-        if not OW.ParryV1_Enabled then return end
+        if not W2.ParryV1_Enabled then return end
         if not ParryIsEquippedDagger() then return end
         local at = ParryGetAnimType(track)
         if at then
@@ -1782,7 +2129,7 @@ for _, p in ipairs(Players:GetPlayers()) do ParryHookKillerPlayer(p) end
 Players.PlayerAdded:Connect(ParryHookKillerPlayer)
 local parryLastPoll = 0
 local function ParryPollAttacks()
-    if not OW.ParryV1_Enabled or not ParryIsEquippedDagger() then return end
+    if not W2.ParryV1_Enabled or not ParryIsEquippedDagger() then return end
     local now = os.clock()
     if now - parryLastPoll < 0.15 then return end
     parryLastPoll = now
@@ -1818,7 +2165,7 @@ local function ParryCleanupAttackers()
     end
 end
 local function ParryUpdateLogic()
-    if not OW.ParryV1_Enabled then return end
+    if not W2.ParryV1_Enabled then return end
     if not ParryIsEquippedDagger() then ParryState.ActiveAttackers = {}; return end
     if ParryCooldown.WaitingForResult then
         if os.clock() - ParryCooldown.WaitingStart > ParryCooldown.WaitTimeout then
@@ -1854,9 +2201,9 @@ end
 local function ParryUpdateCircleLogic()
     local char = LocalPlayer.Character
     local myRoot = char and char:FindFirstChild("HumanoidRootPart")
-    if OW.ParryV1_ShowRange and OW.ParryV1_Enabled and ParryIsEquippedDagger() and myRoot then
-        if not ParryState.CircleFolder or ParryState.CircleRadius ~= (OW.ParryV1_Distance or 10) or not ParryState.CircleFolder.Parent then
-            ParryBuildCircle(OW.ParryV1_Distance or 10)
+    if W2.ParryV1_ShowRange and W2.ParryV1_Enabled and ParryIsEquippedDagger() and myRoot then
+        if not ParryState.CircleFolder or ParryState.CircleRadius ~= (W2.ParryV1_Distance or 10) or not ParryState.CircleFolder.Parent then
+            ParryBuildCircle(W2.ParryV1_Distance or 10)
         end
         ParryUpdateCircle(myRoot)
     else
@@ -1865,7 +2212,7 @@ local function ParryUpdateCircleLogic()
 end
 
 --====================================================--
--- AUTO PARRY V2 (Wisnu)
+-- AUTO PARRY V2
 --====================================================--
 do
     local W_VALID_PARRY_IDS = {
@@ -1899,7 +2246,7 @@ do
     local function W_IsKiller(p) return p and p.Team and p.Team.Name == "Killer" end
     local function W_IsDowned(char) return char and (char:GetAttribute("Knocked") == true or char:GetAttribute("IsHooked") == true) end
     local function W_IsSafeToParry(char)
-        if not OW.ParryV2_Safety then return true end
+        if not W2.ParryV2_Safety then return true end
         if not char then return false end
         local interactObj = char:FindFirstChild("CheckInterractable")
         if interactObj then
@@ -1990,9 +2337,9 @@ do
             local id = animId:match("%d+")
             local attackName = W_VALID_PARRY_IDS[id]
             if not attackName then return end
-            if not OW.ParryV2_Enabled then return end
+            if not W2.ParryV2_Enabled then return end
             if W_State.Cooldown then return end
-            if OW.ParryV2_Ignored and OW.ParryV2_Ignored[attackName] then return end
+            if W2.ParryV2_Ignored and W2.ParryV2_Ignored[attackName] then return end
 
             local myChar = LocalPlayer.Character
             if W_IsDowned(myChar) or not W_IsSafeToParry(myChar) then return end
@@ -2002,9 +2349,9 @@ do
 
             local startDistance = (myHRP.Position - kHRP.Position).Magnitude
 
-            if OW.ParryV2_Aggressive then
+            if W2.ParryV2_Aggressive then
                 local aggressiveRadius = 12
-                local detectionRadius = OW.ParryV2_Distance + 5
+                local detectionRadius = W2.ParryV2_Distance + 5
                 if startDistance > detectionRadius then return end
                 if startDistance <= aggressiveRadius then
                     W_ExecuteParry()
@@ -2023,14 +2370,14 @@ do
                     end)
                 end
             else
-                if startDistance > OW.ParryV2_Distance then return end
+                if startDistance > W2.ParryV2_Distance then return end
                 local myPosFlat = Vector3.new(myHRP.Position.X, 0, myHRP.Position.Z)
                 local kPosFlat = Vector3.new(kHRP.Position.X, 0, kHRP.Position.Z)
                 local flatDelta = myPosFlat - kPosFlat
                 if flatDelta.Magnitude > 0 then
                     local flatDirection = flatDelta.Unit
                     local kLookFlat = Vector3.new(kHRP.CFrame.LookVector.X, 0, kHRP.CFrame.LookVector.Z).Unit
-                    if kLookFlat:Dot(flatDirection) < OW.ParryV2_Face then return end
+                    if kLookFlat:Dot(flatDirection) < W2.ParryV2_Face then return end
                 end
                 W_ExecuteParry()
             end
@@ -2060,11 +2407,11 @@ do
     RunService.Heartbeat:Connect(function()
         local char = LocalPlayer.Character
         local hrp = char and char:FindFirstChild("HumanoidRootPart")
-        if OW.ParryV2_ShowCircle and OW.ParryV2_Enabled and hrp then
+        if W2.ParryV2_ShowCircle and W2.ParryV2_Enabled and hrp then
             if not W_State.Adornment or W_State.Adornment.Parent ~= hrp then
                 if W_State.Adornment then W_State.Adornment:Destroy() end
                 W_State.Adornment = Instance.new("CylinderHandleAdornment")
-                W_State.Adornment.Name = "OneWParryV2CircleESP"
+                W_State.Adornment.Name = "W2ParryV2CircleESP"
                 W_State.Adornment.Height = 0.05
                 W_State.Adornment.Transparency = 0.3
                 W_State.Adornment.Adornee = hrp
@@ -2072,7 +2419,7 @@ do
                 W_State.Adornment.ZIndex = 0
                 W_State.Adornment.AlwaysOnTop = false
             end
-            local cR = OW.ParryV2_Distance
+            local cR = W2.ParryV2_Distance
             W_State.Adornment.Radius = cR
             W_State.Adornment.InnerRadius = math.max(0.1, cR - 0.15)
             W_State.Adornment.CFrame = CFrame.new(0, -3, 0) * CFrame.Angles(math.rad(90), 0, 0)
@@ -2126,7 +2473,7 @@ do
         if not pg then return end
 
         local gui = Instance.new("ScreenGui")
-        gui.Name = "OneWMapPredict"
+        gui.Name = "W2MapPredict"
         gui.ResetOnSpawn = false
         gui.IgnoreGuiInset = true
         gui.DisplayOrder = 50
@@ -2328,7 +2675,7 @@ function W.SU_Trigger()
         while tick() < fUntil and SU.Enabled do
             if not W.SU_IsHooked() then
                 SU.Following = false; SU._activeThread = nil
-                OW_Notify("Bypass Self Unhook", "Udah lepas hook - STOP", 2)
+                W2_Notify("Bypass Self Unhook", "Udah lepas hook - STOP", 2)
                 return
             end
             local cc = LocalPlayer.Character
@@ -2375,12 +2722,10 @@ function W.SU_Stop()
     W.SU_Abort(); SU._wasHooked = false
 end
 function W.SU_SetEnabled(v)
-    OW.SelfUnhook_Enabled = v
+    W2.SelfUnhook_Enabled = v
     SU.Enabled = v
     if v then W.SU_Start() else W.SU_Stop() end
-end
-
---====================================================--
+end--====================================================--
 -- SILENT AIM TOF
 --====================================================--
 local ToFState = {
@@ -2400,7 +2745,7 @@ local function ToF_IsDowned(c)
     return false
 end
 local function ToF_IsBlocked()
-    if OW.TOF_BlockKnocked == false then return false end
+    if W2.TOF_BlockKnocked == false then return false end
     local c = LocalPlayer.Character
     if not c then return true end
     return ToF_IsDowned(c)
@@ -2466,7 +2811,7 @@ local function ToF_GetTarget()
     end
     local function predict(t, tc)
         local tp = t.Position
-        if OW.TOF_WallCheck and not ToF_IsVisible(op, tp, tc) then return nil,nil,nil,nil end
+        if W2.TOF_WallCheck and not ToF_IsVisible(op, tp, tc) then return nil,nil,nil,nil end
         local tv = Vector3.new(0,0,0)
         local rp = tc and (tc:FindFirstChild("HumanoidRootPart") or t)
         if rp then tv = rp.Velocity end
@@ -2480,7 +2825,7 @@ local function ToF_GetTarget()
         if fd.Magnitude < 0.1 then return nil,nil,nil,nil end
         return fd.Unit, g, op, pp
     end
-    local mode = OW.TOF_TargetMode or "Killer"
+    local mode = W2.TOF_TargetMode or "Killer"
     if mode=="Killer" then
         local bt, bc, bs = nil, nil, math.huge
         for _,p in ipairs(Players:GetPlayers()) do
@@ -2519,7 +2864,7 @@ local function ToF_GetTarget()
 end
 local function ToF_UpdateLaser(op, tp)
     if not ToFState.LaserBeam then
-        local l = Instance.new("Part"); l.Name="ToFLaser"; l.Anchored=true; l.CanCollide=false; l.CanTouch=false; l.CastShadow=false
+        local l = Instance.new("Part"); l.Name="W2ToFLaser"; l.Anchored=true; l.CanCollide=false; l.CanTouch=false; l.CastShadow=false
         l.Material=Enum.Material.Neon; l.Color=Color3.fromRGB(255,255,255); l.Parent=workspace
         ToFState.LaserBeam = l
     end
@@ -2548,7 +2893,7 @@ local function ToF_IsTouchShoot(input)
     return p.X>=ap.X and p.X<=ap.X+az.X and p.Y>=ap.Y and p.Y<=ap.Y+az.Y
 end
 local function ToF_Shoot()
-    if not OW.TOF_Enabled then return end
+    if not W2.TOF_Enabled then return end
     if ToF_IsBlocked() then return end
     local td, g, op, tp = ToF_GetTarget()
     if not (td and g and tp and op) then return end
@@ -2558,18 +2903,17 @@ local function ToF_Shoot()
     if fd.Magnitude < 0.1 then return end
     pcall(function() e:FireServer(g, fd.Unit) end)
 end
-local ToF_ModeButtons = {}
-local ToF_ModeConfig = { Killer={Color=Color3.fromRGB(255,90,90),Label="KILLER",Hint="K"}, Survivors={Color=Color3.fromRGB(120,200,255),Label="SURVIVOR",Hint="J"}, Zombie={Color=Color3.fromRGB(120,255,150),Label="ZOMBIE",Hint="L"} }
 local function ToF_SetTargetMode(mode, notify)
     if mode ~= "Killer" and mode ~= "Survivors" and mode ~= "Zombie" then return end
-    OW.TOF_TargetMode = mode
-    if notify then OW_Notify("ToF Target", mode, 1) end
+    W2.TOF_TargetMode = mode
+    if notify then W2_Notify("ToF Target", mode, 1) end
+    if getgenv().W2_PistolBtn_UpdateVisual then pcall(getgenv().W2_PistolBtn_UpdateVisual) end
 end
 local function ToF_StartConn()
     if ToFState.Connection then return end
     ToFState.Connection = RunService.Heartbeat:Connect(function()
         if ToF_IsBlocked() then ToFState.IsAiming = false; if ToFState.TouchInput then ToFState.TouchInput = nil end; if ToFState.LaserBeam then ToFState.LaserBeam.Transparency = 1 end; return end
-        if not OW.TOF_Enabled or not ToFState.IsAiming then if ToFState.LaserBeam then ToFState.LaserBeam.Transparency = 1 end; return end
+        if not W2.TOF_Enabled or not ToFState.IsAiming then if ToFState.LaserBeam then ToFState.LaserBeam.Transparency = 1 end; return end
         local _, _, op, tp = ToF_GetTarget()
         if op and tp then
             pcall(function()
@@ -2577,7 +2921,7 @@ local function ToF_StartConn()
                 local hrp = c and c:FindFirstChild("HumanoidRootPart")
                 if hrp and not c:GetAttribute("IsCarried") then hrp.CFrame = CFrame.new(hrp.Position, Vector3.new(tp.X, hrp.Position.Y, tp.Z)) end
             end)
-            if OW.TOF_Laser then ToF_UpdateLaser(op, tp)
+            if W2.TOF_Laser then ToF_UpdateLaser(op, tp)
             elseif ToFState.LaserBeam then ToFState.LaserBeam.Transparency = 1 end
         elseif ToFState.LaserBeam then ToFState.LaserBeam.Transparency = 1 end
     end)
@@ -2591,9 +2935,9 @@ local function ToF_EnsureInputs()
     if not ToFState.InputBegan then
         ToFState.InputBegan = UserInputService.InputBegan:Connect(function(inp, gp)
             if gp then return end
-            local k = ToFKeyCodes[OW.TOF_Key or "None"]
-            if k and inp.UserInputType == Enum.UserInputType.Keyboard and inp.KeyCode == k then SetToFEnabled(not OW.TOF_Enabled); return end
-            if not OW.TOF_Enabled then return end
+            local k = ToFKeyCodes[W2.TOF_Key or "None"]
+            if k and inp.UserInputType == Enum.UserInputType.Keyboard and inp.KeyCode == k then SetToFEnabled(not W2.TOF_Enabled); return end
+            if not W2.TOF_Enabled then return end
             if inp.UserInputType == Enum.UserInputType.MouseButton1 or (inp.UserInputType == Enum.UserInputType.Touch and ToF_IsTouchShoot(inp)) then
                 if ToF_IsBlocked() then ToFState.IsAiming = false; return end
                 ToFState.IsAiming = true
@@ -2620,10 +2964,11 @@ local function ToF_EnsureInputs()
     end
 end
 SetToFEnabled = function(en)
-    OW.TOF_Enabled = en and true or false
+    W2.TOF_Enabled = en and true or false
     ToF_EnsureInputs()
-    if OW.TOF_Enabled then ToF_StartConn()
+    if W2.TOF_Enabled then ToF_StartConn()
     else ToF_StopConn() end
+    if getgenv().W2_PistolBtn_SetEnabled then getgenv().W2_PistolBtn_SetEnabled(en) end
 end
 W.SetToFEnabled = SetToFEnabled
 W.ToF_ClearLaser = ToF_ClearLaser
@@ -2645,7 +2990,7 @@ do
     end
     local function Flash_GetTargetPart(char)
         if not char then return nil end
-        local p = char:FindFirstChild(OW.Flash_TargetPart or "Head")
+        local p = char:FindFirstChild(W2.Flash_TargetPart or "Head")
         if p and p:IsA("BasePart") then return p end
         return char:FindFirstChild("Head") or char:FindFirstChild("UpperTorso")
             or char:FindFirstChild("Torso") or char:FindFirstChild("HumanoidRootPart")
@@ -2659,7 +3004,7 @@ do
         local myChar = LocalPlayer.Character
         local myRoot = myChar and myChar:FindFirstChild("HumanoidRootPart")
         if not myRoot then return nil end
-        local maxR = tonumber(OW.Flash_Range) or 120
+        local maxR = tonumber(W2.Flash_Range) or 120
         local best, bd = nil, math.huge
         for _, p in ipairs(Players:GetPlayers()) do
             if p ~= LocalPlayer and p.Character and Flash_IsAliveChar(p.Character) and TeamIs(p, "Killer") then
@@ -2693,7 +3038,7 @@ do
     local function Flash_UpdateLaser(op, tp)
         if not FlashState.LaserBeam then
             local l = Instance.new("Part")
-            l.Name = "OneWFlashlightLaser"
+            l.Name = "W2FlashlightLaser"
             l.Anchored = true
             l.CanCollide = false
             l.CanTouch = false
@@ -2713,7 +3058,7 @@ do
         l.Transparency = 0.35
     end
     local function Flash_Step()
-        if not (OW.Flash_Enabled and FlashState.Active) then
+        if not (W2.Flash_Enabled and FlashState.Active) then
             if FlashState.LaserBeam then FlashState.LaserBeam.Transparency = 1 end
             return
         end
@@ -2723,7 +3068,7 @@ do
             if FlashState.LaserBeam then FlashState.LaserBeam.Transparency = 1 end
             return
         end
-        local smooth = math.clamp(tonumber(OW.Flash_Smooth) or 0.35, 0.05, 1)
+        local smooth = math.clamp(tonumber(W2.Flash_Smooth) or 0.35, 0.05, 1)
         local op = Flash_GetOrigin(cam)
         if op then
             pcall(Flash_UpdateLaser, op, tp.Position)
@@ -2751,7 +3096,7 @@ do
         end
     end
     function W.Flash_SetEnabled(v)
-        OW.Flash_Enabled = v and true or false
+        W2.Flash_Enabled = v and true or false
         if v then Flash_Start() else Flash_Stop() end
     end
     function W.Flash_SetActive(active, part)
@@ -2934,13 +3279,14 @@ do
         end)
     end
     function W.Moonwalk_SetEnabled(state)
-        OW.Moonwalk_Enabled = state
+        W2.Moonwalk_Enabled = state
         moonwalkEnabled = state
         if state then startMoonwalk() else stopMoonwalk() end
+        if getgenv().W2_MoonwalkBtn_UpdateVisual then pcall(getgenv().W2_MoonwalkBtn_UpdateVisual) end
     end
-    function W.Moonwalk_SetSideSpeed(v) MOONWALK_SIDE_SPEED = v; OW.Moonwalk_SideSpeed = v end
-    function W.Moonwalk_SetBackSpeed(v) MOONWALK_BACK_SPEED = v; OW.Moonwalk_BackSpeed = v end
-    function W.Moonwalk_SetInterval(v) MOONWALK_INTERVAL = v; OW.Moonwalk_Interval = v end
+    function W.Moonwalk_SetSideSpeed(v) MOONWALK_SIDE_SPEED = v; W2.Moonwalk_SideSpeed = v end
+    function W.Moonwalk_SetBackSpeed(v) MOONWALK_BACK_SPEED = v; W2.Moonwalk_BackSpeed = v end
+    function W.Moonwalk_SetInterval(v) MOONWALK_INTERVAL = v; W2.Moonwalk_Interval = v end
     UserInputService.InputBegan:Connect(function(input, gp)
         if gp then return end
         if input.KeyCode == Enum.KeyCode.F8 then W.Moonwalk_SetEnabled(not moonwalkEnabled) end
@@ -3099,7 +3445,7 @@ do
         local bb = StatusESP[char]
         if not bb or not bb.Parent then
             bb = Instance.new("BillboardGui")
-            bb.Name = "OneWStatusESP"
+            bb.Name = "W2StatusESP"
             bb.AlwaysOnTop = true
             bb.LightInfluence = 0
             bb.Adornee = head
@@ -3495,7 +3841,7 @@ do
         end
 
         local box = Instance.new("BoxHandleAdornment")
-        box.Name = "OneWWindowBox"
+        box.Name = "W2WindowBox"
         box.Adornee = bottomPart
         box.Size = bottomPart.Size
         box.Color3 = FESPC.Window
@@ -3505,7 +3851,7 @@ do
         box.Parent = bottomPart
 
         local hl = Instance.new("Highlight")
-        hl.Name = "OneWWindowHighlight"
+        hl.Name = "W2WindowHighlight"
         hl.Adornee = winModel
         hl.FillColor = FESPC.Window
         hl.FillTransparency = 0.9
@@ -3582,12 +3928,12 @@ do
         UpdateSCPEsp(root)
 
         if FESP.Window then
-            if not _G.OneWWindowScanned then
-                _G.OneWWindowScanned = true
+            if not _G.W2WindowScanned then
+                _G.W2WindowScanned = true
                 pcall(ScanAllWindows)
             end
         else
-            _G.OneWWindowScanned = false
+            _G.W2WindowScanned = false
             for model in pairs(WindowObjects) do
                 RemoveWindowESP(model)
             end
@@ -3596,6 +3942,391 @@ do
 end
 
 --====================================================--
+-- GRAPHICS SYSTEM
+--====================================================--
+do
+    W.Graphics = W.Graphics or {
+        Fullbright = false, NoShadow = false, LowGraphics = false,
+        NoScreenEffects = false, CleanSky = false,
+        ClockTimeEnabled = false, ClockTime = 14, Brightness = 2,
+        UnlimitedZoom = false, MaxZoomDistance = 1000,
+        FOVEnabled = false, FOV = 70, PotatoEnabled = false,
+        LockPOV = false, LockedFOV = 80,
+        FOVLock = false, FOVLockValue = 70,
+        HDRingan = false, HDKincolong = false,
+    }
+    local G = W.Graphics
+    local original = {
+        Brightness = Lighting.Brightness, ClockTime = Lighting.ClockTime,
+        Ambient = Lighting.Ambient, OutdoorAmbient = Lighting.OutdoorAmbient,
+        GlobalShadows = Lighting.GlobalShadows,
+        FOV = Workspace.CurrentCamera and Workspace.CurrentCamera.FieldOfView or 70,
+    }
+    local LastState = { Fullbright = nil, NoShadow = nil, Ambient = nil, Brightness = nil, ClockTime = nil }
+    local LastOptimize = { LowGraphics = nil, CleanSky = nil }
+    local DisabledEffects = {}
+    local ScreenEffectTypes = { "ColorCorrectionEffect", "DepthOfFieldEffect", "BlurEffect", "SunRaysEffect", "BloomEffect" }
+    local function Graphics_Apply(force)
+        if force or LastState.Fullbright ~= G.Fullbright then
+            LastState.Fullbright = G.Fullbright
+            if G.Fullbright then
+                Lighting.Brightness     = 2; Lighting.ClockTime = 14
+                Lighting.Ambient        = Color3.fromRGB(255, 255, 255)
+                Lighting.OutdoorAmbient = Color3.fromRGB(255, 255, 255)
+            else
+                Lighting.Brightness     = original.Brightness
+                Lighting.ClockTime      = original.ClockTime
+                Lighting.Ambient        = original.Ambient
+                Lighting.OutdoorAmbient = original.OutdoorAmbient
+            end
+        end
+        if force or LastState.NoShadow ~= G.NoShadow then
+            LastState.NoShadow = G.NoShadow
+            Lighting.GlobalShadows = not G.NoShadow
+        end
+        local ambientChanged = LastState.Ambient ~= G.ClockTimeEnabled or LastState.Brightness ~= G.Brightness or LastState.ClockTime ~= G.ClockTime
+        if force or ambientChanged then
+            LastState.Ambient = G.ClockTimeEnabled
+            LastState.Brightness = G.Brightness
+            LastState.ClockTime = G.ClockTime
+            if G.ClockTimeEnabled then
+                Lighting.ClockTime  = G.ClockTime; Lighting.Brightness = G.Brightness
+            elseif not G.Fullbright then
+                Lighting.Brightness = original.Brightness
+                Lighting.ClockTime  = original.ClockTime
+            end
+        end
+    end
+    local function Graphics_ApplyOptimization(force)
+        if force or LastOptimize.LowGraphics ~= G.LowGraphics then
+            LastOptimize.LowGraphics = G.LowGraphics
+            pcall(function()
+                if G.LowGraphics then settings().Rendering.QualityLevel = Enum.QualityLevel.Level01
+                else settings().Rendering.QualityLevel = Enum.QualityLevel.Automatic end
+            end)
+        end
+        if force or LastOptimize.CleanSky ~= G.CleanSky then
+            LastOptimize.CleanSky = G.CleanSky
+            if G.CleanSky then
+                for _, v in ipairs(Lighting:GetChildren()) do
+                    if v:IsA("Sky") then v:Destroy() end
+                end
+            end
+        end
+    end
+    local function Graphics_ApplyNoScreenEffects()
+        if G.NoScreenEffects then
+            for _, v in pairs(Lighting:GetChildren()) do
+                for _, t in ipairs(ScreenEffectTypes) do
+                    if v:IsA(t) then
+                        if DisabledEffects[v] == nil then DisabledEffects[v] = v.Enabled end
+                        v.Enabled = false
+                    end
+                end
+            end
+        else
+            for obj, state in pairs(DisabledEffects) do
+                if obj and obj.Parent then obj.Enabled = state end
+            end
+            DisabledEffects = {}
+        end
+    end
+    Lighting.ChildAdded:Connect(function(v)
+        if not G.NoScreenEffects then return end
+        task.wait()
+        for _, t in ipairs(ScreenEffectTypes) do
+            if v:IsA(t) then
+                if DisabledEffects[v] == nil then DisabledEffects[v] = v.Enabled end
+                v.Enabled = false
+            end
+        end
+    end)
+    local function Graphics_ApplyZoom()
+        if G.UnlimitedZoom then
+            LocalPlayer.CameraMaxZoomDistance = G.MaxZoomDistance
+            LocalPlayer.CameraMinZoomDistance = 0
+        else
+            LocalPlayer.CameraMaxZoomDistance = 128
+            LocalPlayer.CameraMinZoomDistance = 0.5
+        end
+    end
+    local function Graphics_ApplyFOV()
+        local cam = Workspace.CurrentCamera
+        if not cam then return end
+        if G.FOVEnabled then cam.FieldOfView = G.FOV
+        else cam.FieldOfView = original.FOV end
+    end
+    local Potato_Enabled = false
+    local Potato_Busy = false
+    local Potato_Changed = {}
+    local Potato_Connections = {}
+    local POTATO_BATCH_SIZE = 40
+    local POTATO_BATCH_DELAY = 1
+    local function Potato_Save(obj, prop)
+        if not Potato_Changed[obj] then Potato_Changed[obj] = {} end
+        if Potato_Changed[obj][prop] == nil then
+            local ok, val = pcall(function() return obj[prop] end)
+            if ok then Potato_Changed[obj][prop] = val end
+        end
+    end
+    local function Potato_Set(obj, prop, value)
+        if not obj or not obj.Parent then return end
+        Potato_Save(obj, prop)
+        pcall(function() obj[prop] = value end)
+    end
+    local function Potato_Optimize(obj)
+        if not Potato_Enabled or not obj then return end
+        if obj:IsA("BasePart") then
+            Potato_Set(obj, "CastShadow", false)
+            Potato_Set(obj, "Reflectance", 0)
+            pcall(function() Potato_Set(obj, "Material", Enum.Material.Plastic) end)
+        end
+        if obj:IsA("MeshPart") then
+            pcall(function() Potato_Set(obj, "RenderFidelity", Enum.RenderFidelity.Performance) end)
+        end
+        if obj:IsA("Texture") or obj:IsA("Decal") then Potato_Set(obj, "Transparency", 1) end
+        if obj:IsA("SurfaceAppearance") then
+            pcall(function()
+                Potato_Set(obj, "ColorMap", ""); Potato_Set(obj, "MetalnessMap", "")
+                Potato_Set(obj, "NormalMap", ""); Potato_Set(obj, "RoughnessMap", "")
+            end)
+        end
+        if obj:IsA("ParticleEmitter") then Potato_Set(obj, "Enabled", false) end
+        if obj:IsA("Trail") then Potato_Set(obj, "Enabled", false) end
+        if obj:IsA("Beam") then Potato_Set(obj, "Enabled", false) end
+        if obj:IsA("Smoke") or obj:IsA("Fire") or obj:IsA("Sparkles") then Potato_Set(obj, "Enabled", false) end
+        if obj:IsA("Clouds") then
+            Potato_Set(obj, "Cover", 0); Potato_Set(obj, "Density", 0)
+        end
+    end
+    local function Potato_LowLighting()
+        Potato_Set(Lighting, "GlobalShadows", false)
+        Potato_Set(Lighting, "Brightness", 1)
+        pcall(function()
+            Potato_Set(Lighting, "EnvironmentDiffuseScale", 0)
+            Potato_Set(Lighting, "EnvironmentSpecularScale", 0)
+        end)
+    end
+    local function Potato_LowTerrain()
+        local Terrain = Workspace:FindFirstChildOfClass("Terrain")
+        if not Terrain then return end
+        Potato_Set(Terrain, "Decoration", false)
+        Potato_Set(Terrain, "WaterWaveSize", 0)
+        Potato_Set(Terrain, "WaterWaveSpeed", 0)
+        Potato_Set(Terrain, "WaterReflectance", 0)
+    end
+    local function Potato_ProcessMap()
+        if Potato_Busy then return end
+        Potato_Busy = true
+        local objects = Workspace:GetDescendants()
+        local total = #objects
+        local index = 1
+        while Potato_Enabled and index <= total do
+            local finish = math.min(index + POTATO_BATCH_SIZE - 1, total)
+            for i = index, finish do
+                if not Potato_Enabled then break end
+                Potato_Optimize(objects[i])
+            end
+            RunService.Heartbeat:Wait()
+            if index % (POTATO_BATCH_SIZE * 5) == 1 then task.wait(POTATO_BATCH_DELAY / 10) end
+            index = finish + 1
+        end
+        Potato_Busy = false
+    end
+    local function Potato_StartNewObjectHandler()
+        if Potato_Connections.NewObject then return end
+        Potato_Connections.NewObject = Workspace.DescendantAdded:Connect(function(obj)
+            if not Potato_Enabled then return end
+            task.defer(function() if Potato_Enabled then Potato_Optimize(obj) end end)
+        end)
+    end
+    local function Potato_Enable()
+        if Potato_Enabled then return end
+        Potato_Enabled = true
+        pcall(function() settings().Rendering.QualityLevel = Enum.QualityLevel.Level01 end)
+        Potato_LowLighting(); Potato_LowTerrain(); Potato_StartNewObjectHandler()
+        task.spawn(Potato_ProcessMap)
+    end
+    local function Potato_Disable()
+        if not Potato_Enabled then return end
+        Potato_Enabled = false
+        for name, conn in pairs(Potato_Connections) do
+            pcall(function() conn:Disconnect() end)
+            Potato_Connections[name] = nil
+        end
+        task.spawn(function()
+            local count = 0
+            for obj, properties in pairs(Potato_Changed) do
+                if obj and obj.Parent then
+                    for prop, value in pairs(properties) do
+                        pcall(function() obj[prop] = value end)
+                        count = count + 1
+                        if count >= POTATO_BATCH_SIZE then task.wait(); count = 0 end
+                    end
+                end
+            end
+            Potato_Changed = {}
+        end)
+        pcall(function() settings().Rendering.QualityLevel = Enum.QualityLevel.Automatic end)
+    end
+    -- Graphics HD Ringan
+    local function Graphics_ApplyHDRingan()
+        if G.HDRingan then
+            pcall(function()
+                settings().Rendering.QualityLevel = Enum.QualityLevel.Level06
+                Lighting.Brightness = 2
+                Lighting.ClockTime = 14
+                Lighting.GlobalShadows = true
+                Lighting.FogEnd = 100000
+                Lighting.EnvironmentDiffuseScale = 0.5
+                Lighting.EnvironmentSpecularScale = 0.5
+                for _, v in ipairs(Lighting:GetChildren()) do
+                    if v:IsA("BloomEffect") then v.Enabled = true; v.Intensity = 0.6; v.Size = 20 end
+                    if v:IsA("SunRaysEffect") then v.Enabled = true; v.Intensity = 0.05 end
+                end
+            end)
+        end
+    end
+    -- Graphics HD Kincolong
+    local function Graphics_ApplyHDKincolong()
+        if G.HDKincolong then
+            pcall(function()
+                settings().Rendering.QualityLevel = Enum.QualityLevel.Level10
+                Lighting.Brightness = 3
+                Lighting.ClockTime = 14
+                Lighting.GlobalShadows = true
+                Lighting.FogEnd = 1000000
+                Lighting.EnvironmentDiffuseScale = 1
+                Lighting.EnvironmentSpecularScale = 1
+                for _, v in ipairs(Lighting:GetChildren()) do
+                    if v:IsA("BloomEffect") then v.Enabled = true; v.Intensity = 1; v.Size = 32; v.Threshold = 0.8 end
+                    if v:IsA("SunRaysEffect") then v.Enabled = true; v.Intensity = 0.15; v.Spread = 1 end
+                    if v:IsA("ColorCorrectionEffect") then
+                        v.Enabled = true
+                        v.Brightness = 0.1
+                        v.Contrast = 0.2
+                        v.Saturation = 0.3
+                    end
+                end
+            end)
+        end
+    end
+    RunService.RenderStepped:Connect(function()
+        if G.FOVEnabled then
+            local cam = Workspace.CurrentCamera
+            if cam and cam.FieldOfView ~= G.FOV then cam.FieldOfView = G.FOV end
+        end
+        if G.LockPOV then
+            local cam = Workspace.CurrentCamera
+            if cam and math.abs(cam.FieldOfView - G.LockedFOV) > 0.1 then cam.FieldOfView = G.LockedFOV end
+        end
+        if G.FOVLock then
+            local cam = Workspace.CurrentCamera
+            if cam and math.abs(cam.FieldOfView - G.FOVLockValue) > 0.1 then cam.FieldOfView = G.FOVLockValue end
+        end
+    end)
+    RunService.RenderStepped:Connect(function()
+        if not G.UnlimitedZoom then return end
+        if LocalPlayer.CameraMaxZoomDistance ~= G.MaxZoomDistance then
+            LocalPlayer.CameraMaxZoomDistance = G.MaxZoomDistance
+        end
+        if LocalPlayer.CameraMinZoomDistance ~= 0 then LocalPlayer.CameraMinZoomDistance = 0 end
+    end)
+    W.Graphics_Apply             = Graphics_Apply
+    W.Graphics_ApplyOptimization = Graphics_ApplyOptimization
+    W.Graphics_ApplyNoScreenFx   = Graphics_ApplyNoScreenEffects
+    W.Graphics_ApplyZoom         = Graphics_ApplyZoom
+    W.Graphics_ApplyFOV          = Graphics_ApplyFOV
+    W.Graphics_ApplyHDRingan     = Graphics_ApplyHDRingan
+    W.Graphics_ApplyHDKincolong  = Graphics_ApplyHDKincolong
+    W.Potato_SetEnabled = function(v)
+        G.PotatoEnabled = v and true or false
+        if G.PotatoEnabled then Potato_Enable() else Potato_Disable() end
+    end
+    LocalPlayer.CharacterAdded:Connect(function()
+        task.wait(1)
+        Graphics_Apply(true); Graphics_ApplyOptimization(true)
+        Graphics_ApplyNoScreenEffects(); Graphics_ApplyZoom(); Graphics_ApplyFOV()
+    end)
+end
+
+--====================================================--
+-- CAMERA DBD + SCREEN SMOOTH
+--====================================================--
+do
+    local CameraBindName = "W2_CameraDBD_Smooth"
+    local PreviousPosition = nil
+    local PreviousRotation = nil
+    local OriginalPOV      = 70
+    local TargetRotation   = nil
+    local CurrentRotation  = nil
+    pcall(function() RunService:UnbindFromRenderStep(CameraBindName) end)
+    RunService:BindToRenderStep(
+        CameraBindName,
+        Enum.RenderPriority.Camera.Value + 1,
+        function(DeltaTime)
+            local Camera = Workspace.CurrentCamera
+            if not Camera then return end
+            if Camera.CameraType ~= Enum.CameraType.Custom
+               and Camera.CameraType ~= Enum.CameraType.Follow then
+                PreviousPosition = nil; PreviousRotation = nil; return
+            end
+            -- DBD Camera Smooth
+            if W2.CamDBD_Enabled then
+                local CurrentCFrame   = Camera.CFrame
+                local CurrentPosition = CurrentCFrame.Position
+                local CurrentRot      = CurrentCFrame.Rotation
+                if not PreviousPosition or not PreviousRotation then
+                    PreviousPosition = CurrentPosition
+                    PreviousRotation = CurrentRot
+                else
+                    local smoothSpeed = tonumber(W2.CamDBD_Smooth) or 4
+                    local posAlpha = 1 - math.exp(-smoothSpeed * DeltaTime)
+                    PreviousPosition = PreviousPosition:Lerp(CurrentPosition, posAlpha)
+                    local rotAlpha = 1 - math.exp(-(smoothSpeed * 1.90) * DeltaTime)
+                    PreviousRotation = PreviousRotation:Lerp(CurrentRot, rotAlpha)
+                    Camera.CFrame = CFrame.new(PreviousPosition) * PreviousRotation
+                end
+            else
+                PreviousPosition = nil; PreviousRotation = nil
+            end
+            -- Screen Smooth (extra)
+            if W2.CamDBD_ScreenSmooth then
+                local level = tonumber(W2.CamDBD_ScreenLevel) or 5
+                local rotSpeed = tonumber(W2.CamDBD_RotSpeed) or 1.0
+                local deadzone = tonumber(W2.CamDBD_Deadzone) or 10
+                local smoothFactor = math.clamp(level / 10, 0.1, 0.95)
+                local rotTarget = Camera.CFrame.Rotation
+                if not TargetRotation then
+                    TargetRotation = rotTarget
+                    CurrentRotation = rotTarget
+                else
+                    local delta = rotTarget * CurrentRotation:Inverse()
+                    local angle = math.acos(math.clamp((delta.X + delta.Y + delta.Z + delta.W) * 0.5, -1, 1)) * 2
+                    local deg = math.deg(angle)
+                    if deg > (deadzone / 10) then
+                        TargetRotation = rotTarget
+                    end
+                    CurrentRotation = CurrentRotation:Lerp(TargetRotation, 1 - math.exp(-(1 - smoothFactor) * rotSpeed * DeltaTime * 10))
+                    Camera.CFrame = CFrame.new(Camera.CFrame.Position) * CurrentRotation
+                end
+            else
+                TargetRotation = nil
+                CurrentRotation = nil
+            end
+            -- POV Lock
+            if W2.CamDBD_POVLock then
+                local povSpeed = tonumber(W2.CamDBD_POVSmooth) or 9
+                local alpha = 1 - math.exp(-povSpeed * DeltaTime)
+                local target = tonumber(W2.CamDBD_POVValue) or 85
+                Camera.FieldOfView = Camera.FieldOfView + (target - Camera.FieldOfView) * alpha
+            end
+        end
+    )
+    LocalPlayer.CharacterAdded:Connect(function()
+        task.wait(0.5); PreviousPosition = nil; PreviousRotation = nil; TargetRotation = nil; CurrentRotation = nil
+    end)
+end--====================================================--
 -- KILLER PERKS DISPLAY
 --====================================================--
 do
@@ -3702,7 +4433,7 @@ do
         if not pg then return end
 
         local gui = Instance.new("ScreenGui")
-        gui.Name = "OneWKillerPerksDisplay"
+        gui.Name = "W2KillerPerksDisplay"
         gui.ResetOnSpawn = false
         gui.IgnoreGuiInset = true
         gui.DisplayOrder = 60
@@ -3931,25 +4662,24 @@ end
 --====================================================--
 -- INFINITE LUNGE
 --====================================================--
-local OW_OriginalLungeBoost = nil
+local W2_OriginalLungeBoost = nil
 function W.UpdateInfiniteLunge()
     local char = LocalPlayer.Character
     if not char then return end
-    if OW.InfLunge_Enabled then
+    if W2.InfLunge_Enabled then
         if char:GetAttribute("lungeboost") ~= 999999 then
-            OW_OriginalLungeBoost = char:GetAttribute("lungeboost") or 1
+            W2_OriginalLungeBoost = char:GetAttribute("lungeboost") or 1
             char:SetAttribute("lungeboost", 999999)
         end
     else
-        if OW_OriginalLungeBoost then
-            char:SetAttribute("lungeboost", OW_OriginalLungeBoost)
-            OW_OriginalLungeBoost = nil
+        if W2_OriginalLungeBoost then
+            char:SetAttribute("lungeboost", W2_OriginalLungeBoost)
+            W2_OriginalLungeBoost = nil
         end
     end
 end
-W.OW_UpdateInfiniteLunge = W.UpdateInfiniteLunge
 LocalPlayer.CharacterRemoving:Connect(function()
-    OW_OriginalLungeBoost = nil
+    W2_OriginalLungeBoost = nil
 end)
 
 --====================================================--
@@ -3963,7 +4693,7 @@ do
     task.spawn(function()
         while true do
             task.wait(0.5)
-            if not OW.CounterParry_Enabled then continue end
+            if not W2.CounterParry_Enabled then continue end
             local char = LocalPlayer.Character
             if not char then continue end
             local myRoot = char:FindFirstChild("HumanoidRootPart")
@@ -3995,6 +4725,140 @@ do
             end
         end
     end)
+end
+
+--====================================================--
+-- AUTO ATTACK (Killer)
+--====================================================--
+local lastAutoAttack = 0
+function W.KA_AutoAttack()
+    if not W2.AutoAttack_Enabled then return end
+    if GetRole() ~= "Killer" then return end
+    local now = tick()
+    if now - lastAutoAttack < (W2.AutoAttack_Cooldown or 0.15) then return end
+    local root = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+    if not root then return end
+    local closest, shortest = nil, W2.AutoAttack_Range or 12
+    for _, plr in ipairs(Players:GetPlayers()) do
+        if plr ~= LocalPlayer and TeamIs(plr, "Survivor") and plr.Character then
+            local hum = plr.Character:FindFirstChildOfClass("Humanoid")
+            local hrp = plr.Character:FindFirstChild("HumanoidRootPart")
+            if hum and hrp and hum.Health > 35 then
+                local d = (hrp.Position - root.Position).Magnitude
+                if d <= shortest then shortest = d; closest = plr end
+            end
+        end
+    end
+    if closest then
+        lastAutoAttack = now
+        pcall(function()
+            local attacks = ReplicatedStorage:FindFirstChild("Remotes") and ReplicatedStorage.Remotes:FindFirstChild("Attacks")
+            local basic = attacks and attacks:FindFirstChild("BasicAttack")
+            if basic then basic:FireServer(false) end
+        end)
+    end
+end
+
+task.spawn(function()
+    while true do
+        task.wait(0.1)
+        pcall(W.KA_AutoAttack)
+    end
+end)
+
+--====================================================--
+-- AIMBOT ZOMBIE
+--====================================================--
+do
+    local ZombieState = {
+        Enabled = false, Holding = false, Strength = 1,
+        Predict = true, PredictStrength = 0.12, FOV = 250,
+        VisibilityCheck = true, AimPart = "HumanoidRootPart", Target = nil,
+    }
+    local ZombieConn = nil
+    local function AZ_IsVisible(part)
+        local cam = Workspace.CurrentCamera
+        if not cam then return true end
+        local rp = RaycastParams.new()
+        rp.FilterType = Enum.RaycastFilterType.Exclude
+        rp.FilterDescendantsInstances = { LocalPlayer.Character }
+        local origin = cam.CFrame.Position
+        local dir = part.Position - origin
+        local result = Workspace:Raycast(origin, dir, rp)
+        if not result then return true end
+        return result.Instance:IsDescendantOf(part.Parent)
+    end
+    local function AZ_GetZombies()
+        local list = {}
+        local map = Workspace:FindFirstChild("Map")
+        if not map then return list end
+        for _, c in ipairs(map:GetDescendants()) do
+            if c:IsA("Model") then
+                local a = c:GetAttributes()
+                local isZombie = c:GetAttribute("CorpseCreated0492") ~= nil
+                    or c:GetAttribute("IsZombie") == true
+                    or next(a) ~= nil
+                local hrp = c:FindFirstChild("HumanoidRootPart")
+                local hum = c:FindFirstChildOfClass("Humanoid")
+                if isZombie and hrp and hum and hum.Health > 0 then
+                    table.insert(list, hrp)
+                end
+            end
+        end
+        return list
+    end
+    local function AZ_GetClosestTarget()
+        local cam = Workspace.CurrentCamera
+        if not cam then return nil end
+        local center = Vector2.new(cam.ViewportSize.X/2, cam.ViewportSize.Y/2)
+        local closest, shortest = nil, ZombieState.FOV
+        for _, hrp in ipairs(AZ_GetZombies()) do
+            if hrp and hrp.Parent then
+                local pos, visible = cam:WorldToViewportPoint(hrp.Position)
+                if visible then
+                    local dist = (Vector2.new(pos.X, pos.Y) - center).Magnitude
+                    if dist < shortest then
+                        if ZombieState.VisibilityCheck and not AZ_IsVisible(hrp) then continue end
+                        shortest = dist; closest = hrp
+                    end
+                end
+            end
+        end
+        return closest
+    end
+    local function AZ_Start()
+        if ZombieConn then return end
+        ZombieConn = RunService.RenderStepped:Connect(function()
+            if not W2.AimbotZombie_Enabled then return end
+            if not ZombieState.Holding then return end
+            local target = AZ_GetClosestTarget()
+            if not target then return end
+            ZombieState.Target = target
+            local pos = target.Position
+            if ZombieState.Predict then
+                pos = pos + (target.AssemblyLinearVelocity * ZombieState.PredictStrength)
+            end
+            local cam = Workspace.CurrentCamera
+            cam.CFrame = cam.CFrame:Lerp(CFrame.new(cam.CFrame.Position, pos), ZombieState.Strength)
+        end)
+    end
+    UserInputService.InputBegan:Connect(function(input, gp)
+        if gp then return end
+        if input.UserInputType == Enum.UserInputType.MouseButton2 and W2.AimbotZombie_Enabled then
+            ZombieState.Holding = true
+        end
+    end)
+    UserInputService.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton2 then
+            ZombieState.Holding = false
+        end
+    end)
+    function W.AimbotZombie_Start() AZ_Start() end
+    function W.AimbotZombie_SetEnabled(v)
+        W2.AimbotZombie_Enabled = v and true or false
+        if v then AZ_Start() end
+    end
+    W.AimbotZombie_Cfg = ZombieState
 end
 
 --====================================================--
@@ -4033,7 +4897,7 @@ do
     local function AimLock_Start()
         if AimLockThread then task.cancel(AimLockThread) end
         AimLockThread = task.spawn(function()
-            while OW.AimHidden_Enabled do
+            while W2.AimHidden_Enabled do
                 if AimLockAiming then
                     local target = AimLock_GetClosestTarget()
                     if target then
@@ -4050,12 +4914,12 @@ do
         end)
     end
     UserInputService.InputBegan:Connect(function(input, gp)
-        if gp or not OW.AimHidden_Enabled then return end
+        if gp or not W2.AimHidden_Enabled then return end
         if input.UserInputType == Enum.UserInputType.MouseButton2 then AimLockAiming = true end
         if input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == AimLockHoldKey then AimLockAiming = true end
     end)
     UserInputService.InputEnded:Connect(function(input)
-        if not OW.AimHidden_Enabled then return end
+        if not W2.AimHidden_Enabled then return end
         if input.UserInputType == Enum.UserInputType.MouseButton2 then AimLockAiming = false end
         if input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == AimLockHoldKey then AimLockAiming = false end
     end)
@@ -4084,7 +4948,7 @@ do
                 btn:SetAttribute("AimLockHooked", true)
                 table.insert(AimLockMobileHooks, btn.InputBegan:Connect(function(i)
                     if i.UserInputType == Enum.UserInputType.Touch or i.UserInputType == Enum.UserInputType.MouseButton1 then
-                        if OW.AimHidden_Enabled then AimLockAiming = true end
+                        if W2.AimHidden_Enabled then AimLockAiming = true end
                     end
                 end))
                 table.insert(AimLockMobileHooks, btn.InputEnded:Connect(function(i)
@@ -4116,7 +4980,7 @@ do
         if UserInputService.TouchEnabled then task.wait(2); AimLock_SetupMobile() end
     end)
     function W.AimHidden_SetEnabled(state)
-        OW.AimHidden_Enabled = state
+        W2.AimHidden_Enabled = state
         if state then
             AimLock_Start()
         else
@@ -4126,7 +4990,7 @@ do
     end
     function W.AimHidden_SetKey(keyName)
         local ok, kc = pcall(function() return Enum.KeyCode[tostring(keyName):upper()] end)
-        if ok and kc then AimLockHoldKey = kc; OW.AimHidden_Key = kc.Name end
+        if ok and kc then AimLockHoldKey = kc; W2.AimHidden_Key = kc.Name end
     end
 end
 
@@ -4260,7 +5124,7 @@ function W.SetupAntiBlind()
                 setreadonly(mt, false)
                 local old = mt.__namecall
                 mt.__namecall = newcclosure(function(self, ...)
-                    if not checkcaller() and getgenv().OW and getgenv().OW.AntiBlind_Enabled and self == gb then
+                    if not checkcaller() and getgenv().W2 and getgenv().W2.AntiBlind_Enabled and self == gb then
                         local method = getnamecallmethod()
                         if method == "FireServer" and W.GetRole() == "Killer" then
                             return nil
@@ -4278,11 +5142,11 @@ pcall(W.SetupAntiBlind)
 --====================================================--
 -- DESTROY PALLET
 --====================================================--
-getgenv().OneW_IsBreakingPallet = false
+getgenv().W2_IsBreakingPallet = false
 function W.DestroyAllPallets()
-    if not OW.DestroyPallet then return end
+    if not W2.DestroyPallet then return end
     if W.GetRole() ~= "Killer" then return end
-    if getgenv().OneW_IsBreakingPallet then return end
+    if getgenv().W2_IsBreakingPallet then return end
 
     local char = LocalPlayer.Character
     local root = char and char:FindFirstChild("HumanoidRootPart")
@@ -4305,7 +5169,7 @@ function W.DestroyAllPallets()
     end
     if not nearest then return end
 
-    getgenv().OneW_IsBreakingPallet = true
+    getgenv().W2_IsBreakingPallet = true
     task.spawn(function()
         pcall(function()
             local r = ReplicatedStorage:FindFirstChild("Remotes")
@@ -4324,11 +5188,9 @@ function W.DestroyAllPallets()
             if os.clock() - start > 3 then break end
             task.wait(0.1)
         end
-        getgenv().OneW_IsBreakingPallet = false
+        getgenv().W2_IsBreakingPallet = false
     end)
-end
-
---====================================================--
+end--====================================================--
 -- SELECT MASKED POWER
 --====================================================--
 W.Masked = W.Masked or { CurrentPower = "Cobra", Powers = {"Cobra", "Richter", "Brandon", "Rabbit", "Alex", "Tony"} }
@@ -4340,7 +5202,7 @@ function W.Masked_Activate()
         and ReplicatedStorage.Remotes.Killers.Masked:FindFirstChild("Activatepower")
     if ev then
         pcall(function() ev:FireServer(Masked.CurrentPower) end)
-        OW_Notify("Select Masked", "Activated: " .. Masked.CurrentPower, 2)
+        W2_Notify("Select Masked", "Activated: " .. Masked.CurrentPower, 2)
     else ForceNotify("Select Masked", "Activatepower remote not found", 2) end
 end
 function W.Masked_Deactivate()
@@ -4350,9 +5212,11 @@ function W.Masked_Deactivate()
         and ReplicatedStorage.Remotes.Killers.Masked:FindFirstChild("Deactivatepower")
     if ev then
         pcall(function() ev:FireServer() end)
-        OW_Notify("Select Masked", "Deactivated", 2)
+        W2_Notify("Select Masked", "Deactivated", 2)
     else ForceNotify("Select Masked", "Deactivatepower remote not found", 2) end
-end--====================================================--
+end
+
+--====================================================--
 -- SILENT SPEAR VEIL V1
 --====================================================--
 local VeilState = { target = nil, lookVector = nil, velHistory = {} }
@@ -4396,14 +5260,14 @@ local function Veil_UpdateAimbot()
     end
     local cam = Workspace.CurrentCamera
     if not cam then return end
-    if not OW.VeilV1_Enabled then VeilState.target = nil; VeilState.lookVector = nil; return end
+    if not W2.VeilV1_Enabled then VeilState.target = nil; VeilState.lookVector = nil; return end
     local char = LocalPlayer.Character
     local hrp = char and char:FindFirstChild("HumanoidRootPart")
     if not hrp then return end
     local center = Vector2.new(cam.ViewportSize.X / 2, cam.ViewportSize.Y / 2)
     local nearest, nearestPart = nil, nil
-    local bestDist = OW.VeilV1_FOV or 150
-    local bestStudDist = OW.VeilV1_MaxDist or 280
+    local bestDist = W2.VeilV1_FOV or 150
+    local bestStudDist = W2.VeilV1_MaxDist or 280
     for _, p in ipairs(Players:GetPlayers()) do
         if p ~= LocalPlayer and Veil_IsSurvivorVeil(p) and p.Character then
             local pc = p.Character
@@ -4430,16 +5294,16 @@ local function Veil_UpdateAimbot()
         local origin = (hand and hand:IsA("BasePart")) and hand.Position or hrp.Position
         local dir = tp - origin
         local dist = dir.Magnitude
-        if dist > 0.1 and dist <= (OW.VeilV1_MaxDist or 280) then
+        if dist > 0.1 and dist <= (W2.VeilV1_MaxDist or 280) then
             local isAuraActive = char:GetAttribute("special") == true
             local prof
             if isAuraActive then
-                prof = { v0 = 165, g = 96.5, windup = 0.10, latency = 0.04, maxlead = 25, scale = OW.VeilV1_Lead or 1.4 }
+                prof = { v0 = 165, g = 96.5, windup = 0.10, latency = 0.04, maxlead = 25, scale = W2.VeilV1_Lead or 1.4 }
             else
-                prof = { v0 = OW.VeilV1_SpearSpeed or 165, g = OW.VeilV1_Gravity or 103, windup = 0.10, latency = 0.04, maxlead = 45, scale = OW.VeilV1_Lead or 1.4 }
+                prof = { v0 = W2.VeilV1_SpearSpeed or 165, g = W2.VeilV1_Gravity or 103, windup = 0.10, latency = 0.04, maxlead = 45, scale = W2.VeilV1_Lead or 1.4 }
             end
             local aimPoint = tp
-            if OW.VeilV1_AutoPredict then
+            if W2.VeilV1_AutoPredict then
                 local vel = Veil_getCharacterVelocity(nearest.Character)
                 if vel.Magnitude > 0.5 then
                     local h0 = Vector3.new(dir.X, 0, dir.Z)
@@ -4479,7 +5343,7 @@ local function Veil_setupInterceptor()
             oldNamecall = hookmetamethod(game, "__namecall", function(self, ...)
                 local method = getnamecallmethod()
                 if not checkcaller() and method == "FireServer" then
-                    if self.Name == "Spearthrow" and OW.VeilV1_Enabled and typeof(VeilState.lookVector) == "Vector3" and GetRole() == "Killer" then
+                    if self.Name == "Spearthrow" and W2.VeilV1_Enabled and typeof(VeilState.lookVector) == "Vector3" and GetRole() == "Killer" then
                         local args = {...}
                         if typeof(args[1]) == "Vector3" then args[1] = VeilState.lookVector end
                         return oldNamecall(self, unpack(args))
@@ -4495,7 +5359,7 @@ Veil_setupInterceptor()
 RunService.RenderStepped:Connect(function() pcall(Veil_UpdateAimbot) end)
 
 --====================================================--
--- SILENT SPEAR VEIL V2 (W424 style)
+-- SILENT SPEAR VEIL V2
 --====================================================--
 do
     local Config = {}
@@ -4566,7 +5430,7 @@ do
     end
 
     local veilTargetHighlight = Instance.new("Highlight")
-    veilTargetHighlight.Name = "OneW_VeilTarget"
+    veilTargetHighlight.Name = "W2_VeilTarget"
     veilTargetHighlight.FillColor = Color3.fromRGB(150, 150, 150)
     veilTargetHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
     veilTargetHighlight.FillTransparency = 0.5
@@ -4577,9 +5441,9 @@ do
     local currentVeilBillboard = nil
 
     local function setupVeilTrackerGui()
-        if CoreGui:FindFirstChild("OneWVeilTrackerGui") then return end
+        if CoreGui:FindFirstChild("W2VeilTrackerGui") then return end
         local sg = Instance.new("ScreenGui")
-        sg.Name = "OneWVeilTrackerGui"
+        sg.Name = "W2VeilTrackerGui"
         sg.IgnoreGuiInset = true
         sg.ResetOnSpawn = false
         sg.Parent = CoreGui
@@ -4598,9 +5462,9 @@ do
     setupVeilTrackerGui()
 
     local VeilFOVFrame = nil
-    if not CoreGui:FindFirstChild("OneWFOVCircleGui_Standalone") then
+    if not CoreGui:FindFirstChild("W2FOVCircleGui_Standalone") then
         local FOVGui = Instance.new("ScreenGui")
-        FOVGui.Name = "OneWFOVCircleGui_Standalone"
+        FOVGui.Name = "W2FOVCircleGui_Standalone"
         FOVGui.Parent = CoreGui
         FOVGui.ResetOnSpawn = false
         FOVGui.IgnoreGuiInset = true
@@ -4620,10 +5484,7 @@ do
     local SpearInterceptorHooked = false
     function setupSpearInterceptor()
         if SpearInterceptorHooked then return end
-        if not getrawmetatable or not setreadonly then
-            warn("[SpearInterceptor]: Executor tidak support.")
-            return
-        end
+        if not getrawmetatable or not setreadonly then return end
 
         local Spearthrow = nil
         pcall(function()
@@ -4706,16 +5567,13 @@ do
     UserInputService.InputBegan:Connect(function(input, gameProcessed)
         local isTouch = (input.UserInputType == Enum.UserInputType.Touch)
         if gameProcessed and not isTouch then return end
-
         local char = LocalPlayer.Character
         local isSpearMode = char and char:GetAttribute("spearmode") == true
-
         if input.UserInputType == Enum.UserInputType.MouseButton1 then
             if IsVeilSilentOn() and isSpearMode then
                 isChargingSpear = true
             end
         end
-
         if isTouch then
             if IsVeilSilentOn() and isSpearMode then
                 local playerGui = LocalPlayer:FindFirstChild("PlayerGui")
@@ -4742,8 +5600,6 @@ do
     end)
 
     UserInputService.InputEnded:Connect(function(input, gameProcessed)
-        local isTouchEnd = (input.UserInputType == Enum.UserInputType.Touch)
-
         if isChargingSpear and (input == currentTouchInput or input.UserInputType == Enum.UserInputType.MouseButton1) then
             isChargingSpear = false
             if isAttackCooldown then return end
@@ -4899,10 +5755,10 @@ end
 -- BYPASS NO COOLDOWN
 --====================================================--
 -- Hidden Leap Bypass
-getgenv().OneW_HiddenLeapBypassThread = nil
+getgenv().W2_HiddenLeapBypassThread = nil
 function W.StartHiddenCooldownBypass()
-    if getgenv().OneW_HiddenLeapBypassThread then return end
-    getgenv().OneW_HiddenLeapBypassThread = task.spawn(function()
+    if getgenv().W2_HiddenLeapBypassThread then return end
+    getgenv().W2_HiddenLeapBypassThread = task.spawn(function()
         local leapFunction, m2Function
         local function scanGC()
             pcall(function()
@@ -4922,7 +5778,7 @@ function W.StartHiddenCooldownBypass()
         scanGC()
         local lastScan = os.clock()
         while task.wait(0.1) do
-            if not OW.Bypass_HiddenLeap then break end
+            if not W2.Bypass_HiddenLeap then break end
             if not (leapFunction and m2Function) then
                 if os.clock() - lastScan >= 2 then lastScan = os.clock(); scanGC() end
             end
@@ -4945,12 +5801,12 @@ function W.StartHiddenCooldownBypass()
                 end)
             end
         end
-        getgenv().OneW_HiddenLeapBypassThread = nil
+        getgenv().W2_HiddenLeapBypassThread = nil
     end)
 end
 function W.SetHiddenLeap(v)
-    OW.Bypass_HiddenLeap = v and true or false
-    if OW.Bypass_HiddenLeap then W.StartHiddenCooldownBypass() end
+    W2.Bypass_HiddenLeap = v and true or false
+    if W2.Bypass_HiddenLeap then W.StartHiddenCooldownBypass() end
 end
 
 -- Myers Infinite Grab
@@ -4985,7 +5841,8 @@ function W.doMyersGrab()
 end
 function W.setMyersGrab(v)
     MyersGrabData.Enabled = v and true or false
-    OW.Bypass_MyersGrab = MyersGrabData.Enabled
+    W2.Bypass_MyersGrab = MyersGrabData.Enabled
+    if getgenv().W2_MGrabBtn_UpdateVisual then getgenv().W2_MGrabBtn_UpdateVisual() end
 end
 UserInputService.InputBegan:Connect(function(input, gp)
     if gp then return end
@@ -4994,10 +5851,10 @@ UserInputService.InputBegan:Connect(function(input, gp)
     end
 end)
 
--- Slasher Bypass (LakeMist + Pursuit)
-getgenv().OneW_SlasherBypassThread = nil
+-- Slasher Bypass
+getgenv().W2_SlasherBypassThread = nil
 function W.StartSlasherBypass()
-    if getgenv().OneW_SlasherBypassThread then return end
+    if getgenv().W2_SlasherBypassThread then return end
     pcall(function()
         local b = true
         local mt = debug.getmetatable(b)
@@ -5009,7 +5866,7 @@ function W.StartSlasherBypass()
         mt.__sub = function() return 0 end
         if setreadonly then setreadonly(mt, true) end
     end)
-    getgenv().OneW_SlasherBypassThread = task.spawn(function()
+    getgenv().W2_SlasherBypassThread = task.spawn(function()
         local toggleFunc = nil
         local pursuitHandler = nil
         local function scanGCForSlasher()
@@ -5037,86 +5894,86 @@ function W.StartSlasherBypass()
         scanGCForSlasher()
         local lastScan = os.clock()
         while task.wait(0.1) do
-            if not OW.Bypass_LakeMist and not OW.Bypass_Pursuit then break end
+            if not W2.Bypass_LakeMist and not W2.Bypass_Pursuit then break end
             if not (toggleFunc and pursuitHandler) then
                 if os.clock() - lastScan >= 2 then scanGCForSlasher(); lastScan = os.clock() end
             end
-            if toggleFunc and OW.Bypass_LakeMist then
+            if toggleFunc and W2.Bypass_LakeMist then
                 pcall(function()
                     debug.setupvalue(toggleFunc, 6, false)
                     debug.setupvalue(toggleFunc, 10, false)
                 end)
             end
-            if pursuitHandler and OW.Bypass_Pursuit then
+            if pursuitHandler and W2.Bypass_Pursuit then
                 pcall(function()
                     debug.setupvalue(pursuitHandler, 5, false)
                     debug.setupvalue(pursuitHandler, 6, false)
                 end)
             end
         end
-        getgenv().OneW_SlasherBypassThread = nil
+        getgenv().W2_SlasherBypassThread = nil
     end)
 end
 function W.SetLakeMist(v)
-    OW.Bypass_LakeMist = v and true or false
-    if OW.Bypass_LakeMist or OW.Bypass_Pursuit then W.StartSlasherBypass() end
+    W2.Bypass_LakeMist = v and true or false
+    if W2.Bypass_LakeMist or W2.Bypass_Pursuit then W.StartSlasherBypass() end
 end
 function W.SetPursuit(v)
-    OW.Bypass_Pursuit = v and true or false
-    if OW.Bypass_LakeMist or OW.Bypass_Pursuit then W.StartSlasherBypass() end
+    W2.Bypass_Pursuit = v and true or false
+    if W2.Bypass_LakeMist or W2.Bypass_Pursuit then W.StartSlasherBypass() end
 end
 
 -- Abyss Bypass
-getgenv().OneW_AbyssBypassConn = nil
-getgenv().OneW_CorruptHandlerFunc = nil
+getgenv().W2_AbyssBypassConn = nil
+getgenv().W2_CorruptHandlerFunc = nil
 function W.StartAbyssBypass()
-    if not getgenv().OneW_CorruptHandlerFunc then
+    if not getgenv().W2_CorruptHandlerFunc then
         pcall(function()
             for _, v in pairs(getgc(true)) do
                 if type(v) == "function" and islclosure(v) then
                     local constants = debug.getconstants(v)
                     if table.find(constants, "corrupt") and table.find(constants, "Immobile") then
-                        getgenv().OneW_CorruptHandlerFunc = v
+                        getgenv().W2_CorruptHandlerFunc = v
                         break
                     end
                 end
             end
         end)
     end
-    if not getgenv().OneW_CorruptHandlerFunc then return end
-    if getgenv().OneW_AbyssBypassConn then
-        getgenv().OneW_AbyssBypassConn:Disconnect()
+    if not getgenv().W2_CorruptHandlerFunc then return end
+    if getgenv().W2_AbyssBypassConn then
+        getgenv().W2_AbyssBypassConn:Disconnect()
     end
-    getgenv().OneW_AbyssBypassConn = RunService.Heartbeat:Connect(function()
-        if not OW.Bypass_AbyssCD then return end
-        if getgenv().OneW_CorruptHandlerFunc then
-            local upvalues = debug.getupvalues(getgenv().OneW_CorruptHandlerFunc)
+    getgenv().W2_AbyssBypassConn = RunService.Heartbeat:Connect(function()
+        if not W2.Bypass_AbyssCD then return end
+        if getgenv().W2_CorruptHandlerFunc then
+            local upvalues = debug.getupvalues(getgenv().W2_CorruptHandlerFunc)
             for idx, val in pairs(upvalues) do
                 if type(val) == "boolean" and val == false then
-                    debug.setupvalue(getgenv().OneW_CorruptHandlerFunc, idx, true)
+                    debug.setupvalue(getgenv().W2_CorruptHandlerFunc, idx, true)
                 end
             end
         end
     end)
 end
 function W.SetAbyssBypass(v)
-    OW.Bypass_AbyssCD = v and true or false
-    if OW.Bypass_AbyssCD then W.StartAbyssBypass()
+    W2.Bypass_AbyssCD = v and true or false
+    if W2.Bypass_AbyssCD then W.StartAbyssBypass()
     else
-        if getgenv().OneW_AbyssBypassConn then
-            getgenv().OneW_AbyssBypassConn:Disconnect()
-            getgenv().OneW_AbyssBypassConn = nil
+        if getgenv().W2_AbyssBypassConn then
+            getgenv().W2_AbyssBypassConn:Disconnect()
+            getgenv().W2_AbyssBypassConn = nil
         end
     end
 end
 
 -- Jeff Infinite Frenzy
-getgenv().OneW_JeffBypassThread = nil
+getgenv().W2_JeffBypassThread = nil
 function W.StartJeffBypass()
-    if getgenv().OneW_JeffBypassThread then return end
-    getgenv().OneW_JeffBypassThread = task.spawn(function()
+    if getgenv().W2_JeffBypassThread then return end
+    getgenv().W2_JeffBypassThread = task.spawn(function()
         while task.wait() do
-            if not OW.Bypass_JeffFrenzy then break end
+            if not W2.Bypass_JeffFrenzy then break end
             pcall(function()
                 local char = LocalPlayer.Character
                 if char and char:GetAttribute("Frenzy") ~= true then
@@ -5124,7 +5981,7 @@ function W.StartJeffBypass()
                 end
             end)
         end
-        getgenv().OneW_JeffBypassThread = nil
+        getgenv().W2_JeffBypassThread = nil
     end)
 end
 function W.StopJeffBypass()
@@ -5143,8 +6000,8 @@ function W.StopJeffBypass()
     end)
 end
 function W.SetJeffFrenzy(v)
-    OW.Bypass_JeffFrenzy = v and true or false
-    if OW.Bypass_JeffFrenzy then W.StartJeffBypass()
+    W2.Bypass_JeffFrenzy = v and true or false
+    if W2.Bypass_JeffFrenzy then W.StartJeffBypass()
     else W.StopJeffBypass() end
 end
 
@@ -5173,8 +6030,8 @@ function W.SetupCarryHook()
     end)
 end
 function W.SetUnlockCarry(v)
-    OW.UnlockCarry_Enabled = v and true or false
-    CarryCfg.Enabled = OW.UnlockCarry_Enabled
+    W2.UnlockCarry_Enabled = v and true or false
+    CarryCfg.Enabled = W2.UnlockCarry_Enabled
     if v then W.SetupCarryHook() end
 end
 
@@ -5189,15 +6046,15 @@ do
         TargetLabel = nil, LeftArrow = nil, RightArrow = nil,
     }
     local function SpearAimbotCalc(targetPos)
-        if not OW.SpearAimbot_Enabled or GetRole() ~= "Killer" then return nil end
+        if not W2.SpearAimbot_Enabled or GetRole() ~= "Killer" then return nil end
         local char = LocalPlayer.Character
         if not char then return nil end
         local root = char:FindFirstChild("HumanoidRootPart")
         if not root then return nil end
         local startPos = root.Position + Vector3.new(0, 2, 0)
         local distance = (targetPos - startPos).Magnitude
-        local gravity  = OW.SpearAimbot_Gravity or 50
-        local speed    = OW.SpearAimbot_Speed or 100
+        local gravity  = W2.SpearAimbot_Gravity or 50
+        local speed    = W2.SpearAimbot_Speed or 100
         local time     = distance / speed
         local drop     = 0.5 * gravity * time * time
         return targetPos + Vector3.new(0, drop, 0)
@@ -5234,7 +6091,7 @@ do
         local list = Spear_GetTargetList()
         if #list == 0 then
             SpearBtnData.ManualTarget = nil; SpearBtnData.TargetIndex = 0
-            OW_Notify("Spear Aimbot", "Tidak ada target survivor.", 2)
+            W2_Notify("Spear Aimbot", "Tidak ada target survivor.", 2)
             return
         end
         local curIdx = nil
@@ -5251,11 +6108,11 @@ do
         else nextIdx = 1 end
         SpearBtnData.TargetIndex  = nextIdx
         SpearBtnData.ManualTarget = list[nextIdx]
-        OW_Notify("Spear Aimbot", "Target: " .. SpearBtnData.ManualTarget.Name, 2)
+        W2_Notify("Spear Aimbot", "Target: " .. SpearBtnData.ManualTarget.Name, 2)
         Spear_UpdateTargetLabel()
     end
     local function Spear_UpdateAim()
-        if not OW.SpearAimbot_Enabled then return end
+        if not W2.SpearAimbot_Enabled then return end
         if SpearBtnData and not SpearBtnData.Active then return end
         if GetRole() ~= "Killer" then return end
         local root = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
@@ -5302,7 +6159,7 @@ do
         local pg = LocalPlayer:FindFirstChild("PlayerGui")
         if not pg then return end
         SpearBtnData.UI = Instance.new("ScreenGui")
-        SpearBtnData.UI.Name = "OneWSpearAimbotUI"
+        SpearBtnData.UI.Name = "W2SpearAimbotUI"
         SpearBtnData.UI.ResetOnSpawn = false
         SpearBtnData.UI.IgnoreGuiInset = true
         SpearBtnData.UI.Parent = pg
@@ -5428,46 +6285,45 @@ do
                 SpearBtnData.Button.BackgroundColor3 = Color3.fromRGB(10, 40, 10)
                 SpearBtnData.Button.TextColor3 = Color3.fromRGB(80, 255, 120)
                 spearStk.Color = Color3.fromRGB(80, 255, 120)
-                OW_Notify("Spear Aimbot", "Spear Aimbot AKTIF!", 3)
+                W2_Notify("Spear Aimbot", "Spear Aimbot AKTIF!", 3)
             else
                 SpearBtnData.Button.BackgroundColor3 = Color3.fromRGB(30, 10, 10)
                 SpearBtnData.Button.TextColor3 = Color3.fromRGB(255, 100, 100)
                 spearStk.Color = Color3.fromRGB(255, 80, 80)
-                OW_Notify("Spear Aimbot", "Spear Aimbot NONAKTIF", 3)
+                W2_Notify("Spear Aimbot", "Spear Aimbot NONAKTIF", 3)
             end
         end)
     end
     RunService.RenderStepped:Connect(function() pcall(Spear_UpdateAim) end)
     RunService.Heartbeat:Connect(function()
         if SpearBtnData and SpearBtnData.Button then
-            local shouldShow = OW.SpearAimbot_Enabled and GetRole() == "Killer"
+            local shouldShow = W2.SpearAimbot_Enabled and GetRole() == "Killer"
             SpearBtnData.Button.Visible = shouldShow
             if shouldShow then pcall(Spear_UpdateTargetLabel) end
         end
     end)
     LocalPlayer.CharacterAdded:Connect(function()
         task.wait(0.5)
-        if OW.SpearAimbot_Enabled then pcall(Spear_SetupButton) end
+        if W2.SpearAimbot_Enabled then pcall(Spear_SetupButton) end
     end)
     function W.SpearAimbot_SetEnabled(v)
-        OW.SpearAimbot_Enabled = v and true or false
+        W2.SpearAimbot_Enabled = v and true or false
         if v then SpearBtnData.Active = true; Spear_SetupButton()
         else
             if SpearBtnData.UI then pcall(function() SpearBtnData.UI:Destroy() end); SpearBtnData.UI = nil end
             SpearBtnData.Button = nil
         end
+        if getgenv().W2_SpearBtn_UpdateVisual then getgenv().W2_SpearBtn_UpdateVisual() end
     end
-    function W.SpearAimbot_SetGravity(v) OW.SpearAimbot_Gravity = tonumber(v) or 50 end
-    function W.SpearAimbot_SetSpeed(v)   OW.SpearAimbot_Speed   = tonumber(v) or 100 end
-end
-
---====================================================--
+    function W.SpearAimbot_SetGravity(v) W2.SpearAimbot_Gravity = tonumber(v) or 50 end
+    function W.SpearAimbot_SetSpeed(v)   W2.SpearAimbot_Speed   = tonumber(v) or 100 end
+end--====================================================--
 -- KILLER ABILITIES
 --====================================================--
 W.KillerAbilities = W.KillerAbilities or {
-    AutoStalk = OW.AutoStalk, AutoStalkRange = OW.AutoStalk_Range,
-    AutoKillAll = OW.AutoKillAll, DropAllPallet = OW.DropAllPallet,
-    BlockAllVault = OW.BlockAllVault,
+    AutoStalk = W2.AutoStalk, AutoStalkRange = W2.AutoStalk_Range,
+    AutoKillAll = W2.AutoKillAll, DropAllPallet = W2.DropAllPallet,
+    BlockAllVault = W2.BlockAllVault,
 }
 local KA = W.KillerAbilities
 function W.KA_GetClosestSurvivor(range, minHealth)
@@ -5509,7 +6365,7 @@ function W.KA_StopAutoStalk()
 end
 function W.KA_SetAutoStalk(v)
     KA.AutoStalk = v and true or false
-    OW.AutoStalk = KA.AutoStalk
+    W2.AutoStalk = KA.AutoStalk
     if KA.AutoStalk then W.KA_StartAutoStalk() else W.KA_StopAutoStalk() end
 end
 local KillAllTarget = nil
@@ -5543,7 +6399,7 @@ function W.KA_UpdateKillAll()
 end
 function W.KA_SetAutoKillAll(v)
     KA.AutoKillAll = v and true or false
-    OW.AutoKillAll = KA.AutoKillAll
+    W2.AutoKillAll = KA.AutoKillAll
     if not KA.AutoKillAll then KillAllTarget = nil end
 end
 local lastDropAllPallet = 0
@@ -5570,7 +6426,7 @@ function W.KA_DropAllPallets()
 end
 function W.KA_SetDropAllPallet(v)
     KA.DropAllPallet = v and true or false
-    OW.DropAllPallet = KA.DropAllPallet
+    W2.DropAllPallet = KA.DropAllPallet
 end
 local lastBlockVault = 0
 function W.KA_BlockAllVaults()
@@ -5589,7 +6445,7 @@ function W.KA_BlockAllVaults()
 end
 function W.KA_SetBlockAllVault(v)
     KA.BlockAllVault = v and true or false
-    OW.BlockAllVault = KA.BlockAllVault
+    W2.BlockAllVault = KA.BlockAllVault
 end
 task.spawn(function()
     while true do
@@ -5597,8 +6453,8 @@ task.spawn(function()
         if KA.AutoKillAll then pcall(W.KA_UpdateKillAll) end
         if KA.DropAllPallet then pcall(W.KA_DropAllPallets) end
         if KA.BlockAllVault then pcall(W.KA_BlockAllVaults) end
-        if OW.DestroyPallet then pcall(W.DestroyAllPallets) end
-        pcall(W.OW_UpdateInfiniteLunge)
+        if W2.DestroyPallet then pcall(W.DestroyAllPallets) end
+        pcall(W.UpdateInfiniteLunge)
     end
 end)
 LocalPlayer.CharacterAdded:Connect(function()
@@ -5668,7 +6524,7 @@ do
         return closest
     end
     local function DoAutoHook()
-        if not OW.AutoHook then return end
+        if not W2.AutoHook then return end
         if IsAutoHooking then return end
         if GetRole() ~= "Killer" then return end
         local root = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
@@ -5715,7 +6571,7 @@ do
     function W.KA_StartAutoHook()
         if W._AutoHookThread then return end
         W._AutoHookThread = task.spawn(function()
-            while OW.AutoHook do
+            while W2.AutoHook do
                 if GetRole() == "Killer" then pcall(DoAutoHook) end
                 task.wait(1)
             end
@@ -5729,8 +6585,8 @@ do
         end
     end
     function W.KA_SetAutoHook(v)
-        OW.AutoHook = v and true or false
-        if OW.AutoHook then W.KA_StartAutoHook() else W.KA_StopAutoHook() end
+        W2.AutoHook = v and true or false
+        if W2.AutoHook then W.KA_StartAutoHook() else W.KA_StopAutoHook() end
     end
 end
 
@@ -5743,7 +6599,7 @@ do
         local myChar = LocalPlayer.Character
         local myRoot = myChar and myChar:FindFirstChild("HumanoidRootPart")
         if not myRoot then return nil end
-        local maxR = tonumber(OW.Flask_Range) or 200
+        local maxR = tonumber(W2.Flask_Range) or 200
         local best, bd = nil, math.huge
         for _, p in ipairs(Players:GetPlayers()) do
             if p ~= LocalPlayer and TeamIs(p, "Survivor") and p.Character then
@@ -5768,10 +6624,10 @@ do
     end
     local function Flask_PredictLanding(origin, targetRoot)
         local targetPos = targetRoot.Position
-        local speed   = tonumber(OW.Flask_Speed)   or 90
-        local gravity = tonumber(OW.Flask_Gravity) or 196
-        local lead    = tonumber(OW.Flask_Lead) or 1.0
-        if not OW.Flask_Predict then return targetPos end
+        local speed   = tonumber(W2.Flask_Speed)   or 90
+        local gravity = tonumber(W2.Flask_Gravity) or 196
+        local lead    = tonumber(W2.Flask_Lead) or 1.0
+        if not W2.Flask_Predict then return targetPos end
         local tv = targetRoot.AssemblyLinearVelocity or Vector3.zero
         local horizVel = Vector3.new(tv.X, 0, tv.Z)
         local dist = (targetPos - origin).Magnitude
@@ -5798,7 +6654,7 @@ do
     local function Flask_EnsureBeamParts()
         if not FlaskState.BeamPart or not FlaskState.BeamPart.Parent then
             local beam = Instance.new("Part")
-            beam.Name = "OneWFlaskBeam"
+            beam.Name = "W2FlaskBeam"
             beam.Anchored = true
             beam.CanCollide = false
             beam.CanTouch = false
@@ -5812,7 +6668,7 @@ do
         end
         if not FlaskState.AccentPart or not FlaskState.AccentPart.Parent then
             local accent = Instance.new("Part")
-            accent.Name = "OneWFlaskBeamAccent"
+            accent.Name = "W2FlaskBeamAccent"
             accent.Anchored = true
             accent.CanCollide = false
             accent.CanTouch = false
@@ -5840,13 +6696,13 @@ do
         FlaskState.AccentPart.Transparency = 0.35
     end
     local function Flask_UpdateLanding(pos)
-        if not OW.Flask_ShowLanding then
+        if not W2.Flask_ShowLanding then
             if FlaskState.LandingRing then FlaskState.LandingRing.Transparency = 1 end
             return
         end
         if not FlaskState.LandingRing or not FlaskState.LandingRing.Parent then
             local ring = Instance.new("Part")
-            ring.Name = "OneWFlaskLanding"
+            ring.Name = "W2FlaskLanding"
             ring.Shape = Enum.PartType.Cylinder
             ring.Anchored = true
             ring.CanCollide = false
@@ -5863,7 +6719,7 @@ do
         FlaskState.LandingRing.Transparency = 0.35
     end
     RunService.RenderStepped:Connect(function()
-        if not OW.Flask_Enabled then
+        if not W2.Flask_Enabled then
             Flask_HideVisuals()
             FlaskState.Target = nil
             FlaskState.PredictedPos = nil
@@ -5879,7 +6735,7 @@ do
         local landing = Flask_PredictLanding(hand.Position, target.Root)
         FlaskState.Target = target
         FlaskState.PredictedPos = landing
-        if OW.Flask_ShowBeam then pcall(Flask_UpdateBeam, hand.Position, landing)
+        if W2.Flask_ShowBeam then pcall(Flask_UpdateBeam, hand.Position, landing)
         else
             if FlaskState.BeamPart then FlaskState.BeamPart.Transparency = 1 end
             if FlaskState.AccentPart then FlaskState.AccentPart.Transparency = 1 end
@@ -5892,7 +6748,7 @@ do
             oldNC = hookmetamethod(game, "__namecall", function(self, ...)
                 if getnamecallmethod() == "FireServer"
                    and self.Name == "ThrowFlask"
-                   and OW.Flask_Enabled
+                   and W2.Flask_Enabled
                    and GetRole() == "Killer"
                    and FlaskState.PredictedPos then
                     local args = {...}
@@ -5918,26 +6774,26 @@ do
             end)
         end)
     end)
-    function W.Flask_SetEnabled(v) OW.Flask_Enabled = v and true or false; if not v then Flask_ClearVisuals() end end
-    function W.Flask_SetSpeed(v) OW.Flask_Speed = tonumber(v) or 90 end
-    function W.Flask_SetGravity(v) OW.Flask_Gravity = tonumber(v) or 196 end
-    function W.Flask_SetLead(v) OW.Flask_Lead = tonumber(v) or 1.0 end
-    function W.Flask_SetRange(v) OW.Flask_Range = tonumber(v) or 200 end
+    function W.Flask_SetEnabled(v) W2.Flask_Enabled = v and true or false; if not v then Flask_ClearVisuals() end end
+    function W.Flask_SetSpeed(v) W2.Flask_Speed = tonumber(v) or 90 end
+    function W.Flask_SetGravity(v) W2.Flask_Gravity = tonumber(v) or 196 end
+    function W.Flask_SetLead(v) W2.Flask_Lead = tonumber(v) or 1.0 end
+    function W.Flask_SetRange(v) W2.Flask_Range = tonumber(v) or 200 end
 end
 
 --====================================================--
 -- DASH LOCK
 --====================================================--
 do
-    OW.DashLock_Active = false
-    OW.DashLock_Target = nil
-    OW.DashLock_Connection = nil
+    W2.DashLock_Active = false
+    W2.DashLock_Target = nil
+    W2.DashLock_Connection = nil
     local DashAnimationId = "rbxassetid://98163597193511"
     local function DashLock_Update()
-        if not OW.DashLock_Enabled or not OW.DashLock_Active then return end
+        if not W2.DashLock_Enabled or not W2.DashLock_Active then return end
         local myChar = LocalPlayer.Character
         local myRoot = myChar and myChar:FindFirstChild("HumanoidRootPart")
-        if not myRoot then OW.DashLock_Target = nil; return end
+        if not myRoot then W2.DashLock_Target = nil; return end
         local target, targetDist = nil, math.huge
         for _, player in ipairs(Players:GetPlayers()) do
             if player ~= LocalPlayer and TeamIs(player, "Survivor") then
@@ -5952,33 +6808,33 @@ do
                 end
             end
         end
-        if not target then OW.DashLock_Target = nil; return end
-        OW.DashLock_Target = target
+        if not target then W2.DashLock_Target = nil; return end
+        W2.DashLock_Target = target
         local cam = Workspace.CurrentCamera
         if cam then
-            local smooth = OW.DashLock_Smooth or 0.3
+            local smooth = W2.DashLock_Smooth or 0.3
             cam.CFrame = cam.CFrame:Lerp(CFrame.new(cam.CFrame.Position, target.Position), smooth)
         end
-        if OW.DashLock_Freeze then
+        if W2.DashLock_Freeze then
             local hum = myChar:FindFirstChildOfClass("Humanoid")
             if hum and hum.WalkSpeed ~= 0 then hum.WalkSpeed = 0 end
         end
     end
     local function DashLock_SetActive(active)
         active = active and true or false
-        if active == OW.DashLock_Active then return end
-        OW.DashLock_Active = active
+        if active == W2.DashLock_Active then return end
+        W2.DashLock_Active = active
         if active then
-            if not OW.DashLock_Connection then
-                OW.DashLock_Connection = RunService.RenderStepped:Connect(function() pcall(DashLock_Update) end)
+            if not W2.DashLock_Connection then
+                W2.DashLock_Connection = RunService.RenderStepped:Connect(function() pcall(DashLock_Update) end)
             end
         else
-            if OW.DashLock_Connection then
-                pcall(function() OW.DashLock_Connection:Disconnect() end)
-                OW.DashLock_Connection = nil
+            if W2.DashLock_Connection then
+                pcall(function() W2.DashLock_Connection:Disconnect() end)
+                W2.DashLock_Connection = nil
             end
-            OW.DashLock_Target = nil
-            if OW.DashLock_Freeze then
+            W2.DashLock_Target = nil
+            if W2.DashLock_Freeze then
                 local char = LocalPlayer.Character
                 local hum = char and char:FindFirstChildOfClass("Humanoid")
                 if hum and hum.WalkSpeed == 0 then hum.WalkSpeed = 16 end
@@ -5992,11 +6848,11 @@ do
         local anim = hum:FindFirstChildOfClass("Animator") or hum:WaitForChild("Animator", 5)
         if not anim then return end
         anim.AnimationPlayed:Connect(function(track)
-            if not OW.DashLock_Enabled then return end
+            if not W2.DashLock_Enabled then return end
             local aid = track.Animation and track.Animation.AnimationId or ""
             if aid == DashAnimationId then
                 DashLock_SetActive(true)
-                task.delay(OW.DashLock_Duration or 1.5, function() DashLock_SetActive(false) end)
+                task.delay(W2.DashLock_Duration or 1.5, function() DashLock_SetActive(false) end)
             end
         end)
     end
@@ -6005,10 +6861,31 @@ do
         task.wait(0.5); DashLock_HookCharacter(c)
     end)
     function W.DashLock_SetEnabled(v)
-        OW.DashLock_Enabled = v and true or false
+        W2.DashLock_Enabled = v and true or false
         if not v then DashLock_SetActive(false) end
     end
-end    --====================================================--
+end
+
+--====================================================--
+-- INSTANT ESCAPE
+--====================================================--
+W.Escape = W.Escape or { Enabled = false, FinishLineName = "fininshline", TeleportCount = 0 }
+local Esc = W.Escape
+function W.Escape_Teleport()
+    local root = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+    if not root then ForceNotify("Escape", "Character not found", 2); return false end
+    local found = nil
+    for _, obj in ipairs(Workspace:GetDescendants()) do
+        if string.lower(obj.Name) == string.lower(Esc.FinishLineName) and obj:IsA("BasePart") then
+            found = obj; break
+        end
+    end
+    if not found then ForceNotify("Escape", "Finish line not found", 2); return false end
+    pcall(function() root.CFrame = found.CFrame + Vector3.new(0, 5, 0) end)
+    Esc.TeleportCount = Esc.TeleportCount + 1
+    W2_Notify("Instant Escape", "Teleported! (#" .. Esc.TeleportCount .. ")", 2)
+    return true
+                                    end    --====================================================--
     -- STUN INDICATOR
     --====================================================--
     W.StunSounds = W.StunSounds or {
@@ -6068,7 +6945,7 @@ end    --====================================================--
             local attachTo = head or hrp
             if not attachTo then return end
             local snd = Instance.new("Sound")
-            snd.Name = "OneWStunSound"
+            snd.Name = "W2StunSound"
             snd.SoundId = "rbxassetid://" .. tostring(SInd_GetActiveSoundId())
             snd.Volume = SInd.SoundVolume or 1.5
             snd.PlaybackSpeed = 1
@@ -6086,7 +6963,7 @@ end    --====================================================--
         local head = char:FindFirstChild("Head")
         if not head then return nil end
         local bbg = Instance.new("BillboardGui")
-        bbg.Name = "OneWStunIndicator"
+        bbg.Name = "W2StunIndicator"
         bbg.Size = UDim2.fromOffset(140, 42)
         bbg.StudsOffset = Vector3.new(0, 3.0, 0)
         bbg.AlwaysOnTop = true
@@ -6094,7 +6971,6 @@ end    --====================================================--
         bbg.MaxDistance = 500
         bbg.Adornee = head
         bbg.Parent = char
-
         local main = Instance.new("Frame")
         main.Name = "Main"
         main.Size = UDim2.new(0, 140, 0, 34)
@@ -6105,22 +6981,7 @@ end    --====================================================--
         main.ZIndex = 1
         main.Parent = bbg
         Instance.new("UICorner", main).CornerRadius = UDim.new(0, 9)
-        local bodyGrad = Instance.new("UIGradient")
-        bodyGrad.Rotation = 135
-        bodyGrad.Color = ColorSequence.new({
-            ColorSequenceKeypoint.new(0, Color3.fromRGB(24, 24, 28)),
-            ColorSequenceKeypoint.new(1, Color3.fromRGB(8, 8, 10)),
-        })
-        bodyGrad.Parent = main
-        local mainStroke = Instance.new("UIStroke", main)
-        mainStroke.Name = "MainStroke"
-        mainStroke.Color = Color3.fromRGB(255, 255, 255)
-        mainStroke.Thickness = 1.3
-        mainStroke.Transparency = 0.15
-        mainStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-
         local title = Instance.new("TextLabel")
-        title.Name = "Title"
         title.Size = UDim2.new(1, -42, 0, 12)
         title.Position = UDim2.new(0, 34, 0, 4)
         title.BackgroundTransparency = 1
@@ -6133,28 +6994,12 @@ end    --====================================================--
         title.TextStrokeTransparency = 0.5
         title.ZIndex = 3
         title.Parent = main
-
-        local sub = Instance.new("TextLabel")
-        sub.Name = "Sub"
-        sub.Size = UDim2.new(1, -42, 0, 8)
-        sub.Position = UDim2.new(0, 34, 0, 18)
-        sub.BackgroundTransparency = 1
-        sub.Font = Enum.Font.GothamBold
-        sub.Text = "SILENT"
-        sub.TextColor3 = Color3.fromRGB(170, 170, 180)
-        sub.TextSize = 7
-        sub.TextXAlignment = Enum.TextXAlignment.Left
-        sub.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
-        sub.TextStrokeTransparency = 0.6
-        sub.ZIndex = 3
-        sub.Parent = main
-
         SInd.Cache[char] = { Gui = bbg, Main = main }
         return SInd.Cache[char]
     end
     function W.SInd_SetEnabled(v)
         SInd.Enabled = v and true or false
-        OW.Stun_Enabled = SInd.Enabled
+        W2.Stun_Enabled = SInd.Enabled
         if SInd.Enabled then
             if SInd.HeartbeatConn then return end
             SInd.HeartbeatConn = RunService.Heartbeat:Connect(function()
@@ -6182,9 +7027,7 @@ end    --====================================================--
         else
             if SInd.HeartbeatConn then SInd.HeartbeatConn:Disconnect(); SInd.HeartbeatConn = nil end
             for _, data in pairs(SInd.Cache) do
-                pcall(function()
-                    if data.Gui then data.Gui:Destroy() end
-                end)
+                pcall(function() if data.Gui then data.Gui:Destroy() end end)
             end
             SInd.Cache = {}
         end
@@ -6194,14 +7037,14 @@ end    --====================================================--
     -- INVISIBILITY (MengHub API)
     --====================================================--
     do
-        local MV = getgenv().OneWInvis
+        local MV = getgenv().W2Invis
         if not MV then
             MV = {
                 Enabled = false, Loading = false, Ready = false, API = nil,
                 _lastToggle = 0, _retries = 0, _retryMax = 3,
                 _retryDelay = 2, _queueState = nil,
             }
-            getgenv().OneWInvis = MV
+            getgenv().W2Invis = MV
         end
         local INVIS_URL = "https://leekguy.vercel.app/roblox/menghub/crack_obf_invisible_93978595733734.lua"
         local function Invis_ValidateAPI(api)
@@ -6218,13 +7061,9 @@ end    --====================================================--
                 if char then
                     for _, part in ipairs(char:GetDescendants()) do
                         if part:IsA("BasePart") or part:IsA("Decal") then
-                            if part.Name ~= "Hurtbox"
-                               and part.Name ~= "HumanoidRootPart"
-                               and part.Name ~= "HRP_Clone" then
+                            if part.Name ~= "Hurtbox" and part.Name ~= "HumanoidRootPart" and part.Name ~= "HRP_Clone" then
                                 part.Transparency = 0
-                                if part:IsA("BasePart") then
-                                    part.LocalTransparencyModifier = 0
-                                end
+                                if part:IsA("BasePart") then part.LocalTransparencyModifier = 0 end
                             end
                         end
                     end
@@ -6232,9 +7071,7 @@ end    --====================================================--
             end)
         end
         local function Invis_RefreshButton()
-            if getgenv().OW_InvisBtn_UpdateVisual then
-                pcall(getgenv().OW_InvisBtn_UpdateVisual)
-            end
+            if getgenv().W2_InvisBtn_UpdateVisual then pcall(getgenv().W2_InvisBtn_UpdateVisual) end
         end
         local function Invis_LoadAPI()
             if _G.MengHub and _G.MengHub.Invisible and Invis_ValidateAPI(_G.MengHub.Invisible) then
@@ -6260,7 +7097,6 @@ end    --====================================================--
                     end
                     return true
                 else
-                    warn(("[OneWInvis] Attempt %d gagal: %s"):format(attempt, tostring(err)))
                     if attempt < MV._retryMax then task.wait(MV._retryDelay) end
                 end
             end
@@ -6275,10 +7111,10 @@ end    --====================================================--
             if now - MV._lastToggle < 0.25 then return end
             if not MV.API then
                 if MV.Loading then
-                    OW_Notify("Invisible", "Loading API...", 2)
+                    W2_Notify("Invisible", "Loading API...", 2)
                     MV._queueState = state
                 else
-                    OW_Notify("Invisible", "API gagal, retry...", 2)
+                    W2_Notify("Invisible", "API gagal, retry...", 2)
                     MV._queueState = state
                     task.spawn(function()
                         if Invis_LoadAPI() then
@@ -6299,14 +7135,9 @@ end    --====================================================--
             end
             MV._lastToggle = now
             MV.Enabled = state
-            OW.Invis_Enabled = state
+            W2.Invis_Enabled = state
             if state then
-                local ok, err = pcall(function() MV.API.enable() end)
-                if not ok then
-                    MV.Enabled = false
-                    OW.Invis_Enabled = false
-                    Invis_Cleanup()
-                end
+                pcall(function() MV.API.enable() end)
             else
                 pcall(function() MV.API.disable() end)
                 Invis_Cleanup()
@@ -6316,7 +7147,7 @@ end    --====================================================--
         UserInputService.InputBegan:Connect(function(input, gp)
             if gp then return end
             if input.UserInputType ~= Enum.UserInputType.Keyboard then return end
-            local hkName = OW.Invis_Hotkey or "G"
+            local hkName = W2.Invis_Hotkey or "G"
             local hk = Enum.KeyCode[hkName]
             if hk and input.KeyCode == hk then
                 W.Invisible_SetState(not MV.Enabled, false)
@@ -6324,76 +7155,22 @@ end    --====================================================--
         end)
         LocalPlayer.CharacterAdded:Connect(function()
             task.wait(1.2)
-            if MV.Enabled and MV.API then
-                pcall(function() MV.API.enable() end)
-                Invis_RefreshButton()
-            end
+            if MV.Enabled and MV.API then pcall(function() MV.API.enable() end) end
         end)
         W.Invisible_IsOn = function() return MV.Enabled end
-    end
-
-    --====================================================--
-    -- CAMERA DBD
-    --====================================================--
-    do
-        local CameraBindName = "OneW_CameraDBD_Smooth"
-        local PreviousPosition = nil
-        local PreviousRotation = nil
-        local OriginalPOV      = 70
-        pcall(function() RunService:UnbindFromRenderStep(CameraBindName) end)
-        RunService:BindToRenderStep(
-            CameraBindName,
-            Enum.RenderPriority.Camera.Value + 1,
-            function(DeltaTime)
-                local Camera = Workspace.CurrentCamera
-                if not Camera then return end
-                if Camera.CameraType ~= Enum.CameraType.Custom
-                   and Camera.CameraType ~= Enum.CameraType.Follow then
-                    PreviousPosition = nil; PreviousRotation = nil; return
-                end
-                if OW.CamDBD_Smooth then
-                    local CurrentCFrame   = Camera.CFrame
-                    local CurrentPosition = CurrentCFrame.Position
-                    local CurrentRotation = CurrentCFrame.Rotation
-                    if not PreviousPosition or not PreviousRotation then
-                        PreviousPosition = CurrentPosition
-                        PreviousRotation = CurrentRotation
-                    else
-                        local smoothSpeed = tonumber(OW.CamDBD_SmoothSpeed) or 4
-                        local posAlpha = 1 - math.exp(-smoothSpeed * DeltaTime)
-                        PreviousPosition = PreviousPosition:Lerp(CurrentPosition, posAlpha)
-                        local rotAlpha = 1 - math.exp(-(smoothSpeed * 1.90) * DeltaTime)
-                        PreviousRotation = PreviousRotation:Lerp(CurrentRotation, rotAlpha)
-                        Camera.CFrame = CFrame.new(PreviousPosition) * PreviousRotation
-                    end
-                else
-                    PreviousPosition = nil; PreviousRotation = nil
-                end
-                if OW.CamDBD_POVLock then
-                    local povSpeed = tonumber(OW.CamDBD_POVSmooth) or 9
-                    local alpha = 1 - math.exp(-povSpeed * DeltaTime)
-                    local target = tonumber(OW.CamDBD_POVValue) or 85
-                    Camera.FieldOfView = Camera.FieldOfView + (target - Camera.FieldOfView) * alpha
-                end
-            end
-        )
-        LocalPlayer.CharacterAdded:Connect(function()
-            task.wait(0.5); PreviousPosition = nil; PreviousRotation = nil
-        end)
     end
 
     --====================================================--
     -- PLAYER UTILITY
     --====================================================--
     do
-        local PU = { _Connections = {}, _FPS = { frames = 0, last = tick(), value = 0, ping = 0 },
-            _origIcons = {}, _pingGui = nil, _shiftLockWasActive = false, _origCanCollide = {} }
+        local PU = { _Connections = {}, _origCanCollide = {}, _shiftLockWasActive = false }
         W.PU = PU
         table.insert(PU._Connections, RunService.Heartbeat:Connect(function()
-            if not OW.PU_SpeedEnabled then return end
+            if not W2.PU_SpeedEnabled then return end
             local char = LocalPlayer.Character
             local hum = char and char:FindFirstChildOfClass("Humanoid")
-            if hum and hum.WalkSpeed ~= OW.PU_SpeedValue then hum.WalkSpeed = OW.PU_SpeedValue end
+            if hum and hum.WalkSpeed ~= W2.PU_SpeedValue then hum.WalkSpeed = W2.PU_SpeedValue end
         end))
         table.insert(PU._Connections, RunService.RenderStepped:Connect(function()
             local char = LocalPlayer.Character
@@ -6402,7 +7179,7 @@ end    --====================================================--
             local root = char:FindFirstChild("HumanoidRootPart")
             local cam  = workspace.CurrentCamera
             if not (hum and root and cam) then return end
-            if OW.PU_ShiftLock then
+            if W2.PU_ShiftLock then
                 hum.AutoRotate = false
                 PU._shiftLockWasActive = true
                 local look = cam.CFrame.LookVector
@@ -6414,12 +7191,12 @@ end    --====================================================--
             end
         end))
         table.insert(PU._Connections, RunService.RenderStepped:Connect(function()
-            if not OW.PU_UnlimitedZoom then return end
+            if not W2.PU_UnlimitedZoom then return end
             if LocalPlayer.CameraMaxZoomDistance ~= math.huge then LocalPlayer.CameraMaxZoomDistance = math.huge end
             if LocalPlayer.CameraMinZoomDistance ~= 0 then LocalPlayer.CameraMinZoomDistance = 0 end
         end))
         table.insert(PU._Connections, RunService.Stepped:Connect(function()
-            if not OW.PU_Noclip then return end
+            if not W2.PU_Noclip then return end
             local char = LocalPlayer.Character
             if not char then return end
             for _, d in ipairs(char:GetDescendants()) do
@@ -6454,28 +7231,160 @@ end    --====================================================--
             return false
         end
         function W.SpeedBoost_SetEnabled(v)
-            OW.SpeedBoost_Enabled = v and true or false
+            W2.SpeedBoost_Enabled = v and true or false
             if SpeedBoostConnection then SpeedBoostConnection:Disconnect(); SpeedBoostConnection = nil end
-            if not OW.SpeedBoost_Enabled then
+            if not W2.SpeedBoost_Enabled then
                 local char = LocalPlayer.Character
                 local hum = char and char:FindFirstChildOfClass("Humanoid")
                 if hum then pcall(function() hum.WalkSpeed = 16 end) end
                 return
             end
             SpeedBoostConnection = RunService.Heartbeat:Connect(function()
-                if not OW.SpeedBoost_Enabled then return end
+                if not W2.SpeedBoost_Enabled then return end
                 if ShouldDisableSpeedBoost() then return end
                 local char = LocalPlayer.Character
                 local hum = char and char:FindFirstChildOfClass("Humanoid")
-                if hum and hum.WalkSpeed ~= OW.SpeedBoost_Value then
-                    pcall(function() hum.WalkSpeed = OW.SpeedBoost_Value end)
+                if hum and hum.WalkSpeed ~= W2.SpeedBoost_Value then
+                    pcall(function() hum.WalkSpeed = W2.SpeedBoost_Value end)
                 end
             end)
         end
         LocalPlayer.CharacterAdded:Connect(function()
             task.wait(0.8)
-            if OW.SpeedBoost_Enabled then W.SpeedBoost_SetEnabled(true) end
+            if W2.SpeedBoost_Enabled then W.SpeedBoost_SetEnabled(true) end
         end)
+    end
+
+    --====================================================--
+    -- BOMBAX MUSIC PLAYER
+    --====================================================--
+    W.Bombax = W.Bombax or {
+        Enabled = false,
+        CurrentSound = nil,
+        SelectedSong = "One",
+        Volume = 2,
+        Looped = true,
+        Playing = false,
+        DaftarLagu = {
+            {id = "101985596918228", judul = "One"},
+            {id = "78520199502339",  judul = "Two"},
+            {id = "78253224480952",  judul = "Three"},
+            {id = "136949217768985", judul = "Four"},
+            {id = "92143860315842",  judul = "Five"},
+            {id = "96568301359656",  judul = "Six"},
+            {id = "96053601899287",  judul = "Seven"},
+            {id = "116537762304510", judul = "Eight"},
+            {id = "111775377151665", judul = "Nine"},
+            {id = "131317416582166", judul = "Ten"},
+            {id = "107569604895628", judul = "Eleven"},
+            {id = "80210594606101",  judul = "Danza Kuduro"},
+            {id = "135887188304832", judul = "Ada Yang Tumbang Jos Jis"},
+            {id = "105372329671874", judul = "Million Stars Asoy"},
+            {id = "79296696808534",  judul = "My Lope Lope (Speed Up)"},
+            {id = "70578919220987",  judul = "My Lope Lope (Andri Poter)"},
+            {id = "89338419772018",  judul = "Habibi Ishqi"},
+            {id = "93652038633690",  judul = "Santai Dulu"},
+            {id = "124582101215124", judul = "DJ Akimilaku Im Back"},
+            {id = "121304834713825", judul = "Dangdut Week Sebelas"},
+            {id = "102944382854479", judul = "Lagu Misterius"},
+            {id = "126810420971446", judul = "Anak Kota"},
+            {id = "94299109467073",  judul = "Cinderella Jedag Jedug"},
+            {id = "83463789936127",  judul = "Lagu Jawa (Kowe Siji)"},
+            {id = "771523191444498", judul = "Cintaku Ini Istimewa - AIS x Celawze"},
+            {id = "86422417888834",  judul = "Kini Tinggal Kenangan - Celawze"},
+            {id = "70868757792328",  judul = "Mashup Dora Dora (Funky RMX)"},
+            {id = "128071048140468", judul = "Always Loving You - Natraa"},
+            {id = "136239433509180", judul = "Mysterious Girl (Funky RMX)"},
+            {id = "101280279977761", judul = "Kini Kita Pe Kisah - DJ Pelik Pungki"},
+            {id = "117080961502380", judul = "DJ Music Dubstep x Bangun Tidur Selfie"},
+            {id = "110337096446518", judul = "DJ Onia"},
+        },
+    }
+    local Bombax = W.Bombax
+    function W.Bombax_GetSongList()
+        local list = {}
+        for _, song in ipairs(Bombax.DaftarLagu) do
+            table.insert(list, song.judul)
+        end
+        return list
+    end
+    function W.Bombax_FindSongByTitle(title)
+        for _, song in ipairs(Bombax.DaftarLagu) do
+            if song.judul == title then return song end
+        end
+        return nil
+    end
+    function W.Bombax_Stop()
+        if Bombax.CurrentSound then
+            pcall(function() Bombax.CurrentSound:Stop() end)
+            pcall(function() Bombax.CurrentSound:Destroy() end)
+            Bombax.CurrentSound = nil
+        end
+        Bombax.Playing = false
+    end
+    function W.Bombax_Play(songTitle)
+        W.Bombax_Stop()
+        if not songTitle then songTitle = Bombax.SelectedSong end
+        local song = W.Bombax_FindSongByTitle(songTitle)
+        if not song then
+            ForceNotify("Bombax", "Lagu tidak ditemukan: " .. tostring(songTitle), 2)
+            return
+        end
+        local char = LocalPlayer.Character
+        if not char then
+            ForceNotify("Bombax", "Character tidak ada!", 2)
+            return
+        end
+        local hrp = char:FindFirstChild("HumanoidRootPart") or char:FindFirstChild("Head")
+        if not hrp then return end
+        local snd = Instance.new("Sound")
+        snd.Name = "W2BombaxSound"
+        snd.SoundId = "rbxassetid://" .. song.id
+        snd.Volume = Bombax.Volume
+        snd.Looped = Bombax.Looped
+        snd.Parent = hrp
+        snd:Play()
+        Bombax.CurrentSound = snd
+        Bombax.Playing = true
+        Bombax.SelectedSong = songTitle
+        W2.Bombax_Selected = songTitle
+        W2_Notify("Bombax", "▶ Now Playing: " .. songTitle, 3)
+    end
+    function W.Bombax_SetEnabled(v)
+        Bombax.Enabled = v
+        W2.Bombax_Enabled = v
+        if v then W.Bombax_Play(Bombax.SelectedSong)
+        else W.Bombax_Stop() end
+    end
+    function W.Bombax_SetVolume(v)
+        Bombax.Volume = tonumber(v) or 2
+        W2.Bombax_Volume = Bombax.Volume
+        if Bombax.CurrentSound then pcall(function() Bombax.CurrentSound.Volume = Bombax.Volume end) end
+    end
+    function W.Bombax_SetLooped(v)
+        Bombax.Looped = v and true or false
+        W2.Bombax_Looped = Bombax.Looped
+        if Bombax.CurrentSound then pcall(function() Bombax.CurrentSound.Looped = Bombax.Looped end) end
+    end
+    function W.Bombax_Next()
+        local list = Bombax.DaftarLagu
+        local idx = 1
+        for i, s in ipairs(list) do
+            if s.judul == Bombax.SelectedSong then idx = i; break end
+        end
+        local nextIdx = idx + 1
+        if nextIdx > #list then nextIdx = 1 end
+        W.Bombax_Play(list[nextIdx].judul)
+    end
+    function W.Bombax_Prev()
+        local list = Bombax.DaftarLagu
+        local idx = 1
+        for i, s in ipairs(list) do
+            if s.judul == Bombax.SelectedSong then idx = i; break end
+        end
+        local prevIdx = idx - 1
+        if prevIdx < 1 then prevIdx = #list end
+        W.Bombax_Play(list[prevIdx].judul)
     end
 
     --====================================================--
@@ -6484,26 +7393,22 @@ end    --====================================================--
     W.EmoteSystem = W.EmoteSystem or {
         Enabled = false, CurrentTrack = nil, CurrentSound = nil,
         SelectedEmote = "Friday Night",
-        Options = {
-            "Friday Night", "WarCry", "24 Hour Cinderella", "Applause",
-            "Arm Swing", "Backflip", "California Girls", "Christmas Spirit",
-            "Floating Rest", "Ghoul", "Griddy", "Kyoufuu", "OnePlays", "Vulnerable",
-        },
+        Options = { "Friday Night","WarCry","24 Hour Cinderella","Applause","Arm Swing","Backflip","California Girls","Christmas Spirit","Floating Rest","Ghoul","Griddy","Kyoufuu","OnePlays","Vulnerable" },
         Data = {
-            ["Friday Night"]        = { Anim = "rbxassetid://83229063951016",  Sound = "rbxassetid://85355610204255" },
-            ["WarCry"]              = { Anim = "rbxassetid://82600868380136",  Sound = "rbxassetid://120101930689931" },
-            ["24 Hour Cinderella"]  = { Anim = "rbxassetid://137195203725366", Sound = "rbxassetid://121099446613414" },
-            ["Applause"]            = { Anim = "rbxassetid://96328361165090",  Sound = "rbxassetid://115490787020749" },
-            ["Arm Swing"]           = { Anim = "rbxassetid://80552139463944",  Sound = "rbxassetid://74216458932348" },
-            ["Backflip"]            = { Anim = "rbxassetid://74705617908505",  Sound = nil },
-            ["California Girls"]    = { Anim = "rbxassetid://123552803041504", Sound = "rbxassetid://87899327891544" },
-            ["Christmas Spirit"]    = { Anim = "rbxassetid://137859761110514", Sound = nil },
-            ["Floating Rest"]       = { Anim = "rbxassetid://114593021219597", Sound = nil },
-            ["Ghoul"]               = { Anim = "rbxassetid://130415594909401", Sound = "rbxassetid://123004139176580" },
-            ["Griddy"]              = { Anim = "rbxassetid://75586690784894",  Sound = nil },
-            ["Kyoufuu"]             = { Anim = "rbxassetid://137322894494527", Sound = "rbxassetid://129064643026442" },
-            ["OnePlays"]            = { Anim = "rbxassetid://140625405103474", Sound = "rbxassetid://94749073728335" },
-            ["Vulnerable"]          = { Anim = "rbxassetid://121773684313913", Sound = "rbxassetid://135265751184744" },
+            ["Friday Night"] = { Anim = "rbxassetid://83229063951016", Sound = "rbxassetid://85355610204255" },
+            ["WarCry"] = { Anim = "rbxassetid://82600868380136", Sound = "rbxassetid://120101930689931" },
+            ["24 Hour Cinderella"] = { Anim = "rbxassetid://137195203725366", Sound = "rbxassetid://121099446613414" },
+            ["Applause"] = { Anim = "rbxassetid://96328361165090", Sound = "rbxassetid://115490787020749" },
+            ["Arm Swing"] = { Anim = "rbxassetid://80552139463944", Sound = "rbxassetid://74216458932348" },
+            ["Backflip"] = { Anim = "rbxassetid://74705617908505", Sound = nil },
+            ["California Girls"] = { Anim = "rbxassetid://123552803041504", Sound = "rbxassetid://87899327891544" },
+            ["Christmas Spirit"] = { Anim = "rbxassetid://137859761110514", Sound = nil },
+            ["Floating Rest"] = { Anim = "rbxassetid://114593021219597", Sound = nil },
+            ["Ghoul"] = { Anim = "rbxassetid://130415594909401", Sound = "rbxassetid://123004139176580" },
+            ["Griddy"] = { Anim = "rbxassetid://75586690784894", Sound = nil },
+            ["Kyoufuu"] = { Anim = "rbxassetid://137322894494527", Sound = "rbxassetid://129064643026442" },
+            ["OnePlays"] = { Anim = "rbxassetid://140625405103474", Sound = "rbxassetid://94749073728335" },
+            ["Vulnerable"] = { Anim = "rbxassetid://121773684313913", Sound = "rbxassetid://135265751184744" },
         },
     }
     local ES = W.EmoteSystem
@@ -6541,13 +7446,13 @@ end    --====================================================--
     end
     function W.EmoteSystem_SetEnabled(v)
         ES.Enabled = v and true or false
-        OW.Emote_Enabled = ES.Enabled
+        W2.Emote_Enabled = ES.Enabled
         if ES.Enabled then W.EmoteSystem_Play() else W.EmoteSystem_Stop() end
     end
     function W.EmoteSystem_SelectEmote(name)
         if ES.Data[name] then
             ES.SelectedEmote = name
-            OW.Emote_Selected = name
+            W2.Emote_Selected = name
             if ES.Enabled then W.EmoteSystem_Play() end
         end
     end
@@ -6561,7 +7466,7 @@ end    --====================================================--
     -- FAKE AVATAR
     --====================================================--
     do
-        local SelectedFakeAva = OW.FakeAvatar_ID or 0
+        local SelectedFakeAva = W2.FakeAvatar_ID or 0
         local function LoadAppearanceIntoChar(appearance, character, head)
             local items = appearance:GetChildren()
             local function applyMesh(obj)
@@ -6631,35 +7536,17 @@ end    --====================================================--
                     local m = Instance.new("SpecialMesh", head)
                     m.MeshType = Enum.MeshType.Head; m.Scale = Vector3.new(1, 1, 1)
                 end
-                local scaleDefaults = { BodyDepthScale = 1, BodyHeightScale = 1, BodyWidthScale = 1, HeadScale = 1, BodyTypeScale = 0, BodyProportionScale = 0 }
-                for scaleName, val in pairs(scaleDefaults) do
-                    local s = humanoid:FindFirstChild(scaleName); if s then s.Value = val end
-                end
-                task.wait(0.1)
                 LoadAppearanceIntoChar(appearance, character, head)
-                pcall(function()
-                    local info = game:GetService("Players"):GetCharacterAppearanceInfoAsync(SelectedFakeAva)
-                    if head and info.assets then
-                        for _, asset in pairs(info.assets) do
-                            if asset.assetType.name == "Face" then
-                                if head:FindFirstChild("face") then head.face:Destroy() end
-                                local f = Instance.new("Decal", head)
-                                f.Name = "face"; f.Texture = "rbxassetid://" .. asset.id
-                                break
-                            end
-                        end
-                    end
-                end)
             end)
         end
         function W.FakeAvatar_SetEnabled(state)
-            OW.FakeAvatar_Enabled = state
+            W2.FakeAvatar_Enabled = state
             if state then ApplyFakeAvatar() end
         end
         function W.FakeAvatar_SetId(userId)
             SelectedFakeAva = userId
-            OW.FakeAvatar_ID = userId
-            if OW.FakeAvatar_Enabled then ApplyFakeAvatar() end
+            W2.FakeAvatar_ID = userId
+            if W2.FakeAvatar_Enabled then ApplyFakeAvatar() end
         end
         function W.FakeAvatar_ApplyFromUsername(username)
             if not username or username == "" then return false end
@@ -6672,7 +7559,7 @@ end    --====================================================--
             return false
         end
         LocalPlayer.CharacterAdded:Connect(function()
-            if OW.FakeAvatar_Enabled then task.wait(1); ApplyFakeAvatar() end
+            if W2.FakeAvatar_Enabled then task.wait(1); ApplyFakeAvatar() end
         end)
     end
 
@@ -6731,8 +7618,8 @@ end    --====================================================--
             end
         end
         function W.Korless_SetEnabled(v)
-            OW.Korless_Enabled = v and true or false
-            if OW.Korless_Enabled then ApplyKorless() else RemoveKorless() end
+            W2.Korless_Enabled = v and true or false
+            if W2.Korless_Enabled then ApplyKorless() else RemoveKorless() end
         end
     end
 
@@ -6751,7 +7638,7 @@ end    --====================================================--
             local character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
             if not character:FindFirstChild("Head") then return end
             local billboard = Instance.new("BillboardGui")
-            billboard.Name = "OneWHeaderBillboard"
+            billboard.Name = "W2HeaderBillboard"
             billboard.Adornee = character.Head
             billboard.Size = UDim2.new(0, BASE_WIDTH, 0, BASE_HEIGHT)
             billboard.StudsOffset = Vector3.new(0, 1.5, 0)
@@ -6763,18 +7650,18 @@ end    --====================================================--
             textLabel.BackgroundTransparency = 1; textLabel.TextScaled = true
             textLabel.Font = Enum.Font.GothamBold; textLabel.TextStrokeTransparency = 0.5
             textLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
-            textLabel.TextColor3 = OW.Header_Color
-            textLabel.Text = OW.Header_Text; textLabel.ZIndex = 1; textLabel.Parent = billboard
+            textLabel.TextColor3 = W2.Header_Color
+            textLabel.Text = W2.Header_Text; textLabel.Parent = billboard
             HeaderState.TextLabel = textLabel
             local shineLabel = Instance.new("TextLabel")
             shineLabel.Name = "ShineText"; shineLabel.Size = UDim2.new(1, 0, 1, 0)
             shineLabel.BackgroundTransparency = 1; shineLabel.TextScaled = true
             shineLabel.Font = Enum.Font.GothamBold; shineLabel.TextStrokeTransparency = 1
-            shineLabel.Text = OW.Header_Text; shineLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+            shineLabel.Text = W2.Header_Text; shineLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
             shineLabel.ZIndex = 2; shineLabel.Parent = billboard
             HeaderState.ShineLabel = shineLabel
             local shineGradient = Instance.new("UIGradient")
-            shineGradient.Name = "ShineGradient"; shineGradient.Rotation = 20
+            shineGradient.Rotation = 20
             shineGradient.Transparency = NumberSequence.new({
                 NumberSequenceKeypoint.new(0.00, 1), NumberSequenceKeypoint.new(0.30, 1),
                 NumberSequenceKeypoint.new(0.42, 0), NumberSequenceKeypoint.new(0.58, 0),
@@ -6799,9 +7686,9 @@ end    --====================================================--
             end)
         end
         local function Header_UpdateText(text)
-            OW.Header_Text = text or "One W v2"
-            if HeaderState.TextLabel then HeaderState.TextLabel.Text = OW.Header_Text end
-            if HeaderState.ShineLabel then HeaderState.ShineLabel.Text = OW.Header_Text end
+            W2.Header_Text = text or "W2"
+            if HeaderState.TextLabel then HeaderState.TextLabel.Text = W2.Header_Text end
+            if HeaderState.ShineLabel then HeaderState.ShineLabel.Text = W2.Header_Text end
         end
         local function Header_Toggle(enabled)
             if enabled then Header_Create()
@@ -6812,37 +7699,157 @@ end    --====================================================--
                 HeaderState.ShineLabel = nil; HeaderState.ShineGradient = nil
             end
         end
-        function W.Header_SetEnabled(v) OW.Header_Enabled = v; Header_Toggle(v) end
+        function W.Header_SetEnabled(v) W2.Header_Enabled = v; Header_Toggle(v) end
         function W.Header_SetText(text) Header_UpdateText(text) end
         function W.Header_SetColor(c)
-            OW.Header_Color = c
+            W2.Header_Color = c
             if HeaderState.TextLabel then HeaderState.TextLabel.TextColor3 = c end
         end
         LocalPlayer.CharacterAdded:Connect(function()
             task.wait(1)
-            if OW.Header_Enabled then Header_Toggle(true) end
+            if W2.Header_Enabled then Header_Toggle(true) end
         end)
     end
 
     --====================================================--
-    -- INSTANT ESCAPE
+    -- CURSOR FEATURE
     --====================================================--
-    W.Escape = W.Escape or { Enabled = false, FinishLineName = "fininshline", TeleportCount = 0 }
-    local Esc = W.Escape
-    function W.Escape_Teleport()
-        local root = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-        if not root then ForceNotify("Escape", "Character not found", 2); return false end
-        local found = nil
-        for _, obj in ipairs(Workspace:GetDescendants()) do
-            if string.lower(obj.Name) == string.lower(Esc.FinishLineName) and obj:IsA("BasePart") then
-                found = obj; break
+    do
+        local CursorThread = nil
+        local savedOriginal = { MouseIconEnabled = nil, MouseBehavior = nil, AutoRotate = nil }
+        function W.Cursor_SetEnabled(v)
+            W2.Cursor_Enabled = v and true or false
+            if v then
+                savedOriginal.MouseIconEnabled = UserInputService.MouseIconEnabled
+                savedOriginal.MouseBehavior = UserInputService.MouseBehavior
+                local char = LocalPlayer.Character
+                local hum = char and char:FindFirstChildOfClass("Humanoid")
+                savedOriginal.AutoRotate = hum and hum.AutoRotate or true
+                pcall(function()
+                    UserInputService.MouseIconEnabled = true
+                    UserInputService.MouseBehavior = Enum.MouseBehavior.Default
+                end)
+                if hum then pcall(function() hum.AutoRotate = false end) end
+                if CursorThread then pcall(function() task.cancel(CursorThread) end) end
+                CursorThread = task.spawn(function()
+                    while W2.Cursor_Enabled do
+                        pcall(function()
+                            UserInputService.MouseIconEnabled = true
+                            UserInputService.MouseBehavior = Enum.MouseBehavior.Default
+                        end)
+                        local c = LocalPlayer.Character
+                        local h = c and c:FindFirstChildOfClass("Humanoid")
+                        if h and h.AutoRotate then h.AutoRotate = false end
+                        task.wait(0.1)
+                    end
+                end)
+            else
+                if CursorThread then
+                    pcall(function() task.cancel(CursorThread) end)
+                    CursorThread = nil
+                end
+                pcall(function()
+                    UserInputService.MouseIconEnabled = savedOriginal.MouseIconEnabled or false
+                    UserInputService.MouseBehavior = savedOriginal.MouseBehavior or Enum.MouseBehavior.LockCenter
+                end)
+                local c = LocalPlayer.Character
+                local h = c and c:FindFirstChildOfClass("Humanoid")
+                if h then pcall(function() h.AutoRotate = savedOriginal.AutoRotate or true end) end
             end
         end
-        if not found then ForceNotify("Escape", "Finish line not found", 2); return false end
-        pcall(function() root.CFrame = found.CFrame + Vector3.new(0, 5, 0) end)
-        Esc.TeleportCount = Esc.TeleportCount + 1
-        OW_Notify("Instant Escape", "Teleported! (#" .. Esc.TeleportCount .. ")", 2)
-        return true
+        UserInputService.InputBegan:Connect(function(input, gp)
+            if gp then return end
+            if input.KeyCode == Enum.KeyCode.LeftAlt or input.KeyCode == Enum.KeyCode.RightAlt then
+                W.Cursor_SetEnabled(not W2.Cursor_Enabled)
+            end
+        end)
+        LocalPlayer.CharacterAdded:Connect(function()
+            task.wait(1)
+            if W2.Cursor_Enabled then W.Cursor_SetEnabled(true) end
+        end)
+    end
+
+    --====================================================--
+    -- SPECTATOR COUNTER
+    --====================================================--
+    do
+        local SpecGui = nil
+        local SpecLabel = nil
+        local SpecThread = nil
+        local SpecExpanded = true
+        local function Spec_CreateUI()
+            if SpecGui then SpecGui:Destroy(); SpecGui = nil end
+            SpecGui = Instance.new("ScreenGui")
+            SpecGui.Name = "W2SpectatorCounter"
+            SpecGui.ResetOnSpawn = false; SpecGui.IgnoreGuiInset = true
+            SpecGui.Parent = CoreGui
+            local mainFrame = Instance.new("Frame", SpecGui)
+            mainFrame.Name = "MainBox"
+            mainFrame.AnchorPoint = Vector2.new(0.5, 0)
+            mainFrame.Position = UDim2.new(0.5, 0, 0.42, 0)
+            mainFrame.Size = UDim2.new(0, 145, 0, 52)
+            mainFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+            mainFrame.BackgroundTransparency = 0.1
+            mainFrame.BorderSizePixel = 0; mainFrame.Active = true
+            Instance.new("UICorner", mainFrame).CornerRadius = UDim.new(0, 6)
+            local header = Instance.new("Frame", mainFrame)
+            header.Size = UDim2.new(1, 0, 0, 18)
+            header.Position = UDim2.new(0, 0, 0, 4)
+            header.BackgroundTransparency = 1; header.Active = true
+            local title = Instance.new("TextLabel", header)
+            title.Size = UDim2.new(1, -20, 1, 0)
+            title.BackgroundTransparency = 1; title.Font = Enum.Font.GothamBold
+            title.Text = "Spectators"; title.TextColor3 = Color3.fromRGB(255, 255, 255)
+            title.TextSize = 10
+            local body = Instance.new("Frame", mainFrame)
+            body.Name = "Body"; body.Size = UDim2.new(1, 0, 1, -25)
+            body.Position = UDim2.new(0, 0, 0, 25); body.BackgroundTransparency = 1
+            SpecLabel = Instance.new("TextLabel", body)
+            SpecLabel.Name = "CountLabel"; SpecLabel.Size = UDim2.new(1, 0, 1, 0)
+            SpecLabel.BackgroundTransparency = 1
+            SpecLabel.Font = Enum.Font.GothamMedium; SpecLabel.Text = "No spectators"
+            SpecLabel.TextColor3 = Color3.fromRGB(220, 220, 220); SpecLabel.TextSize = 10
+            local dragging, dragStart, startPos = false, nil, nil
+            mainFrame.InputBegan:Connect(function(input)
+                if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                    dragging = true; dragStart = input.Position; startPos = mainFrame.Position
+                end
+            end)
+            UserInputService.InputChanged:Connect(function(input)
+                if not dragging then return end
+                if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+                    local delta = input.Position - dragStart
+                    mainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+                end
+            end)
+            UserInputService.InputEnded:Connect(function(input)
+                if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then dragging = false end
+            end)
+        end
+        local function Spec_Update()
+            if not SpecLabel then return end
+            local count = 0
+            for _, p in ipairs(Players:GetPlayers()) do
+                if p.Team and p.Team.Name == "Spectator" then count = count + 1 end
+            end
+            if count == 0 then
+                SpecLabel.Text = "No spectators"; SpecLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+            else
+                SpecLabel.Text = count .. " spectators"; SpecLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+            end
+        end
+        function W.Spectator_SetEnabled(state)
+            W2.Spectator_Enabled = state
+            if SpecThread then task.cancel(SpecThread); SpecThread = nil end
+            if state then
+                Spec_CreateUI(); Spec_Update()
+                SpecThread = task.spawn(function()
+                    while W2.Spectator_Enabled do Spec_Update(); task.wait(1.2) end
+                end)
+            else
+                if SpecGui then SpecGui:Destroy(); SpecGui = nil; SpecLabel = nil end
+            end
+        end
     end
 
     --====================================================--
@@ -6872,20 +7879,20 @@ end    --====================================================--
             local idot = ic and ic:FindFirstChild("IconDot")
             if isOn then
                 TweenService:Create(main, TweenInfo.new(0.25), { BackgroundColor3 = Color3.fromRGB(0, 0, 0) }):Play()
-                if ic then TweenService:Create(ic, TweenInfo.new(0.25), { BackgroundColor3 = _G.OW_ACCENT, BackgroundTransparency = 0.15 }):Play() end
+                if ic then TweenService:Create(ic, TweenInfo.new(0.25), { BackgroundColor3 = _G.W2_ACCENT, BackgroundTransparency = 0.15 }):Play() end
                 if idot then TweenService:Create(idot, TweenInfo.new(0.25), { BackgroundColor3 = Color3.fromRGB(0, 0, 0) }):Play() end
                 if sp then TweenService:Create(sp, TweenInfo.new(0.25), { BackgroundColor3 = Color3.fromRGB(0, 0, 0) }):Play() end
-                if st then st.Text = "ON"; TweenService:Create(st, TweenInfo.new(0.25), { TextColor3 = _G.OW_ACCENT }):Play() end
-                if sd then TweenService:Create(sd, TweenInfo.new(0.25), { BackgroundColor3 = _G.OW_ACCENT }):Play() end
+                if st then st.Text = "ON"; TweenService:Create(st, TweenInfo.new(0.25), { TextColor3 = _G.W2_ACCENT }):Play() end
+                if sd then TweenService:Create(sd, TweenInfo.new(0.25), { BackgroundColor3 = _G.W2_ACCENT }):Play() end
                 if str then TweenService:Create(str, TweenInfo.new(0.25), { Color = Color3.fromRGB(255, 255, 255) }):Play() end
             else
-                TweenService:Create(main, TweenInfo.new(0.25), { BackgroundColor3 = _G.OW_BG_OFF }):Play()
-                if ic then TweenService:Create(ic, TweenInfo.new(0.25), { BackgroundColor3 = _G.OW_NEUTRAL, BackgroundTransparency = 0.4 }):Play() end
-                if idot then TweenService:Create(idot, TweenInfo.new(0.25), { BackgroundColor3 = _G.OW_BG_OFF }):Play() end
+                TweenService:Create(main, TweenInfo.new(0.25), { BackgroundColor3 = _G.W2_BG_OFF }):Play()
+                if ic then TweenService:Create(ic, TweenInfo.new(0.25), { BackgroundColor3 = _G.W2_NEUTRAL, BackgroundTransparency = 0.4 }):Play() end
+                if idot then TweenService:Create(idot, TweenInfo.new(0.25), { BackgroundColor3 = _G.W2_BG_OFF }):Play() end
                 if sp then TweenService:Create(sp, TweenInfo.new(0.25), { BackgroundColor3 = Color3.fromRGB(0, 0, 0) }):Play() end
                 if st then st.Text = "OFF"; TweenService:Create(st, TweenInfo.new(0.25), { TextColor3 = Color3.fromRGB(120, 120, 120) }):Play() end
-                if sd then TweenService:Create(sd, TweenInfo.new(0.25), { BackgroundColor3 = _G.OW_NEUTRAL }):Play() end
-                if str then TweenService:Create(str, TweenInfo.new(0.25), { Color = _G.OW_STROKE_OFF }):Play() end
+                if sd then TweenService:Create(sd, TweenInfo.new(0.25), { BackgroundColor3 = _G.W2_NEUTRAL }):Play() end
+                if str then TweenService:Create(str, TweenInfo.new(0.25), { Color = _G.W2_STROKE_OFF }):Play() end
             end
         end
         local function ToggleBtn()
@@ -6899,7 +7906,7 @@ end    --====================================================--
             if gethui then local ok2, hui = pcall(gethui); if ok2 and hui then parent = hui end end
             if not parent then return end
             local gui = Instance.new("ScreenGui")
-            gui.Name = "OneW" .. cfg.id .. "Btn"; gui.ResetOnSpawn = false
+            gui.Name = "W2" .. cfg.id .. "Btn"; gui.ResetOnSpawn = false
             gui.IgnoreGuiInset = true; gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
             gui.Parent = parent
             state.Gui = gui
@@ -6912,18 +7919,18 @@ end    --====================================================--
             local main = Instance.new("Frame")
             main.Name = "MainBtn"
             main.Size = UDim2.fromOffset(132, 40)
-            main.BackgroundColor3 = _G.OW_BG_OFF
+            main.BackgroundColor3 = _G.W2_BG_OFF
             main.BorderSizePixel = 0; main.ZIndex = 1; main.Parent = container
             Instance.new("UICorner", main).CornerRadius = UDim.new(0, 12)
             local mainStroke = Instance.new("UIStroke", main)
             mainStroke.Name = "MainStroke"
-            mainStroke.Color = _G.OW_STROKE_OFF
+            mainStroke.Color = _G.W2_STROKE_OFF
             mainStroke.Thickness = 1.2; mainStroke.Transparency = 0.2
             local ic = Instance.new("Frame")
             ic.Name = "IconCircle"
             ic.Size = UDim2.fromOffset(24, 24)
             ic.Position = UDim2.new(0, 8, 0.5, -12)
-            ic.BackgroundColor3 = _G.OW_NEUTRAL
+            ic.BackgroundColor3 = _G.W2_NEUTRAL
             ic.BackgroundTransparency = 0.4
             ic.BorderSizePixel = 0; ic.ZIndex = 2; ic.Parent = main
             Instance.new("UICorner", ic).CornerRadius = UDim.new(1, 0)
@@ -6931,7 +7938,7 @@ end    --====================================================--
             idot.Name = "IconDot"
             idot.Size = UDim2.fromOffset(10, 10)
             idot.Position = UDim2.new(0.5, -5, 0.5, -5)
-            idot.BackgroundColor3 = _G.OW_BG_OFF
+            idot.BackgroundColor3 = _G.W2_BG_OFF
             idot.BorderSizePixel = 0; idot.ZIndex = 3
             idot.Rotation = cfg.iconRotation or 0
             idot.Parent = ic
@@ -6959,7 +7966,7 @@ end    --====================================================--
             sd.Name = "StatusDot"
             sd.Size = UDim2.fromOffset(6, 6)
             sd.Position = UDim2.new(0, 7, 0.5, -3)
-            sd.BackgroundColor3 = _G.OW_NEUTRAL
+            sd.BackgroundColor3 = _G.W2_NEUTRAL
             sd.BorderSizePixel = 0; sd.ZIndex = 3; sd.Parent = sp
             Instance.new("UICorner", sd).CornerRadius = UDim.new(1, 0)
             local st = Instance.new("TextLabel")
@@ -6977,12 +7984,12 @@ end    --====================================================--
             lock.Name = "LockBtn"
             lock.Size = UDim2.fromOffset(40, 40)
             lock.Position = UDim2.new(1, -44, 0, 0)
-            lock.BackgroundColor3 = _G.OW_BG_OFF
+            lock.BackgroundColor3 = _G.W2_BG_OFF
             lock.BorderSizePixel = 0; lock.Text = ""
             lock.AutoButtonColor = false; lock.ZIndex = 1; lock.Parent = container
             Instance.new("UICorner", lock).CornerRadius = UDim.new(0, 12)
             local ls = Instance.new("UIStroke", lock)
-            ls.Color = _G.OW_STROKE_OFF
+            ls.Color = _G.W2_STROKE_OFF
             ls.Thickness = 1.2; ls.Transparency = 0.2
             ls.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
             local li = Instance.new("TextLabel")
@@ -6996,13 +8003,13 @@ end    --====================================================--
             local function UpdateLockVisual()
                 if state.DragLocked then
                     li.Text = "🔒"
-                    TweenService:Create(ls, TweenInfo.new(0.2), { Color = _G.OW_ACCENT, Transparency = 0, Thickness = 1.5 }):Play()
-                    TweenService:Create(lock, TweenInfo.new(0.2), { BackgroundColor3 = _G.OW_ACCENT_BG }):Play()
-                    TweenService:Create(li, TweenInfo.new(0.2), { TextColor3 = _G.OW_ACCENT }):Play()
+                    TweenService:Create(ls, TweenInfo.new(0.2), { Color = _G.W2_ACCENT, Transparency = 0, Thickness = 1.5 }):Play()
+                    TweenService:Create(lock, TweenInfo.new(0.2), { BackgroundColor3 = _G.W2_ACCENT_BG }):Play()
+                    TweenService:Create(li, TweenInfo.new(0.2), { TextColor3 = _G.W2_ACCENT }):Play()
                 else
                     li.Text = "🔓"
-                    TweenService:Create(ls, TweenInfo.new(0.2), { Color = _G.OW_STROKE_OFF, Transparency = 0.2, Thickness = 1.2 }):Play()
-                    TweenService:Create(lock, TweenInfo.new(0.2), { BackgroundColor3 = _G.OW_BG_OFF }):Play()
+                    TweenService:Create(ls, TweenInfo.new(0.2), { Color = _G.W2_STROKE_OFF, Transparency = 0.2, Thickness = 1.2 }):Play()
+                    TweenService:Create(lock, TweenInfo.new(0.2), { BackgroundColor3 = _G.W2_BG_OFF }):Play()
                     TweenService:Create(li, TweenInfo.new(0.2), { TextColor3 = Color3.fromRGB(180, 180, 190) }):Play()
                 end
             end
@@ -7053,79 +8060,128 @@ end    --====================================================--
     W.CreateFloatingButton = CreateFloatingButton
 
     --====================================================--
-    -- 6 FLOATING BUTTONS
+    -- 10 FLOATING BUTTONS
     --====================================================--
     -- 1. Self Heal
-    local SelfHealBtnState = { Enabled=false, DragLocked=false, Gui=nil, SavedPos=UDim2.new(0.03,0,0.28,0), Connections={} }
+    local SelfHealBtnState = { Enabled=false, DragLocked=false, Gui=nil, SavedPos=UDim2.new(0.03,0,0.25,0), Connections={} }
     local SelfHealState = CreateFloatingButton({
         id="SelfHeal", title="Heal", state=SelfHealBtnState,
-        isOn=function() return OW.SelfHeal_Enabled end,
+        isOn=function() return W2.SelfHeal_Enabled end,
         onToggle=function(v) W.setSelfHeal(v) end,
         iconRotation=0,
     })
-    getgenv().OW_SHB_SetEnabled = function(en) SelfHealState.SetEnabled(en) end
-    getgenv().OW_SHB_UpdateVisual = function() SelfHealState.UpdateVisual() end
+    getgenv().W2_SHB_SetEnabled = function(en) SelfHealState.SetEnabled(en) end
+    getgenv().W2_SHB_UpdateVisual = function() SelfHealState.UpdateVisual() end
 
     -- 2. Self Unhook
-    local SelfUnhookBtnState = { Enabled=false, DragLocked=false, Gui=nil, SavedPos=UDim2.new(0.03,0,0.35,0), Connections={} }
+    local SelfUnhookBtnState = { Enabled=false, DragLocked=false, Gui=nil, SavedPos=UDim2.new(0.03,0,0.31,0), Connections={} }
     local SelfUnhookState = CreateFloatingButton({
         id="SelfUnhook", title="Hook", state=SelfUnhookBtnState,
-        isOn=function() return OW.SelfUnhook_Enabled end,
+        isOn=function() return W2.SelfUnhook_Enabled end,
         onToggle=function(v) W.SU_SetEnabled(v) end,
         iconRotation=135,
     })
-    getgenv().OW_SUB_SetEnabled = function(en) SelfUnhookState.SetEnabled(en) end
-    getgenv().OW_SUB_UpdateVisual = function() SelfUnhookState.UpdateVisual() end
+    getgenv().W2_SUB_SetEnabled = function(en) SelfUnhookState.SetEnabled(en) end
+    getgenv().W2_SUB_UpdateVisual = function() SelfUnhookState.UpdateVisual() end
 
     -- 3. Escape
-    local EscapeBtnState = { Enabled=false, DragLocked=false, Gui=nil, SavedPos=UDim2.new(0.03,0,0.42,0), Connections={} }
+    local EscapeBtnState = { Enabled=false, DragLocked=false, Gui=nil, SavedPos=UDim2.new(0.03,0,0.37,0), Connections={} }
     local EscapeState = CreateFloatingButton({
         id="Escape", title="Escape", state=EscapeBtnState,
-        isOn=function() return OW.Escape_Enabled end,
-        onToggle=function(v) OW.Escape_Enabled = v; if v then W.Escape_Teleport() end end,
+        isOn=function() return W2.Escape_Enabled end,
+        onToggle=function(v) W2.Escape_Enabled = v; if v then W.Escape_Teleport() end end,
         iconRotation=45,
     })
-    getgenv().OW_Escape_SetEnabled = function(en) EscapeState.SetEnabled(en) end
-    getgenv().OW_Escape_UpdateVisual = function() EscapeState.UpdateVisual() end
+    getgenv().W2_Escape_SetEnabled = function(en) EscapeState.SetEnabled(en) end
+    getgenv().W2_Escape_UpdateVisual = function() EscapeState.UpdateVisual() end
 
     -- 4. Invisible
-    local InvisBtnState = { Enabled=false, DragLocked=false, Gui=nil, SavedPos=UDim2.new(0.03,0,0.49,0), Connections={} }
+    local InvisBtnState = { Enabled=false, DragLocked=false, Gui=nil, SavedPos=UDim2.new(0.03,0,0.43,0), Connections={} }
     local InvisStateBtn = CreateFloatingButton({
         id="Invisible", title="Invis", state=InvisBtnState,
         isOn=function()
-            local MV = getgenv().OneWInvis
+            local MV = getgenv().W2Invis
             return MV and MV.Enabled or false
         end,
         onToggle=function(v) W.Invisible_SetState(v, true) end,
         iconRotation=180,
     })
-    getgenv().OW_InvisBtn_SetEnabled   = function(en) InvisStateBtn.SetEnabled(en) end
-    getgenv().OW_InvisBtn_UpdateVisual = function() InvisStateBtn.UpdateVisual() end
+    getgenv().W2_InvisBtn_SetEnabled   = function(en) InvisStateBtn.SetEnabled(en) end
+    getgenv().W2_InvisBtn_UpdateVisual = function() InvisStateBtn.UpdateVisual() end
 
     -- 5. Moonwalk
-    local MoonwalkBtnState = { Enabled=false, DragLocked=false, Gui=nil, SavedPos=UDim2.new(0.03,0,0.56,0), Connections={} }
+    local MoonwalkBtnState = { Enabled=false, DragLocked=false, Gui=nil, SavedPos=UDim2.new(0.03,0,0.49,0), Connections={} }
     local MoonwalkFloatingState = CreateFloatingButton({
         id="Moonwalk", title="Moon", state=MoonwalkBtnState,
-        isOn=function() return OW.Moonwalk_Enabled end,
+        isOn=function() return W2.Moonwalk_Enabled end,
         onToggle=function(v) W.Moonwalk_SetEnabled(v) end,
         iconRotation=0,
     })
-    getgenv().OW_MoonwalkBtn_SetEnabled   = function(en) MoonwalkFloatingState.SetEnabled(en) end
-    getgenv().OW_MoonwalkBtn_UpdateVisual = function() MoonwalkFloatingState.UpdateVisual() end
+    getgenv().W2_MoonwalkBtn_SetEnabled   = function(en) MoonwalkFloatingState.SetEnabled(en) end
+    getgenv().W2_MoonwalkBtn_UpdateVisual = function() MoonwalkFloatingState.UpdateVisual() end
 
     -- 6. Spear Aimbot
-    local SpearBtnState2 = { Enabled=false, DragLocked=false, Gui=nil, SavedPos=UDim2.new(0.03,0,0.63,0), Connections={} }
+    local SpearBtnState2 = { Enabled=false, DragLocked=false, Gui=nil, SavedPos=UDim2.new(0.03,0,0.55,0), Connections={} }
     local SpearFloatingState = CreateFloatingButton({
         id="SpearAimbot", title="Spear", state=SpearBtnState2,
-        isOn=function() return OW.SpearAimbot_Enabled end,
+        isOn=function() return W2.SpearAimbot_Enabled end,
         onToggle=function(v) W.SpearAimbot_SetEnabled(v) end,
         iconRotation=90,
     })
-    getgenv().OW_SpearBtn_SetEnabled   = function(en) SpearFloatingState.SetEnabled(en) end
-    getgenv().OW_SpearBtn_UpdateVisual = function() SpearFloatingState.UpdateVisual() end
+    getgenv().W2_SpearBtn_SetEnabled   = function(en) SpearFloatingState.SetEnabled(en) end
+    getgenv().W2_SpearBtn_UpdateVisual = function() SpearFloatingState.UpdateVisual() end
+
+    -- 7. Troll TP
+    local TrollBtnState = { Enabled=false, DragLocked=false, Gui=nil, SavedPos=UDim2.new(0.03,0,0.61,0), Connections={} }
+    local TrollState = CreateFloatingButton({
+        id="TrollTP", title="T_TP", state=TrollBtnState,
+        isOn=function() return W.TrollTeleport.Enabled end,
+        onToggle=function(v) W.TrollTeleport_SetEnabled(v) end,
+        iconRotation=225,
+    })
+    getgenv().W2_TTB_SetEnabled = function(en) TrollState.SetEnabled(en) end
+    getgenv().W2_TTB_UpdateVisual = function() TrollState.UpdateVisual() end
+
+    -- 8. Parry
+    local ParryBtnState = { Enabled=false, DragLocked=false, Gui=nil, SavedPos=UDim2.new(0.03,0,0.67,0), Connections={} }
+    local ParryStateBtn = CreateFloatingButton({
+        id="Parry", title="Parry", state=ParryBtnState,
+        isOn=function() return W2.ParryV1_Enabled end,
+        onToggle=function(v)
+            W2.ParryV1_Enabled = v
+            if not v then ParryState.ActiveAttackers = {} end
+        end,
+        iconRotation=45,
+    })
+    getgenv().W2_ParryBtn_SetEnabled = function(en) ParryStateBtn.SetEnabled(en) end
+    getgenv().W2_ParryBtn_UpdateVisual = function() ParryStateBtn.UpdateVisual() end
+
+    -- 9. Myers Grab
+    local MyersGrabBtnState = { Enabled=false, DragLocked=false, Gui=nil, SavedPos=UDim2.new(0.03,0,0.73,0), Connections={} }
+    local MyersGrabBtn = CreateFloatingButton({
+        id="MyersGrab", title="Grab", state=MyersGrabBtnState,
+        isOn=function() return W.MyersGrabData.Enabled end,
+        onToggle=function(v) W.setMyersGrab(v) end,
+        iconRotation=90,
+    })
+    getgenv().W2_MGrabBtn_SetEnabled   = function(en) MyersGrabBtn.SetEnabled(en) end
+    getgenv().W2_MGrabBtn_UpdateVisual = function() MyersGrabBtn.UpdateVisual() end
+
+    -- 10. Silent Aim Pistol (TOF)
+    local PistolBtnState = { Enabled=false, DragLocked=false, Gui=nil, SavedPos=UDim2.new(0.03,0,0.79,0), Connections={} }
+    local PistolBtn = CreateFloatingButton({
+        id="PistolTOF", title="Pistol", state=PistolBtnState,
+        isOn=function() return W2.TOF_Enabled end,
+        onToggle=function(v)
+            W.SetToFEnabled(v)
+        end,
+        iconRotation=0,
+    })
+    getgenv().W2_PistolBtn_SetEnabled   = function(en) PistolBtn.SetEnabled(en) end
+    getgenv().W2_PistolBtn_UpdateVisual = function() PistolBtn.UpdateVisual() end
 
     --====================================================--
-    -- UPDATE LOOPS (Auto Parry V1)
+    -- UPDATE LOOPS (Parry)
     --====================================================--
     local parryLastLogic, parryLastCircle = 0, 0
     RunService.Heartbeat:Connect(function()
@@ -7135,54 +8191,17 @@ end    --====================================================--
     end)
 
     --====================================================--
-    -- NO FALL DAMAGE (always active if needed)
-    --====================================================--
-    do
-        local FallHookInstalled = false
-        local function VD_InstallNoFallHook()
-            if FallHookInstalled then return end
-            FallHookInstalled = true
-            task.spawn(function()
-                pcall(function()
-                    local mt = getrawmetatable and getrawmetatable(game)
-                    if not mt then return end
-                    local oldNamecall = mt.__namecall
-                    if setreadonly then setreadonly(mt, false) end
-                    mt.__namecall = newcclosure(function(self, ...)
-                        if not checkcaller() and getgenv().OW.NoFallDamage then
-                            local method = getnamecallmethod()
-                            if method == "FireServer" then
-                                local ok, name = pcall(function() return self.Name end)
-                                if ok and name == "Fall" then
-                                    local par = self.Parent
-                                    if par and par.Name == "Mechanics" then
-                                        return nil
-                                    end
-                                end
-                            end
-                        end
-                        return oldNamecall(self, ...)
-                    end)
-                    if setreadonly then setreadonly(mt, true) end
-                end)
-            end)
-        end
-        VD_InstallNoFallHook()
-    end
-
-    --====================================================--
     -- UI BUILD (ONE WINDOW)
     --====================================================--
     local uiOK, uiErr = pcall(function()
         if not UILib then error("UILib tidak tersedia.") end
         local Window = UILib:Window({
-            Title = "One W v2",
+            Title = "W2",
             LogoButtonSize = 52,
             Image = "92826170205694",
-            Footer = "One W v2 - Premium",
+            Footer = "W2 - Free Script",
             Color = NotifyColor,
             ShowInfo = true,
-            Version = 2,
             Search = true
         })
 
@@ -7190,11 +8209,13 @@ end    --====================================================--
             Name = "Information", Icon = "lightbulb",
             SectionTitle = "Information",
             Banner = "rbxassetid://92826170205694",
-            Version = "v2.0.0",
-            DiscordLink = "https://discord.gg/",
-            DiscordName = "One W v2 - Community",
-            DiscordText = "Join Server Discord One W v2 Untuk Informasi Update.",
-            Cards = { { Title = "Credits", Description = "Based on ALFzxzzz Hub\nRebuilt as One W v2\n" } }
+            DiscordLink = nil,
+            DiscordName = nil,
+            DiscordText = nil,
+            Cards = {
+                { Title = "⚠️ INFORMASI PENTING", Description = "Script ini FREE ya teman-teman!\n\n❌ JANGAN DIJUAL\n❌ JANGAN DIPERJUALBELIKAN\n\nKalau mau share, GRATIS aja!\nYang jual script ini = SCAMMER!\n\n⚠️ Script ini dibuat untuk belajar & sharing, bukan untuk diperjualbelikan." },
+                { Title = "👥 Credits", Description = "Based on: ALFzxzzz HUB v0.3.7\nRebuilt as: W2\n\nDev: tiarkenn-dev\nGitHub: github.com/tiarkenn-dev\n\nTerima kasih sudah menggunakan script ini. Semoga bermanfaat!" }
+            }
         })
 
         local SurvivorTab = Window:AddTab({ Name = "Survivor", Icon = "user" })
@@ -7206,50 +8227,38 @@ end    --====================================================--
         -- ============ SURVIVOR TAB ============
         local healSection = SurvivorTab:AddSection("Self Heal")
         healSection:AddToggle({ Title = "Enable Self Heal", Default = false, Callback = function(v)
-            W.setSelfHeal(v)
-            if getgenv().OW_SHB_UpdateVisual then getgenv().OW_SHB_UpdateVisual() end
+            W.setSelfHeal(v); if getgenv().W2_SHB_UpdateVisual then getgenv().W2_SHB_UpdateVisual() end
         end })
-        healSection:AddToggle({ Title = "Auto Heal All", Default = false, Callback = function(v)
-            W.setAutoHealAll(v)
-        end })
+        healSection:AddToggle({ Title = "Auto Heal All", Default = false, Callback = function(v) W.setAutoHealAll(v) end })
         healSection:AddToggle({ Title = "Show Self Heal Button", Default = false, Callback = function(v)
-            if getgenv().OW_SHB_SetEnabled then getgenv().OW_SHB_SetEnabled(v) end
-        end })
+            if getgenv().W2_SHB_SetEnabled then getgenv().W2_SHB_SetEnabled(v) end end })
 
         local vaultSection = SurvivorTab:AddSection("Swift Vault")
-        vaultSection:AddToggle({ Title = "Swift Vault", Default = false, Callback = function(v)
-            OW.SwiftVault_Enabled = v
-        end })
+        vaultSection:AddToggle({ Title = "Swift Vault", Default = false, Callback = function(v) W2.SwiftVault_Enabled = v end })
         vaultSection:AddToggle({ Title = "Swift Vault V2 (Custom Speed)", Default = false, Callback = function(v)
-            OW.SwiftVault_V2 = v
-            if not v then
-                local char = LocalPlayer.Character
-                if char then pcall(function() char:SetAttribute("vaultspeed", 1) end) end
-            end
+            W2.SwiftVault_V2 = v
+            if not v then local char = LocalPlayer.Character; if char then pcall(function() char:SetAttribute("vaultspeed", 1) end) end end
         end })
-        vaultSection:AddSlider({ Title = "Vault Speed", Min = 10, Max = 20, Default = 13, Increment = 1, Callback = function(v) OW.SwiftVault_Speed = v end })
+        vaultSection:AddSlider({ Title = "Vault Speed", Min = 10, Max = 20, Default = 13, Increment = 1, Callback = function(v) W2.SwiftVault_Speed = v end })
 
         local palletSection = SurvivorTab:AddSection("Pallet Reflex")
-        palletSection:AddToggle({ Title = "Enable Pallet Reflex", Default = false, Callback = function(v) OW.PalletReflex_Enabled = v end })
-        palletSection:AddSlider({ Title = "Trigger Distance", Min = 5, Max = 50, Default = 20, Increment = 1, Suffix = " studs", Callback = function(v) OW.PalletReflex_Dist = v end })
+        palletSection:AddToggle({ Title = "Enable Pallet Reflex", Default = false, Callback = function(v) W2.PalletReflex_Enabled = v end })
+        palletSection:AddSlider({ Title = "Trigger Distance", Min = 5, Max = 50, Default = 20, Increment = 1, Suffix = " studs", Callback = function(v) W2.PalletReflex_Dist = v end })
 
         local fpSection = SurvivorTab:AddSection("Fake Perks")
         fpSection:AddToggle({ Title = "Flowstate", Default = false, Callback = function(v) W.FP_SetupFlowstate(v) end })
         fpSection:AddToggle({ Title = "Quick Recovery", Default = false, Callback = function(v) W.FP_SetupQuickRecovery(v) end })
         fpSection:AddToggle({ Title = "Perfect Landing", Default = false, Callback = function(v) W.FP_SetupPerfectLanding(v) end })
         fpSection:AddToggle({ Title = "Adrenaline Rush", Default = false, Callback = function(v) W.FP_SetupAdrenalineRush(v) end })
-        fpSection:AddSlider({ Title = "Perk Cooldown", Min = 0, Max = 30, Default = 5, Increment = 1, Suffix = "s", Callback = function(v) W.FP.CooldownTime = v end })
+        fpSection:AddSlider({ Title = "Perk Cooldown", Min = 0, Max = 75, Default = 5, Increment = 1, Suffix = "s", Callback = function(v) W.FP.CooldownTime = v end })
 
         local skillSection = SurvivorTab:AddSection("Auto Skill Check")
         skillSection:AddToggle({ Title = "Enable", Default = false, Callback = function(v) W.SkillCheck_SetEnabled(v) end })
         skillSection:AddDropdown({ Title = "Mode", Options = {"Legit", "Instant"}, Default = "Legit", Callback = function(v) W.SkillCheck.Mode = v end })
 
         local genSection = SurvivorTab:AddSection("Bypass Generator")
-        genSection:AddToggle({ Title = "Enable (Hotkey B)", Default = false, Callback = function(v)
-            GenBypass.Enabled = v; OW.GenBypass_Enabled = v
-            if v then W.GB_CreateButton() end
-        end })
-        genSection:AddSlider({ Title = "Trigger Range", Min = 3, Max = 20, Default = 8, Increment = 1, Suffix = " studs", Callback = function(v) GenBypass.TriggerRange = v end })
+        genSection:AddToggle({ Title = "Enable (Hotkey B)", Default = false, Callback = function(v) W.GenBypass.Enabled = v; W2.GenBypass_Enabled = v end })
+        genSection:AddSlider({ Title = "Trigger Range", Min = 3, Max = 20, Default = 8, Increment = 1, Suffix = " studs", Callback = function(v) W.GenBypass.TriggerRange = v end })
 
         local uvSection = SurvivorTab:AddSection("Unlimited Vault")
         uvSection:AddToggle({ Title = "Enable", Default = false, Callback = function(v) W.UnlimitedVault_SetEnabled(v) end })
@@ -7261,61 +8270,91 @@ end    --====================================================--
         arSection:AddToggle({ Title = "Auto Run [PC]", Default = false, Callback = function(v) W.AutoRunPC_SetEnabled(v) end })
         arSection:AddToggle({ Title = "Auto Run [Mobile]", Default = false, Callback = function(v) W.AutoRunMobile_SetEnabled(v) end })
 
+        local acdSection = SurvivorTab:AddSection("Auto Crouch Dodge")
+        acdSection:AddToggle({ Title = "Enable Auto Crouch Dodge", Content = "Auto crouch saat killer pakai Abyssal S1",
+            Default = false, Callback = function(v)
+                W2.AutoCrouchDodge = v
+                if v then W2_Notify("Auto Crouch Dodge", "Enabled", 2) else W2_Notify("Auto Crouch Dodge", "Disabled", 2) end
+            end })
+
+        local afSection = SurvivorTab:AddSection("Auto Flee Killer")
+        afSection:AddToggle({ Title = "Enable Auto Flee", Default = false, Callback = function(v) W2.AutoFlee = v end })
+        afSection:AddSlider({ Title = "Detect Distance", Min = 15, Max = 150, Default = 40, Increment = 5, Suffix = " studs", Callback = function(v) W2.AutoFleeDist = v end })
+        afSection:AddSlider({ Title = "Flee Cooldown", Min = 0.5, Max = 10, Default = 1.5, Increment = 0.5, Suffix = "s", Callback = function(v) W2.AutoFleeCooldown = v end })
+
+        local nfSection = SurvivorTab:AddSection("No Fall Damage")
+        nfSection:AddToggle({ Title = "Enable No Fall Damage", Default = false, Callback = function(v) W2.NoFallDamage = v end })
+
+        local ttSection = SurvivorTab:AddSection("Troll Teleport")
+        ttSection:AddToggle({ Title = "Enable Troll Teleport", Default = false, Callback = function(v)
+            W.TrollTeleport_SetEnabled(v); if getgenv().W2_TTB_UpdateVisual then getgenv().W2_TTB_UpdateVisual() end
+        end })
+        ttSection:AddToggle({ Title = "Show Troll TP Button", Default = false, Callback = function(v)
+            if getgenv().W2_TTB_SetEnabled then getgenv().W2_TTB_SetEnabled(v) end end })
+
+        local gmSection = SurvivorTab:AddSection("God Mode")
+        gmSection:AddToggle({ Title = "Enable God Mode", Content = "Auto-heal terus (Health selalu MaxHealth)",
+            Default = false, Callback = function(v) W.GodMode_SetEnabled(v) end })
+
+        local mgSection = SurvivorTab:AddSection("Manual Generator")
+        mgSection:AddToggle({ Title = "Enable Manual Generator", Default = false, Callback = function(v) W.ManualGen_SetEnabled(v) end })
+        mgSection:AddSlider({ Title = "Killer Escape Distance", Min = 10, Max = 80, Default = 30, Increment = 5, Suffix = " studs",
+            Callback = function(v) W.GenAuto_SetDistance(v) end })
+
         local parryV1Section = SurvivorTab:AddSection("Auto Parry V1")
         parryV1Section:AddToggle({ Title = "Enable", Default = false, Callback = function(v)
-            OW.ParryV1_Enabled = v
+            W2.ParryV1_Enabled = v
             if not v then ParryState.ActiveAttackers = {} end
+            if getgenv().W2_ParryBtn_UpdateVisual then getgenv().W2_ParryBtn_UpdateVisual() end
         end })
-        parryV1Section:AddToggle({ Title = "Aggressive", Default = false, Callback = function(v) OW.ParryV1_Aggressive = v end })
-        parryV1Section:AddSlider({ Title = "Parry Distance", Min = 4, Max = 30, Default = 10, Increment = 1, Callback = function(v) OW.ParryV1_Distance = v end })
+        parryV1Section:AddToggle({ Title = "Aggressive", Default = false, Callback = function(v) W2.ParryV1_Aggressive = v end })
+        parryV1Section:AddSlider({ Title = "Parry Distance", Min = 4, Max = 30, Default = 10, Increment = 1, Callback = function(v) W2.ParryV1_Distance = v end })
         parryV1Section:AddToggle({ Title = "Show Parry Range", Default = false, Callback = function(v)
-            OW.ParryV1_ShowRange = v
-            if not v and getgenv()._OneW_DestroyParryCircle then pcall(getgenv()._OneW_DestroyParryCircle) end
+            W2.ParryV1_ShowRange = v
+            if not v and getgenv()._W2_DestroyParryCircle then pcall(getgenv()._W2_DestroyParryCircle) end
         end })
-        parryV1Section:AddToggle({ Title = "Silent Parry", Default = false, Callback = function(v) OW.ParryV1_Silent = v end })
+        parryV1Section:AddToggle({ Title = "Silent Parry", Default = false, Callback = function(v) W2.ParryV1_Silent = v end })
 
         local parryV2Section = SurvivorTab:AddSection("Auto Parry V2")
-        parryV2Section:AddToggle({ Title = "Enable Auto Parry V2", Default = false, Callback = function(v) OW.ParryV2_Enabled = v end })
-        parryV2Section:AddToggle({ Title = "Aggressive Mode", Default = false, Callback = function(v) OW.ParryV2_Aggressive = v end })
-        parryV2Section:AddToggle({ Title = "Safety Parry", Default = false, Callback = function(v) OW.ParryV2_Safety = v end })
-        parryV2Section:AddSlider({ Title = "Parry Distance", Min = 4, Max = 25, Default = 6, Increment = 1, Suffix = " studs", Callback = function(v) OW.ParryV2_Distance = v end })
-        parryV2Section:AddSlider({ Title = "Face Sensitivity", Min = -1, Max = 1, Default = 0.7, Increment = 0.05, Callback = function(v) OW.ParryV2_Face = v end })
-        parryV2Section:AddToggle({ Title = "Show Range Circle", Default = true, Callback = function(v) OW.ParryV2_ShowCircle = v end })
+        parryV2Section:AddToggle({ Title = "Enable Auto Parry V2", Default = false, Callback = function(v) W2.ParryV2_Enabled = v end })
+        parryV2Section:AddToggle({ Title = "Aggressive Mode", Default = false, Callback = function(v) W2.ParryV2_Aggressive = v end })
+        parryV2Section:AddToggle({ Title = "Safety Parry", Default = false, Callback = function(v) W2.ParryV2_Safety = v end })
+        parryV2Section:AddSlider({ Title = "Parry Distance", Min = 4, Max = 25, Default = 6, Increment = 1, Suffix = " studs", Callback = function(v) W2.ParryV2_Distance = v end })
+        parryV2Section:AddSlider({ Title = "Face Sensitivity", Min = -1, Max = 1, Default = 0.7, Increment = 0.05, Callback = function(v) W2.ParryV2_Face = v end })
+        parryV2Section:AddToggle({ Title = "Show Range Circle", Default = true, Callback = function(v) W2.ParryV2_ShowCircle = v end })
 
-        local mapPredictSection = SurvivorTab:AddSection("Next Map Prediction")
-        mapPredictSection:AddToggle({ Title = "Enable", Default = false, Callback = function(v) OW.MapPredict_Enabled = v; if v then W.NextMapPredict_Start() else W.NextMapPredict_Stop() end end })
+        local mapSection = SurvivorTab:AddSection("Next Map Prediction")
+        mapSection:AddToggle({ Title = "Enable", Default = false, Callback = function(v) W2.MapPredict_Enabled = v; if v then W.NextMapPredict_Start() else W.NextMapPredict_Stop() end end })
 
         local unhookSection = SurvivorTab:AddSection("Bypass Self Unhook")
         unhookSection:AddToggle({ Title = "Enable", Default = false, Callback = function(v)
-            W.SU_SetEnabled(v)
-            if getgenv().OW_SUB_UpdateVisual then getgenv().OW_SUB_UpdateVisual() end
-        end })
+            W.SU_SetEnabled(v); if getgenv().W2_SUB_UpdateVisual then getgenv().W2_SUB_UpdateVisual() end end })
         unhookSection:AddToggle({ Title = "Show Self Unhook Button", Default = false, Callback = function(v)
-            if getgenv().OW_SUB_SetEnabled then getgenv().OW_SUB_SetEnabled(v) end
-        end })
+            if getgenv().W2_SUB_SetEnabled then getgenv().W2_SUB_SetEnabled(v) end end })
         unhookSection:AddSlider({ Title = "Follow Duration", Min = 5, Max = 120, Default = 30, Increment = 5, Suffix = "s", Callback = function(v) W.SelfUnhook.FollowDuration = v end })
         unhookSection:AddSlider({ Title = "Follow Distance", Min = 5, Max = 60, Default = 20, Increment = 1, Suffix = " studs", Callback = function(v) W.SelfUnhook.FollowDistance = v end })
 
         local tofSection = SurvivorTab:AddSection("Silent Aim TOF")
         tofSection:AddToggle({ Title = "Enable", Default = false, Callback = function(v) W.SetToFEnabled(v) end })
-        tofSection:AddKeybind({ Title = "Toggle Key", Default = Enum.KeyCode.Q, Callback = function(kc) OW.TOF_Key = kc and kc.Name or "None" end })
+        tofSection:AddKeybind({ Title = "Toggle Key", Default = Enum.KeyCode.Q, Callback = function(kc) W2.TOF_Key = kc and kc.Name or "None" end })
         tofSection:AddDropdown({ Title = "Target Mode", Options = { "Killer", "Survivors", "Zombie" }, Default = "Killer", Callback = function(v) W.ToF_SetTargetMode(v, true) end })
-        tofSection:AddToggle({ Title = "Show Laser Beam", Default = true, Callback = function(v) OW.TOF_Laser = v; if not v then W.ToF_ClearLaser() end end })
-        tofSection:AddToggle({ Title = "Wall Check", Default = true, Callback = function(v) OW.TOF_WallCheck = v end })
-        tofSection:AddToggle({ Title = "Block When Knocked", Default = true, Callback = function(v) OW.TOF_BlockKnocked = v end })
+        tofSection:AddToggle({ Title = "Show Laser Beam", Default = true, Callback = function(v) W2.TOF_Laser = v; if not v then W.ToF_ClearLaser() end end })
+        tofSection:AddToggle({ Title = "Wall Check", Default = true, Callback = function(v) W2.TOF_WallCheck = v end })
+        tofSection:AddToggle({ Title = "Block When Knocked", Default = true, Callback = function(v) W2.TOF_BlockKnocked = v end })
+        tofSection:AddToggle({ Title = "Show Pistol Button", Default = false, Callback = function(v)
+            if getgenv().W2_PistolBtn_SetEnabled then getgenv().W2_PistolBtn_SetEnabled(v) end end })
 
         local flashSection = SurvivorTab:AddSection("Silent Flashlight")
         flashSection:AddToggle({ Title = "Enable", Default = false, Callback = function(v) W.Flash_SetEnabled(v) end })
         flashSection:AddDropdown({ Title = "Target Part", Options = {"Head", "UpperTorso", "Torso", "HumanoidRootPart"},
-            Default = "Head", Callback = function(v) OW.Flash_TargetPart = type(v) == "table" and v[1] or v or "Head" end })
-        flashSection:AddSlider({ Title = "Max Range", Min = 20, Max = 250, Default = 120, Increment = 5, Suffix = " studs", Callback = function(v) OW.Flash_Range = v end })
-        flashSection:AddSlider({ Title = "Smoothness", Min = 0.05, Max = 1, Default = 0.35, Increment = 0.05, Callback = function(v) OW.Flash_Smooth = v end })
+            Default = "Head", Callback = function(v) W2.Flash_TargetPart = type(v) == "table" and v[1] or v or "Head" end })
+        flashSection:AddSlider({ Title = "Max Range", Min = 20, Max = 250, Default = 120, Increment = 5, Suffix = " studs", Callback = function(v) W2.Flash_Range = v end })
+        flashSection:AddSlider({ Title = "Smoothness", Min = 0.05, Max = 1, Default = 0.35, Increment = 0.05, Callback = function(v) W2.Flash_Smooth = v end })
 
         local gunSection = SurvivorTab:AddSection("Aim Lock Gun")
         gunSection:AddToggle({ Title = "Enable (Hold M2)", Default = false, Callback = function(v)
             if W.GunAim_Cfg then W.GunAim_Cfg.Enabled = v end
-            if v and W.GunAim_Start then W.GunAim_Start() end
-        end })
+            if v and W.GunAim_Start then W.GunAim_Start() end end })
         gunSection:AddDropdown({ Title = "Target Mode", Options = { "Killer", "Survivor" }, Default = "Killer",
             Callback = function(v)
                 local val = type(v) == "table" and v[1] or v
@@ -7330,12 +8369,9 @@ end    --====================================================--
 
         local moonwalkSection = SurvivorTab:AddSection("Moonwalk")
         moonwalkSection:AddToggle({ Title = "Enable (F8)", Default = false, Callback = function(v)
-            W.Moonwalk_SetEnabled(v)
-            if getgenv().OW_MoonwalkBtn_UpdateVisual then getgenv().OW_MoonwalkBtn_UpdateVisual() end
-        end })
+            W.Moonwalk_SetEnabled(v); if getgenv().W2_MoonwalkBtn_UpdateVisual then getgenv().W2_MoonwalkBtn_UpdateVisual() end end })
         moonwalkSection:AddToggle({ Title = "Show Moonwalk Button", Default = false, Callback = function(v)
-            if getgenv().OW_MoonwalkBtn_SetEnabled then getgenv().OW_MoonwalkBtn_SetEnabled(v) end
-        end })
+            if getgenv().W2_MoonwalkBtn_SetEnabled then getgenv().W2_MoonwalkBtn_SetEnabled(v) end end })
         moonwalkSection:AddSlider({ Title = "Side Speed", Min = 0.1, Max = 3, Default = 0.9, Increment = 0.1, Callback = function(v) W.Moonwalk_SetSideSpeed(v) end })
         moonwalkSection:AddSlider({ Title = "Back Speed", Min = 0.1, Max = 3, Default = 1.2, Increment = 0.1, Callback = function(v) W.Moonwalk_SetBackSpeed(v) end })
         moonwalkSection:AddSlider({ Title = "Switch Interval", Min = 0.02, Max = 0.5, Default = 0.07, Increment = 0.01, Callback = function(v) W.Moonwalk_SetInterval(v) end })
@@ -7350,10 +8386,7 @@ end    --====================================================--
         espSection:AddColorPicker({ Title = "Generator Color", Default = FESPC.Generator, Save = false, Callback = function(c) FESPC.Generator = c end })
         espSection:AddToggle({ Title = "ESP Pallet", Default = false, Callback = function(v) FESP.Pallet = v end })
         espSection:AddColorPicker({ Title = "Pallet Color", Default = FESPC.Pallet, Save = false, Callback = function(c) FESPC.Pallet = c end })
-        espSection:AddToggle({ Title = "ESP Window", Default = false, Callback = function(v)
-            FESP.Window = v
-            _G.OneWWindowScanned = false
-        end })
+        espSection:AddToggle({ Title = "ESP Window", Default = false, Callback = function(v) FESP.Window = v; _G.W2WindowScanned = false end })
         espSection:AddColorPicker({ Title = "Window Color", Default = FESPC.Window, Save = false, Callback = function(c) FESPC.Window = c end })
         espSection:AddToggle({ Title = "ESP SCP", Default = false, Callback = function(v) FESP.SCP = v end })
         espSection:AddColorPicker({ Title = "SCP Color", Default = FESPC.SCP, Save = false, Callback = function(c) FESPC.SCP = c end })
@@ -7368,18 +8401,63 @@ end    --====================================================--
         statusSection:AddToggle({ Title = "Show Health Bar", Default = false, Callback = function(v) FESPS.ShowHealth = v end })
         statusSection:AddSlider({ Title = "Status Radius", Min = 20, Max = 1000, Default = 500, Increment = 10, Callback = function(v) FESPS.Radius = v end })
 
+        local graphicsSection = VisualsTab:AddSection("Graphics")
+        graphicsSection:AddToggle({ Title = "Fullbright", Default = false, Callback = function(v) W.Graphics.Fullbright = v; W.Graphics_Apply() end })
+        graphicsSection:AddToggle({ Title = "No Shadow", Default = false, Callback = function(v) W.Graphics.NoShadow = v; W.Graphics_Apply() end })
+        graphicsSection:AddToggle({ Title = "Low Graphics", Default = false, Callback = function(v) W.Graphics.LowGraphics = v; W.Graphics_ApplyOptimization() end })
+        graphicsSection:AddToggle({ Title = "No Screen Effects", Default = false, Callback = function(v) W.Graphics.NoScreenEffects = v; W.Graphics_ApplyNoScreenFx() end })
+        graphicsSection:AddToggle({ Title = "Clean Sky", Default = false, Callback = function(v) W.Graphics.CleanSky = v; W.Graphics_ApplyOptimization() end })
+        graphicsSection:AddToggle({ Title = "Potato Mode", Content = "EXTREME low graphics", Default = false, Callback = function(v)
+            W.Potato_SetEnabled(v) end })
+        graphicsSection:AddToggle({ Title = "Grafik HD Ringan", Content = "Quality medium ringan", Default = false, Callback = function(v)
+            W.Graphics.HDRingan = v; W.Graphics_ApplyHDRingan() end })
+        graphicsSection:AddToggle({ Title = "Grafik HD Kincolong", Content = "Quality max", Default = false, Callback = function(v)
+            W.Graphics.HDKincolong = v; W.Graphics_ApplyHDKincolong() end })
+
+        local clockSection = VisualsTab:AddSection("Clock & Ambient")
+        clockSection:AddToggle({ Title = "Enable Clock Override", Default = false, Callback = function(v) W.Graphics.ClockTimeEnabled = v; W.Graphics_Apply() end })
+        clockSection:AddSlider({ Title = "Clock Time", Min = 0, Max = 24, Default = 14, Increment = 1, Callback = function(v) W.Graphics.ClockTime = v; W.Graphics.ClockTimeEnabled = true; W.Graphics_Apply() end })
+        clockSection:AddSlider({ Title = "Brightness", Min = 0, Max = 5, Default = 2, Increment = 0.1, Callback = function(v) W.Graphics.Brightness = v; W.Graphics.ClockTimeEnabled = true; W.Graphics_Apply() end })
+
+        local zoomSection = VisualsTab:AddSection("Zoom & FOV")
+        zoomSection:AddToggle({ Title = "Unlimited Zoom", Default = false, Callback = function(v) W.Graphics.UnlimitedZoom = v; W.Graphics_ApplyZoom() end })
+        zoomSection:AddSlider({ Title = "Max Zoom Distance", Min = 100, Max = 5000, Default = 1000, Increment = 50, Callback = function(v) W.Graphics.MaxZoomDistance = v; if W.Graphics.UnlimitedZoom then W.Graphics_ApplyZoom() end end })
+        zoomSection:AddToggle({ Title = "Custom FOV", Default = false, Callback = function(v) W.Graphics.FOVEnabled = v; W.Graphics_ApplyFOV() end })
+        zoomSection:AddSlider({ Title = "Camera FOV", Min = 40, Max = 120, Default = 70, Increment = 5, Callback = function(v) W.Graphics.FOV = v; if W.Graphics.FOVEnabled then W.Graphics_ApplyFOV() end end })
+
+        local povSection = VisualsTab:AddSection("Lock POV & FOV Lock")
+        povSection:AddToggle({ Title = "Enable Lock POV", Default = false, Callback = function(v) W.Graphics.LockPOV = v; if v then W2_Notify("Lock POV", "Enabled", 2) end end })
+        povSection:AddSlider({ Title = "Locked FOV", Min = 40, Max = 120, Default = 80, Increment = 5, Callback = function(v) W.Graphics.LockedFOV = v end })
+        povSection:AddToggle({ Title = "Enable FOV Lock", Default = false, Callback = function(v) W.Graphics.FOVLock = v; if v then W2_Notify("FOV Lock", "Enabled", 2) end end })
+        povSection:AddSlider({ Title = "FOV Lock Value", Min = 40, Max = 120, Default = 70, Increment = 5, Callback = function(v) W.Graphics.FOVLockValue = v end })
+
+        local camDBDSection = VisualsTab:AddSection("Camera DBD")
+        camDBDSection:AddToggle({ Title = "Enable Camera DBD", Default = false, Callback = function(v) W2.CamDBD_Enabled = v end })
+        camDBDSection:AddSlider({ Title = "Camera Smoothness", Min = 1, Max = 30, Default = 4, Increment = 1, Callback = function(v) W2.CamDBD_Smooth = v end })
+        camDBDSection:AddToggle({ Title = "POV Lock", Default = false, Callback = function(v) W2.CamDBD_POVLock = v end })
+        camDBDSection:AddSlider({ Title = "POV Value", Min = 60, Max = 120, Default = 85, Increment = 1, Suffix = "°", Callback = function(v) W2.CamDBD_POVValue = v end })
+        camDBDSection:AddSlider({ Title = "POV Smoothness", Min = 3, Max = 20, Default = 9, Increment = 1, Callback = function(v) W2.CamDBD_POVSmooth = v end })
+        camDBDSection:AddToggle({ Title = "Screen Smooth (Anti Berat)", Default = false, Callback = function(v) W2.CamDBD_ScreenSmooth = v end })
+        camDBDSection:AddSlider({ Title = "Smoothness Level", Min = 1, Max = 10, Default = 5, Increment = 1, Callback = function(v) W2.CamDBD_ScreenLevel = v end })
+        camDBDSection:AddSlider({ Title = "Rotation Speed", Min = 0.1, Max = 2, Default = 1.0, Increment = 0.1, Callback = function(v) W2.CamDBD_RotSpeed = v end })
+        camDBDSection:AddSlider({ Title = "Deadzone", Min = 0, Max = 50, Default = 10, Increment = 1, Callback = function(v) W2.CamDBD_Deadzone = v end })
+
         -- ============ KILLER TAB ============
         local perksSection = KillerTab:AddSection("Killer Perks Info")
         perksSection:AddToggle({ Title = "Enable Killer Perks Display", Default = false, Callback = function(v)
             if v then W.KillerPerksDisplay_Start() else W.KillerPerksDisplay_Stop() end
-            OW.KillerPerks_Enabled = v
-        end })
+            W2.KillerPerks_Enabled = v end })
 
         local lungeSection = KillerTab:AddSection("Infinite Lunge")
-        lungeSection:AddToggle({ Title = "Enable", Default = false, Callback = function(v) OW.InfLunge_Enabled = v end })
+        lungeSection:AddToggle({ Title = "Enable", Default = false, Callback = function(v) W2.InfLunge_Enabled = v end })
 
         local cpSection = KillerTab:AddSection("Counter Auto Parry")
-        cpSection:AddToggle({ Title = "Enable", Default = false, Callback = function(v) OW.CounterParry_Enabled = v end })
+        cpSection:AddToggle({ Title = "Enable", Default = false, Callback = function(v) W2.CounterParry_Enabled = v end })
+
+        local aaSection2 = KillerTab:AddSection("Auto Attack")
+        aaSection2:AddToggle({ Title = "Enable Auto Attack", Default = false, Callback = function(v) W2.AutoAttack_Enabled = v end })
+        aaSection2:AddSlider({ Title = "Attack Range", Min = 5, Max = 30, Default = 12, Increment = 1, Suffix = " studs", Callback = function(v) W2.AutoAttack_Range = v end })
+        aaSection2:AddSlider({ Title = "Attack Cooldown", Min = 0.05, Max = 1, Default = 0.15, Increment = 0.05, Suffix = "s", Callback = function(v) W2.AutoAttack_Cooldown = v end })
 
         local ahSection = KillerTab:AddSection("Aim Lock Hidden")
         ahSection:AddToggle({ Title = "Enable (Hold M2/E)", Default = false, Callback = function(v) W.AimHidden_SetEnabled(v) end })
@@ -7390,78 +8468,80 @@ end    --====================================================--
                 W.AimHidden_SetKey(input)
             end })
 
-        local aaSection = KillerTab:AddSection("Aim Lock Attack")
-        aaSection:AddToggle({ Title = "Enable (Hold M2)", Default = false, Callback = function(v)
+        local aattSection = KillerTab:AddSection("Aim Lock Attack")
+        aattSection:AddToggle({ Title = "Enable (Hold M2)", Default = false, Callback = function(v)
             if W.AttackAim_Cfg then W.AttackAim_Cfg.Enabled = v end
-            if v and W.AttackAim_Start then W.AttackAim_Start() end
-        end })
-        aaSection:AddSlider({ Title = "FOV Radius", Min = 50, Max = 1000, Default = 250, Increment = 10,
+            if v and W.AttackAim_Start then W.AttackAim_Start() end end })
+        aattSection:AddSlider({ Title = "FOV Radius", Min = 50, Max = 1000, Default = 250, Increment = 10,
             Callback = function(v) if W.AttackAim_Cfg then W.AttackAim_Cfg.FOV = v end end })
-        aaSection:AddSlider({ Title = "Aim Smoothness", Min = 0.1, Max = 1, Default = 1, Increment = 0.05,
+        aattSection:AddSlider({ Title = "Aim Smoothness", Min = 0.1, Max = 1, Default = 1, Increment = 0.05,
             Callback = function(v) if W.AttackAim_Cfg then W.AttackAim_Cfg.Strength = v end end })
-        aaSection:AddSlider({ Title = "Prediction Strength", Min = 0, Max = 1, Default = 0.12, Increment = 0.01,
+        aattSection:AddSlider({ Title = "Prediction Strength", Min = 0, Max = 1, Default = 0.12, Increment = 0.01,
             Callback = function(v) if W.AttackAim_Cfg then W.AttackAim_Cfg.PredictStrength = v end end })
-        aaSection:AddDropdown({ Title = "Aim Part", Options = { "Head", "HumanoidRootPart", "UpperTorso", "Torso" }, Default = "HumanoidRootPart",
+        aattSection:AddDropdown({ Title = "Aim Part", Options = { "Head", "HumanoidRootPart", "UpperTorso", "Torso" }, Default = "HumanoidRootPart",
             Callback = function(v)
                 local val = type(v) == "table" and v[1] or v
                 if W.AttackAim_Cfg then W.AttackAim_Cfg.AimPart = val end
             end })
-        aaSection:AddToggle({ Title = "Visibility Check", Default = true,
+        aattSection:AddToggle({ Title = "Visibility Check", Default = true,
             Callback = function(v) if W.AttackAim_Cfg then W.AttackAim_Cfg.VisibilityCheck = v end end })
 
+        local azSection = KillerTab:AddSection("Aimbot Zombie")
+        azSection:AddToggle({ Title = "Enable (Hold M2)", Default = false, Callback = function(v) W.AimbotZombie_SetEnabled(v) end })
+        azSection:AddSlider({ Title = "FOV Radius", Min = 50, Max = 1000, Default = 250, Increment = 10,
+            Callback = function(v) if W.AimbotZombie_Cfg then W.AimbotZombie_Cfg.FOV = v end end })
+        azSection:AddToggle({ Title = "Visibility Check", Default = true,
+            Callback = function(v) if W.AimbotZombie_Cfg then W.AimbotZombie_Cfg.VisibilityCheck = v end end })
+
         local abSection = KillerTab:AddSection("Anti Blind")
-        abSection:AddToggle({ Title = "Enable Anti Blind", Default = false, Callback = function(v) OW.AntiBlind_Enabled = v end })
+        abSection:AddToggle({ Title = "Enable Anti Blind", Default = false, Callback = function(v) W2.AntiBlind_Enabled = v end })
 
         local dpSection = KillerTab:AddSection("Destroy Pallet")
-        dpSection:AddToggle({ Title = "Enable Auto Destroy", Default = false, Callback = function(v) OW.DestroyPallet = v end })
+        dpSection:AddToggle({ Title = "Enable Auto Destroy", Default = false, Callback = function(v) W2.DestroyPallet = v end })
 
         local maskedSection = KillerTab:AddSection("Select Masked Power")
         maskedSection:AddDropdown({ Title = "Masked Power", Options = Masked.Powers, Default = Masked.CurrentPower,
             Callback = function(v)
                 local val = type(v) == "table" and v[1] or v
                 Masked.CurrentPower = val
-                OW.Masked_Power = val
+                W2.Masked_Power = val
             end })
         maskedSection:AddButton({ Title = "Activate Power", Callback = function() W.Masked_Activate() end })
         maskedSection:AddButton({ Title = "Deactivate Power", Callback = function() W.Masked_Deactivate() end })
 
         local veilV1Section = KillerTab:AddSection("Silent Spear Veil V1")
-        veilV1Section:AddToggle({ Title = "Enable", Default = false, Callback = function(v) OW.VeilV1_Enabled = v end })
-        veilV1Section:AddToggle({ Title = "Show FOV Circle", Default = true, Callback = function(v) OW.VeilV1_ShowFOV = v end })
-        veilV1Section:AddToggle({ Title = "Show Target Tracker", Default = false, Callback = function(v) OW.VeilV1_ShowTracker = v end })
-        veilV1Section:AddToggle({ Title = "Auto Predict", Default = true, Callback = function(v) OW.VeilV1_AutoPredict = v end })
-        veilV1Section:AddSlider({ Title = "FOV Size", Min = 50, Max = 500, Default = 150, Increment = 10, Callback = function(v) OW.VeilV1_FOV = v end })
-        veilV1Section:AddSlider({ Title = "Max Distance", Min = 50, Max = 280, Default = 280, Increment = 10, Callback = function(v) OW.VeilV1_MaxDist = v end })
-        veilV1Section:AddSlider({ Title = "Spear Speed", Min = 50, Max = 400, Default = 165, Increment = 5, Callback = function(v) OW.VeilV1_SpearSpeed = v end })
-        veilV1Section:AddSlider({ Title = "Spear Gravity", Min = 10, Max = 300, Default = 103, Increment = 1, Callback = function(v) OW.VeilV1_Gravity = v end })
-        veilV1Section:AddSlider({ Title = "Lead Multiplier", Min = 0.1, Max = 5, Default = 1.4, Increment = 0.1, Callback = function(v) OW.VeilV1_Lead = v end })
+        veilV1Section:AddToggle({ Title = "Enable", Default = false, Callback = function(v)
+            W2.VeilV1_Enabled = v
+            if getgenv().W2_VeilBtn_UpdateVisual then getgenv().W2_VeilBtn_UpdateVisual() end end })
+        veilV1Section:AddToggle({ Title = "Show FOV Circle", Default = true, Callback = function(v) W2.VeilV1_ShowFOV = v end })
+        veilV1Section:AddToggle({ Title = "Show Target Tracker", Default = false, Callback = function(v) W2.VeilV1_ShowTracker = v end })
+        veilV1Section:AddToggle({ Title = "Auto Predict", Default = true, Callback = function(v) W2.VeilV1_AutoPredict = v end })
+        veilV1Section:AddSlider({ Title = "FOV Size", Min = 50, Max = 500, Default = 150, Increment = 10, Callback = function(v) W2.VeilV1_FOV = v end })
+        veilV1Section:AddSlider({ Title = "Max Distance", Min = 50, Max = 280, Default = 280, Increment = 10, Callback = function(v) W2.VeilV1_MaxDist = v end })
+        veilV1Section:AddSlider({ Title = "Spear Speed", Min = 50, Max = 400, Default = 165, Increment = 5, Callback = function(v) W2.VeilV1_SpearSpeed = v end })
+        veilV1Section:AddSlider({ Title = "Spear Gravity", Min = 10, Max = 300, Default = 103, Increment = 1, Callback = function(v) W2.VeilV1_Gravity = v end })
+        veilV1Section:AddSlider({ Title = "Lead Multiplier", Min = 0.1, Max = 5, Default = 1.4, Increment = 0.1, Callback = function(v) W2.VeilV1_Lead = v end })
 
         local veilV2Section = KillerTab:AddSection("Silent Spear Veil V2")
         veilV2Section:AddToggle({ Title = "Silent Veil V1", Default = false, Callback = function(v)
-            W.W424Veil_API.AimConfig.Aim_SilentVeil = v
-        end })
+            W.W424Veil_API.AimConfig.Aim_SilentVeil = v end })
         veilV2Section:AddToggle({ Title = "Silent Veil V2", Default = false, Callback = function(v)
-            W.W424Veil_API.AimConfig.Aim_SilentVeilV2 = v
-        end })
+            W.W424Veil_API.AimConfig.Aim_SilentVeilV2 = v end })
         veilV2Section:AddToggle({ Title = "Auto Predict", Default = false, Callback = function(v)
-            W.W424Veil_API.Config.SpearSmart_enable = v
-        end })
+            W.W424Veil_API.Config.SpearSmart_enable = v end })
         veilV2Section:AddSlider({ Title = "Lead Multiplier", Min = 0.5, Max = 5, Default = 1.4, Callback = function(v)
-            W.W424Veil_API.AimConfig.Veil_LeadMultiplier = v
-        end })
+            W.W424Veil_API.AimConfig.Veil_LeadMultiplier = v end })
         veilV2Section:AddSlider({ Title = "Spear Speed", Min = 50, Max = 200, Default = 165, Callback = function(v)
-            W.W424Veil_API.AimConfig.SPEAR_Speed = v
-        end })
+            W.W424Veil_API.AimConfig.SPEAR_Speed = v end })
         veilV2Section:AddSlider({ Title = "Spear Gravity", Min = 0, Max = 200, Default = 103, Callback = function(v)
-            W.W424Veil_API.AimConfig.SPEAR_Gravity = v
-        end })
+            W.W424Veil_API.AimConfig.SPEAR_Gravity = v end })
         veilV2Section:AddToggle({ Title = "ESP Tracker Target", Default = false, Callback = function(v)
-            W.W424Veil_API.setTracker(v)
-        end })
+            W.W424Veil_API.setTracker(v) end })
 
         local bypassSection = KillerTab:AddSection("Bypass No Cooldown")
         bypassSection:AddToggle({ Title = "Hidden - Leap Bypass", Default = false, Callback = function(v) W.SetHiddenLeap(v) end })
-        bypassSection:AddToggle({ Title = "Myers - Infinite Grab (H)", Default = false, Callback = function(v) W.setMyersGrab(v) end })
+        bypassSection:AddToggle({ Title = "Myers - Infinite Grab (H)", Default = false, Callback = function(v)
+            W.setMyersGrab(v); if getgenv().W2_MGrabBtn_UpdateVisual then getgenv().W2_MGrabBtn_UpdateVisual() end end })
         bypassSection:AddToggle({ Title = "Slasher - Infinite LakeMist", Default = false, Callback = function(v) W.SetLakeMist(v) end })
         bypassSection:AddToggle({ Title = "Slasher - Infinite Pursuit", Default = false, Callback = function(v) W.SetPursuit(v) end })
         bypassSection:AddToggle({ Title = "Abyss - Bypass Cooldown", Default = false, Callback = function(v) W.SetAbyssBypass(v) end })
@@ -7473,17 +8553,16 @@ end    --====================================================--
         local spearSection = KillerTab:AddSection("Spear Aimbot")
         spearSection:AddToggle({ Title = "Enable", Default = false, Callback = function(v)
             W.SpearAimbot_SetEnabled(v)
-            if getgenv().OW_SpearBtn_UpdateVisual then getgenv().OW_SpearBtn_UpdateVisual() end
-        end })
+            if getgenv().W2_SpearBtn_UpdateVisual then getgenv().W2_SpearBtn_UpdateVisual() end end })
         spearSection:AddToggle({ Title = "Show Spear Button", Default = false, Callback = function(v)
-            if getgenv().OW_SpearBtn_SetEnabled then getgenv().OW_SpearBtn_SetEnabled(v) end
-        end })
+            if getgenv().W2_SpearBtn_SetEnabled then getgenv().W2_SpearBtn_SetEnabled(v) end end })
         spearSection:AddSlider({ Title = "Spear Gravity", Min = 10, Max = 200, Default = 50, Increment = 1, Callback = function(v) W.SpearAimbot_SetGravity(v) end })
         spearSection:AddSlider({ Title = "Spear Speed", Min = 50, Max = 300, Default = 100, Increment = 5, Callback = function(v) W.SpearAimbot_SetSpeed(v) end })
 
         local kaSection = KillerTab:AddSection("Killer Abilities")
         kaSection:AddToggle({ Title = "Auto Stalk (Myers)", Default = false, Callback = function(v) W.KA_SetAutoStalk(v) end })
-        kaSection:AddSlider({ Title = "Auto Stalk Range", Min = 20, Max = 500, Default = 150, Increment = 10, Suffix = " studs", Callback = function(v) KA.AutoStalkRange = v; OW.AutoStalk_Range = v end })
+        kaSection:AddSlider({ Title = "Auto Stalk Range", Min = 20, Max = 500, Default = 150, Increment = 10, Suffix = " studs",
+            Callback = function(v) KA.AutoStalkRange = v; W2.AutoStalk_Range = v end })
         kaSection:AddToggle({ Title = "Auto Kill All", Default = false, Callback = function(v) W.KA_SetAutoKillAll(v) end })
         kaSection:AddToggle({ Title = "Drop All Pallet", Default = false, Callback = function(v) W.KA_SetDropAllPallet(v) end })
         kaSection:AddToggle({ Title = "Block All Vault", Default = false, Callback = function(v) W.KA_SetBlockAllVault(v) end })
@@ -7491,9 +8570,9 @@ end    --====================================================--
 
         local flaskSection = KillerTab:AddSection("Silent Flask (The Cure)")
         flaskSection:AddToggle({ Title = "Enable", Default = false, Callback = function(v) W.Flask_SetEnabled(v) end })
-        flaskSection:AddToggle({ Title = "Show Beam", Default = true, Callback = function(v) OW.Flask_ShowBeam = v end })
-        flaskSection:AddToggle({ Title = "Show Landing Marker", Default = true, Callback = function(v) OW.Flask_ShowLanding = v end })
-        flaskSection:AddToggle({ Title = "Prediction", Default = true, Callback = function(v) OW.Flask_Predict = v end })
+        flaskSection:AddToggle({ Title = "Show Beam", Default = true, Callback = function(v) W2.Flask_ShowBeam = v end })
+        flaskSection:AddToggle({ Title = "Show Landing Marker", Default = true, Callback = function(v) W2.Flask_ShowLanding = v end })
+        flaskSection:AddToggle({ Title = "Prediction", Default = true, Callback = function(v) W2.Flask_Predict = v end })
         flaskSection:AddSlider({ Title = "Flask Speed", Min = 30, Max = 200, Default = 90, Increment = 5, Callback = function(v) W.Flask_SetSpeed(v) end })
         flaskSection:AddSlider({ Title = "Flask Gravity", Min = 50, Max = 400, Default = 196, Increment = 5, Callback = function(v) W.Flask_SetGravity(v) end })
         flaskSection:AddSlider({ Title = "Lead Multiplier", Min = 0, Max = 3, Default = 1, Increment = 0.1, Callback = function(v) W.Flask_SetLead(v) end })
@@ -7501,9 +8580,9 @@ end    --====================================================--
 
         local dlSection = KillerTab:AddSection("Dash Lock")
         dlSection:AddToggle({ Title = "Enable", Default = false, Callback = function(v) W.DashLock_SetEnabled(v) end })
-        dlSection:AddSlider({ Title = "Lock Duration", Min = 0.5, Max = 5, Default = 1.5, Increment = 0.1, Suffix = "s", Callback = function(v) OW.DashLock_Duration = v end })
-        dlSection:AddSlider({ Title = "Camera Smoothness", Min = 0.05, Max = 1, Default = 0.3, Increment = 0.05, Callback = function(v) OW.DashLock_Smooth = v end })
-        dlSection:AddToggle({ Title = "Freeze Character", Default = false, Callback = function(v) OW.DashLock_Freeze = v end })
+        dlSection:AddSlider({ Title = "Lock Duration", Min = 0.5, Max = 5, Default = 1.5, Increment = 0.1, Suffix = "s", Callback = function(v) W2.DashLock_Duration = v end })
+        dlSection:AddSlider({ Title = "Camera Smoothness", Min = 0.05, Max = 1, Default = 0.3, Increment = 0.05, Callback = function(v) W2.DashLock_Smooth = v end })
+        dlSection:AddToggle({ Title = "Freeze Character", Default = false, Callback = function(v) W2.DashLock_Freeze = v end })
 
         -- ============ MISC TAB ============
         local settingsSection = MiscTab:AddSection("Settings")
@@ -7535,50 +8614,59 @@ end    --====================================================--
         local invisSection = MiscTab:AddSection("Invisibility")
         invisSection:AddToggle({ Title = "Enable", Default = false, Callback = function(v)
             W.Invisible_SetState(v, false)
-            if getgenv().OW_InvisBtn_UpdateVisual then getgenv().OW_InvisBtn_UpdateVisual() end
-        end })
+            if getgenv().W2_InvisBtn_UpdateVisual then getgenv().W2_InvisBtn_UpdateVisual() end end })
         invisSection:AddToggle({ Title = "Show Invisible Button", Default = false, Callback = function(v)
-            if getgenv().OW_InvisBtn_SetEnabled then getgenv().OW_InvisBtn_SetEnabled(v) end
-        end })
+            if getgenv().W2_InvisBtn_SetEnabled then getgenv().W2_InvisBtn_SetEnabled(v) end end })
         invisSection:AddKeybind({ Title = "Toggle Hotkey", Default = Enum.KeyCode.G, Callback = function(kc)
-            if kc then OW.Invis_Hotkey = kc.Name end
-        end })
-
-        local camSection = MiscTab:AddSection("Camera DBD")
-        camSection:AddToggle({ Title = "DBD Camera (Smooth Follow)", Default = false, Callback = function(v)
-            OW.CamDBD_Smooth = v
-            if not v then
-                local cam = Workspace.CurrentCamera
-                if cam then
-                    -- reset
-                end
-            end
-        end })
-        camSection:AddSlider({ Title = "Camera Smoothness", Min = 1, Max = 30, Default = 4, Increment = 1, Callback = function(v) OW.CamDBD_SmoothSpeed = v end })
-        camSection:AddToggle({ Title = "POV Lock", Default = false, Callback = function(v) OW.CamDBD_POVLock = v end })
-        camSection:AddSlider({ Title = "POV Value", Min = 60, Max = 120, Default = 85, Increment = 1, Suffix = "°", Callback = function(v) OW.CamDBD_POVValue = v end })
-        camSection:AddSlider({ Title = "POV Smoothness", Min = 3, Max = 20, Default = 9, Increment = 1, Callback = function(v) OW.CamDBD_POVSmooth = v end })
+            if kc then W2.Invis_Hotkey = kc.Name end end })
 
         local puSection = MiscTab:AddSection("Player Utility")
         puSection:AddToggle({ Title = "Speed Hack", Default = false, Callback = function(v)
-            OW.PU_SpeedEnabled = v
+            W2.PU_SpeedEnabled = v
             if not v then
                 local hum = LocalPlayer.Character and LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
                 if hum then hum.WalkSpeed = 16 end
-            end
-        end })
-        puSection:AddSlider({ Title = "Speed Value", Min = 16, Max = 200, Default = 16, Increment = 1, Callback = function(v) OW.PU_SpeedValue = v end })
-        puSection:AddToggle({ Title = "Skip End Screen", Default = false, Callback = function(v) OW.PU_SkipEnd = v end })
-        puSection:AddToggle({ Title = "Shift Lock", Default = false, Callback = function(v) OW.PU_ShiftLock = v end })
-        puSection:AddToggle({ Title = "Hide Survivor Icon", Default = false, Callback = function(v) OW.PU_HideSurvIcon = v end })
-        puSection:AddToggle({ Title = "Show Ping & FPS", Default = false, Callback = function(v) OW.PU_PingFPS = v end })
-        puSection:AddToggle({ Title = "Hide Name", Default = false, Callback = function(v) OW.PU_HideName = v end })
-        puSection:AddToggle({ Title = "Unlimited Zoom", Default = false, Callback = function(v) OW.PU_UnlimitedZoom = v end })
-        puSection:AddToggle({ Title = "Noclip", Default = false, Callback = function(v) OW.PU_Noclip = v end })
+            end end })
+        puSection:AddSlider({ Title = "Speed Value", Min = 16, Max = 200, Default = 16, Increment = 1, Callback = function(v) W2.PU_SpeedValue = v end })
+        puSection:AddToggle({ Title = "Shift Lock", Default = false, Callback = function(v) W2.PU_ShiftLock = v end })
+        puSection:AddToggle({ Title = "Hide Survivor Icon", Default = false, Callback = function(v) W2.PU_HideSurvIcon = v end })
+        puSection:AddToggle({ Title = "Show Ping & FPS", Default = false, Callback = function(v) W2.PU_PingFPS = v end })
+        puSection:AddToggle({ Title = "Hide Name", Default = false, Callback = function(v) W2.PU_HideName = v end })
+        puSection:AddToggle({ Title = "Unlimited Zoom", Default = false, Callback = function(v) W2.PU_UnlimitedZoom = v end })
+        puSection:AddToggle({ Title = "Noclip", Default = false, Callback = function(v) W2.PU_Noclip = v end })
 
         local sbSection = MiscTab:AddSection("Speed Boost")
         sbSection:AddToggle({ Title = "Enable", Default = false, Callback = function(v) W.SpeedBoost_SetEnabled(v) end })
-        sbSection:AddSlider({ Title = "Speed Value", Min = 16, Max = 100, Default = 30, Increment = 1, Callback = function(v) OW.SpeedBoost_Value = v end })
+        sbSection:AddSlider({ Title = "Speed Value", Min = 16, Max = 100, Default = 30, Increment = 1, Callback = function(v) W2.SpeedBoost_Value = v end })
+
+        local bombaxSection = MiscTab:AddSection("Bombax")
+        bombaxSection:AddToggle({ Title = "Enable Bombax", Default = false, Callback = function(v)
+            W.Bombax_SetEnabled(v)
+            if v then W2_Notify("Bombax", "Enabled", 2) else W2_Notify("Bombax", "Disabled", 2) end end })
+        bombaxSection:AddDropdown({ Title = "Select Song", Options = W.Bombax_GetSongList(), Default = "One", Multi = false,
+            Callback = function(v)
+                local val = type(v) == "table" and v[1] or v
+                Bombax.SelectedSong = val
+                W2.Bombax_Selected = val
+                if Bombax.Enabled then W.Bombax_Play(val) end
+            end })
+        bombaxSection:AddSlider({ Title = "Volume", Min = 0, Max = 10, Default = 2, Increment = 0.5, Callback = function(v) W.Bombax_SetVolume(v) end })
+        bombaxSection:AddToggle({ Title = "Looped", Default = true, Callback = function(v) W.Bombax_SetLooped(v) end })
+        bombaxSection:AddButton({ Title = "▶ Play Selected", Callback = function() W.Bombax_Play(Bombax.SelectedSong) end })
+        bombaxSection:AddButton({ Title = "⏸ Stop", Callback = function() W.Bombax_Stop(); W2_Notify("Bombax", "Stopped", 2) end })
+        bombaxSection:AddButton({ Title = "⏭ Next Song", Callback = function() W.Bombax_Next() end })
+        bombaxSection:AddButton({ Title = "⏮ Previous Song", Callback = function() W.Bombax_Prev() end })
+
+        local cursorSection = MiscTab:AddSection("Cursor Feature")
+        cursorSection:AddToggle({ Title = "Enable Cursor Unlock", Default = false, Callback = function(v)
+            W.Cursor_SetEnabled(v); if v then W2_Notify("Cursor", "Enabled (ALT to toggle)", 2) end end })
+        cursorSection:AddButton({ Title = "Toggle Cursor Now", Callback = function()
+            W.Cursor_SetEnabled(not W2.Cursor_Enabled)
+            W2_Notify("Cursor", W2.Cursor_Enabled and "ON" or "OFF", 2)
+        end })
+
+        local specSection = MiscTab:AddSection("Spectator Counter")
+        specSection:AddToggle({ Title = "Enable Spectator Counter", Default = false, Callback = function(v) W.Spectator_SetEnabled(v) end })
 
         local emoteSection = MiscTab:AddSection("Emote")
         emoteSection:AddToggle({ Title = "Enable", Default = false, Callback = function(v) W.EmoteSystem_SetEnabled(v) end })
@@ -7587,9 +8675,7 @@ end    --====================================================--
                 local val = type(v) == "table" and v[1] or v
                 W.EmoteSystem_SelectEmote(val or "Friday Night")
             end })
-        emoteSection:AddButton({ Title = "Stop Emote", Callback = function()
-            W.EmoteSystem_Stop(); W.EmoteSystem.Enabled = false
-        end })
+        emoteSection:AddButton({ Title = "Stop Emote", Callback = function() W.EmoteSystem_Stop(); W.EmoteSystem.Enabled = false end })
 
         local faSection = MiscTab:AddSection("Fake Avatar")
         faSection:AddDropdown({ Title = "Fake Avatar Preset",
@@ -7627,7 +8713,7 @@ end    --====================================================--
         korlessSection:AddToggle({ Title = "Korless Morph", Default = false, Callback = function(v) W.Korless_SetEnabled(v) end })
 
         local headerSection = MiscTab:AddSection("Header Title")
-        headerSection:AddInput({ Title = "Header Text", Default = "One W v2", Placeholder = "Nama header lo...",
+        headerSection:AddInput({ Title = "Header Text", Default = "W2", Placeholder = "Nama header...",
             Callback = function(input) W.Header_SetText(input) end })
         headerSection:AddToggle({ Title = "Enable Header Title", Default = false, Callback = function(v) W.Header_SetEnabled(v) end })
         headerSection:AddColorPicker({ Title = "Header Color", Default = Color3.fromRGB(255, 255, 255), Save = false,
@@ -7635,10 +8721,8 @@ end    --====================================================--
 
         local escapeSection = MiscTab:AddSection("Escape")
         escapeSection:AddToggle({ Title = "Enable Escape Button", Default = false, Callback = function(v)
-            OW.Escape_Enabled = v
-            if getgenv().OW_Escape_SetEnabled then getgenv().OW_Escape_SetEnabled(v) end
-            if v then OW_Notify("Escape", "Shown", 2) end
-        end })
+            W2.Escape_Enabled = v
+            if getgenv().W2_Escape_SetEnabled then getgenv().W2_Escape_SetEnabled(v) end end })
         escapeSection:AddButton({ Title = "Teleport Now", Callback = function() W.Escape_Teleport() end })
 
         -- ============ CONFIG TAB ============
@@ -7646,10 +8730,10 @@ end    --====================================================--
         local currentName = ""
         local selectedConfig = nil
         local configList = nil
-        local function ConfigFolderPath() return "OneW/Config" end
+        local function ConfigFolderPath() return "W2/Config" end
         local function EnsureConfigFolder()
             if isfolder and makefolder then
-                if not isfolder("OneW") then makefolder("OneW") end
+                if not isfolder("W2") then makefolder("W2") end
                 if not isfolder(ConfigFolderPath()) then makefolder(ConfigFolderPath()) end
             end
         end
@@ -7662,7 +8746,7 @@ end    --====================================================--
                 if ok2 and files then
                     for _, f in ipairs(files) do
                         local n = string.match(f, "([^/\\]+)%.json$")
-                        if n then table.insert(list, n) end
+                        if n and n ~= "_autoload" then table.insert(list, n) end
                     end
                 end
             end
@@ -7678,7 +8762,7 @@ end    --====================================================--
                 if not writefile or not HttpService then ForceNotify("Config", "Executor gak support", 2); return end
                 EnsureConfigFolder()
                 local snapshot = {}
-                for k, v in pairs(OW) do
+                for k, v in pairs(W2) do
                     if type(v) ~= "function" and type(v) ~= "userdata" and type(v) ~= "thread" then
                         snapshot[k] = v
                     end
@@ -7700,7 +8784,7 @@ end    --====================================================--
                 local okD, dec = pcall(function() return HttpService:JSONDecode(raw) end)
                 if not okD or type(dec) ~= "table" then ForceNotify("Config", "File corrupt", 2); return end
                 for k, v in pairs(dec) do
-                    OW[k] = v
+                    W2[k] = v
                 end
                 ForceNotify("Config", "Loaded: " .. selectedConfig, 2)
             end
@@ -7719,10 +8803,34 @@ end    --====================================================--
                 RefreshConfigList(); ForceNotify("Config", "List refreshed", 2)
             end
         })
+        cfgSection:AddToggle({ Title = "Auto Save", Default = false, Save = false,
+            Callback = function(v) W2.Config_AutoSave = v; ForceNotify("Config", "Auto Save: " .. (v and "ON" or "OFF"), 2) end })
+        cfgSection:AddToggle({ Title = "Auto Load", Default = false, Save = false,
+            Callback = function(v) W2.Config_AutoLoad = v; ForceNotify("Config", "Auto Load: " .. (v and "ON" or "OFF"), 2) end })
+        local importJsonStr = ""
+        cfgSection:AddInput({ Title = "Import JSON", Placeholder = "{...}", Save = false, Callback = function(text) importJsonStr = text end })
+        cfgSection:AddButton({ Title = "Import", SubTitle = "From Clipboard",
+            Callback = function()
+                if importJsonStr == "" then ForceNotify("Config", "Paste JSON dulu", 2); return end
+                local okD, dec = pcall(function() return HttpService:JSONDecode(importJsonStr) end)
+                if not okD or type(dec) ~= "table" then ForceNotify("Config", "JSON invalid", 2); return end
+                for k, v in pairs(dec) do W2[k] = v end
+                ForceNotify("Config", "Imported!", 2)
+            end,
+            SubCallback = function()
+                if not getclipboard then ForceNotify("Config", "Clipboard gak support", 2); return end
+                local clip = getclipboard()
+                if not clip or clip == "" then ForceNotify("Config", "Clipboard kosong", 2); return end
+                local okD, dec = pcall(function() return HttpService:JSONDecode(clip) end)
+                if not okD or type(dec) ~= "table" then ForceNotify("Config", "JSON invalid", 2); return end
+                for k, v in pairs(dec) do W2[k] = v end
+                ForceNotify("Config", "Imported from clipboard!", 2)
+            end
+        })
         cfgSection:AddButton({ Title = "Export to Clipboard", Callback = function()
             if not setclipboard then ForceNotify("Config", "Clipboard gak support", 2); return end
             local snapshot = {}
-            for k, v in pairs(OW) do
+            for k, v in pairs(W2) do
                 if type(v) ~= "function" and type(v) ~= "userdata" and type(v) ~= "thread" then
                     snapshot[k] = v
                 end
@@ -7733,17 +8841,14 @@ end    --====================================================--
                 ForceNotify("Config", "Copied to clipboard!", 2)
             end
         end })
-        local cfgInfoSection = ConfigTab:AddSection("Config Info")
-        cfgInfoSection:AddParagraph({ Title = "Cara Pakai Config",
-            Content = "• Save: tulis nama config, klik Save\n• Load: pilih dropdown, klik Load\n• Delete: pilih lalu klik Delete\n• Export: copy JSON ke clipboard" })
     end)
 
-    if not uiOK then warn("[OneW] Gagal membuat UI:", uiErr) end
+    if not uiOK then warn("[W2] Gagal membuat UI:", uiErr) end
 
-    print("[One W v2] Loaded!")
-    print("  - One Window GUI")
-    print("  - 6 Floating Buttons: Self Heal, Self Unhook, Escape, Invisible, Moonwalk, Spear Aimbot")
-    ForceNotify("One W v2 Loaded", "6 Floating Buttons Ready - Premium", 6)
+    print("[W2] Loaded!")
+    print("  - Free Script - Jangan Dijual!")
+    print("  - 10 Floating Buttons Ready")
+    ForceNotify("W2 Loaded", "Free Script - Jangan Dijual! 10 Floating Buttons Ready", 6)
 end
 
-__OneW_Init_Main__()
+__W2_Init_Main__()
